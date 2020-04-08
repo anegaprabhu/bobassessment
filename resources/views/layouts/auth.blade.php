@@ -36,8 +36,16 @@
 <div id="myNav" class="overlay">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <div class="overlay-content">
-  <a href="{{url('parents')}}">Students</a>
 
+  @if(Auth::user())  
+  <a class="dropdown-item" href="{{ url('parents') }}">
+  {{ Auth::user()->name }}
+  </a>
+  @endif  
+
+  @isset($url)
+  <a href="{{url('parents')}}">Students</a>
+  @endisset  
     <a class="dropdown-item" href="{{ route('logout') }}"
         onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
