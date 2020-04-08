@@ -16,438 +16,460 @@ class ExamController extends Controller
     public function index(Request $request)
     {
         // dd($request->id);
-        $level_id = $request->id;
-        $student_info = (object)array(
-            'student_name'  =>  'Jayaprajith V M',
-            'programme'     =>  'Brainobrain',
-            'level'         =>  'Level 4',
-        );
 
-        if($level_id == 'm1')
+
+        $student_id = base64_decode($request->id);
+
+        $student = \DB::table('students')
+            ->where('student_id',$student_id)
+            ->get();
+
+        if(count($student))
         {
-            $level_info = (object)array(
-                'programme'     =>  'LITTLE BOB',
-                'level'         =>  'Module 1',
-                'row_blocks'    =>  array(
-                    array(
-                        'block_name'    =>  'D',
-                        'block_title'   =>  'Addition',
-                        'block_subtitle'=>  'Add / Less Partner',
-                        'digits'        =>  'MOD1',
-                        'rows'          =>  2,
-                        'sums'          =>  10,
-                        'max_negative'  =>  0
-                    ),
-                    array(
-                        'block_name'    =>  'D',
-                        'block_title'   =>  'Addition',
-                        'block_subtitle'=>  'Add / Less Partner',
-                        'digits'        =>  'MOD1',
-                        'rows'          =>  3,
-                        'sums'          =>  10,
-                        'max_negative'  =>  0
-                    ),
-                )
-            );
-    
-        }else if($level_id == 'm2'){
-            $level_info = (object)array(
-                'programme'     =>  'LITTLE BOB',
-                'level'         =>  'Module 2',
-                'row_blocks'    =>  array(
-                    array(
-                        'block_name'    =>  'D',
-                        'block_title'   =>  'Addition',
-                        'block_subtitle'=>  'Add / Less Partner',
-                        'digits'        =>  'MOD2',
-                        'rows'          =>  2,
-                        'sums'          =>  10,
-                        'max_negative'  =>  2
-                    ),
-                    array(
-                        'block_name'    =>  'D',
-                        'block_title'   =>  'Addition',
-                        'block_subtitle'=>  'Add / Less Partner',
-                        'digits'        =>  'MOD2',
-                        'rows'          =>  3,
-                        'sums'          =>  10,
-                        'max_negative'  =>  2
-                    ),
-                )
-            );
-        }else if($level_id == 'm3') {
-            $level_info = (object)array(
-                'programme'     =>  'LITTLE BOB',
-                'level'         =>  'Module 3',
-                'row_blocks'    =>  array(
-                    array(
-                        'block_name'    =>  'A',
-                        'block_title'   =>  'Addition',
-                        'block_subtitle'=>  'Add / Less Partner',
-                        'digits'        =>  'MOD2', 
-                        'rows'          =>  4,
-                        'sums'          =>  10,
-                        'max_negative'  =>  2
-                    ),
-                    array(
-                        'block_name'    =>  'B',
-                        'block_title'   =>  'Addition',
-                        'block_subtitle'=>  'Add / Less Partner',
-                        'digits'        =>  'MOD3-SD',
-                        'rows'          =>  4,
-                        'sums'          =>  10,
-                        'max_negative'  =>  2
-                    ),
-                )
-            );
-    
-        } else if ( $level_id == 'l1'){
-            $level_info = (object)array(
-                'programme'     =>  'BRAINOBRAIN',
-                'level'         =>  'Level 1',
-                'row_blocks'    =>  array(
-                    array(
-                        'block_name'    =>  'A',
-                        'block_title'   =>  'Addition',
-                        'block_subtitle'=>  'Add / Less Partner',
-                        'digits'        =>  'Level1-SD',
-                        'rows'          =>  3,
-                        'sums'          =>  10,
-                        'max_negative'  =>  2
-                    ),
-                    array(
-                        'block_name'    =>  'B',
-                        'block_title'   =>  'Addition',
-                        'block_subtitle'=>  'Add / Less Partner',
-                        'digits'        =>  'Level1-SD',
-                        'rows'          =>  5,
-                        'sums'          =>  10,
-                        'max_negative'  =>  3
-                    ),
-                )
-            );
-    
-        } else if ( $level_id == 'l2') {
-            $level_info = (object)array(
-                'programme'     =>  'BRAINOBRAIN',
-                'level'         =>  'Level 2',
-                'row_blocks'    =>  array(
-                    array(
-                        'block_name'    =>  'A',
-                        'block_title'   =>  'Addition',
-                        'block_subtitle'=>  'Add / Less Partner',
-                        'digits'        =>  'SD',
-                        'rows'          =>  4,
-                        'sums'          =>  10,
-                        'max_negative'  =>  2
-                    ),
-                    array(
-                        'block_name'    =>  'B',
-                        'block_title'   =>  'Addition',
-                        'block_subtitle'=>  'Add / Less Partner',
-                        'digits'        =>  'MOD3-SD', 
-                        'rows'          =>  5,
-                        'sums'          =>  5,
-                        'max_negative'  =>  2
-                    ),
-                    array(
-                        'block_name'    =>  'D',
-                        'block_title'   =>  'Addition',
-                        'block_subtitle'=>  'Add / Less Partner',
-                        'digits'        =>  'Level2-SD-2DD-Top',
-                        'rows'          =>  5,
-                        'sums'          =>  5,
-                        'max_negative'  =>  3
-                    )
-                )
-            );
-    
-        } else if ( $level_id == 'l3') {
-            $level_info = (object)array(
-                'programme'     =>  'BRAINOBRAIN',
-                'level'         =>  'Level 3',
-                'row_blocks'    =>  array(
-                    array(
-                        'block_name'    =>  'A',
-                        'block_title'   =>  'Addition',
-                        'block_subtitle'=>  'Add / Less Partner',
-                        'digits'        =>  'SD',
-                        'rows'          =>  4,
-                        'sums'          =>  5,
-                        'max_negative'  =>  2
-                    ),
-                    array(
-                        'block_name'    =>  'B',
-                        'block_title'   =>  'Addition',
-                        'block_subtitle'=>  'Add / Less Partner',
-                        'digits'        =>  'SD', 
-                        'rows'          =>  6,
-                        'sums'          =>  5,
-                        'max_negative'  =>  3
-                    ),
-                    array(
-                        'block_name'    =>  'D',
-                        'block_title'   =>  'Addition',
-                        'block_subtitle'=>  'Add / Less Partner',
-                        'digits'        =>  'MOD3-SD',
-                        'rows'          =>  3,
-                        'sums'          =>  10,
-                        'max_negative'  =>  3
-                    )
-                )
-            );
 
-        } else if ( $level_id == 'l4') {
-            $level_info = (object)array(
-                'programme'     =>  'BRAINOBRAIN',
-                'level'         =>  'Level 4',
-                'row_blocks'    =>  array(
-                    array(
-                        'block_name'    =>  'A',
-                        'block_title'   =>  'Addition',
-                        'block_subtitle'=>  'Add / Less Partner',
-                        'digits'        =>  'SD',
-                        'rows'          =>  10,
-                        'sums'          =>  5,
-                        'max_negative'  =>  3
-                    ),
-                    array(
-                        'block_name'    =>  'B',
-                        'block_title'   =>  'Addition',
-                        'block_subtitle'=>  'Add / Less Partner',
-                        'digits'        =>  'DD', 
-                        'rows'          =>  4,
-                        'sums'          =>  5,
-                        'max_negative'  =>  4
-                    ),
-                    array(
-                        'block_name'    =>  'D',
-                        'block_title'   =>  'Multiplication',
-                        'block_subtitle'=>  'Add / Less Partner',
-                        'digits'        =>  'DD/SD',
-                        'rows'          =>  1,
-                        'sums'          =>  10,
-                        'max_negative'  =>  0
-                    )
-                )
-            );
-
-        } else if ( $level_id == 'l5') {
-            $level_info = (object)array(
-                'programme'     =>  'BRAINOBRAIN',
-                'level'         =>  'Level 5',
-                'row_blocks'    =>  array(
-                    array(
-                        'block_name'    =>  'A',
-                        'block_title'   =>  'Addition',
-                        'block_subtitle'=>  'Add / Less Partner',
-                        'digits'        =>  'DD',
-                        'rows'          =>  4,
-                        'sums'          =>  5,
-                        'max_negative'  =>  4
-                    ),
-                    array(
-                        'block_name'    =>  'B',
-                        'block_title'   =>  'Addition',
-                        'block_subtitle'=>  'Add / Less Partner',
-                        'digits'        =>  'DD', 
-                        'rows'          =>  8,
-                        'sums'          =>  5,
-                        'max_negative'  =>  4
-                    ),
-                    array(
-                        'block_name'    =>  'D',
-                        'block_title'   =>  'Multiplication',
-                        'block_subtitle'=>  'Add / Less Partner',
-                        'digits'        =>  'DD/SD',
-                        'rows'          =>  1,
-                        'sums'          =>  10,
-                        'max_negative'  =>  0
-                    )
-                )
-            );
-
-        } else if ( $level_id == 'l6') {
-            $level_info = (object)array(
-                'programme'     =>  'BRAINOBRAIN',
-                'level'         =>  'Level 6',
-                'row_blocks'    =>  array(
-                    array(
-                        'block_name'    =>  'A',
-                        'block_title'   =>  'Addition',
-                        'block_subtitle'=>  'Add / Less Partner',
-                        'digits'        =>  'DD',
-                        'rows'          =>  10,
-                        'sums'          =>  5,
-                        'max_negative'  =>  4
-                    ),
-                    array(
-                        'block_name'    =>  'B',
-                        'block_title'   =>  'Addition',
-                        'block_subtitle'=>  'Add / Less Partner',
-                        'digits'        =>  'TD', 
-                        'rows'          =>  2,
-                        'sums'          =>  5,
-                        'max_negative'  =>  3
-                    ),
-                    array(
-                        'block_name'    =>  'C',
-                        'block_title'   =>  'Multiplication',
-                        'block_subtitle'=>  'Add / Less Partner',
-                        'digits'        =>  'DD/SD',
-                        'rows'          =>  1,
-                        'sums'          =>  5,
-                        'max_negative'  =>  0
-                    ),
-                    array(
-                        'block_name'    =>  'D',
-                        'block_title'   =>  'Multiplication',
-                        'block_subtitle'=>  'Add / Less Partner',
-                        'digits'        =>  'TD/SD',
-                        'rows'          =>  1,
-                        'sums'          =>  5,
-                        'max_negative'  =>  0
-                    )
-                )
-            );
-
-        } else {
-
-            $level_info = (object)array(
+            $level_id = $student[0]->level;
+            $student_info = (object)array(
+                'student_name'  =>  'Jayaprajith V M',
                 'programme'     =>  'Brainobrain',
                 'level'         =>  'Level 4',
-                'row_blocks'    =>  array(
-                    array(
-                        'block_name'    =>  'A',
-                        'block_title'   =>  'Addition',
-                        'block_subtitle'=>  'Single Digit',
-                        'digits'        =>  'SD',
-                        'rows'          =>  2,
-                        'sums'          =>  5,
-                        'max_negative'  =>  2
-                    ),
-                    array(
-                        'block_name'    =>  'B',
-                        'block_title'   =>  'Addition',
-                        'block_subtitle'=>  'Double Digit',
-                        'digits'        =>  'DD',
-                        'rows'          =>  4,
-                        'sums'          =>  5,
-                        'max_negative'  =>  3
-                    ),
-                    array(
-                        'block_name'    =>  'C',
-                        'block_title'   =>  'Addition',
-                        'block_subtitle'=>  'Single / Double Digit',
-                        'digits'        =>  'SD/DD',
-                        'rows'          =>  3,
-                        'sums'          =>  5,
-                        'max_negative'  =>  1
-                    ),
-                    array(
-                        'block_name'    =>  'D',
-                        'block_title'   =>  'Addition',
-                        'block_subtitle'=>  'Add / Less Partner',
-                        'digits'        =>  'MOD1',
-                        'rows'          =>  2,
-                        'sums'          =>  2,
-                        'max_negative'  =>  0
-                    ),
-                    array(
-                        'block_name'    =>  'D',
-                        'block_title'   =>  'Addition',
-                        'block_subtitle'=>  'Add / Less Partner',
-                        'digits'        =>  'MOD2',
-                        'rows'          =>  2,
-                        'sums'          =>  10,
-                        'max_negative'  =>  2
-                    ),
-                    array(
-                        'block_name'    =>  'D',
-                        'block_title'   =>  'Addition',
-                        'block_subtitle'=>  'Add / Less Partner',
-                        'digits'        =>  'MOD2',
-                        'rows'          =>  3,
-                        'sums'          =>  10,
-                        'max_negative'  =>  2
-                    ),
-                    array(
-                        'block_name'    =>  'D',
-                        'block_title'   =>  'Addition',
-                        'block_subtitle'=>  'Add / Less Partner',
-                        'digits'        =>  'MOD3-SD', 
-                        'rows'          =>  4,
-                        'sums'          =>  10,
-                        'max_negative'  =>  2
-                    ),
-                    array(
-                        'block_name'    =>  'D',
-                        'block_title'   =>  'Addition',
-                        'block_subtitle'=>  'Add / Less Partner',
-                        'digits'        =>  'Level1-SD',
-                        'rows'          =>  3,
-                        'sums'          =>  10,
-                        'max_negative'  =>  2
-                    ),
-                    array(
-                        'block_name'    =>  'D',
-                        'block_title'   =>  'Addition',
-                        'block_subtitle'=>  'Add / Less Partner',
-                        'digits'        =>  'Level1-SD',
-                        'rows'          =>  5,
-                        'sums'          =>  10,
-                        'max_negative'  =>  3
-                    ),
-                    array(
-                        'block_name'    =>  'D',
-                        'block_title'   =>  'Addition',
-                        'block_subtitle'=>  'Add / Less Partner',
-                        'digits'        =>  'Level2-SD-2DD-Top',
-                        'rows'          =>  5,
-                        'sums'          =>  5,
-                        'max_negative'  =>  3
-                    ),
-                    array(
-                        'block_name'    =>  'D',
-                        'block_title'   =>  'Multiplication',
-                        'block_subtitle'=>  'Double Digit and Single Digit',
-                        'digits'        =>  'DD/SD',
-                        'rows'          =>  1,
-                        'sums'          =>  5,
-                        'max_negative'  =>  0
-                    ),
-                    array(
-                        'block_name'    =>  'D',
-                        'block_title'   =>  'Multiplication',
-                        'block_subtitle'=>  'Triple Digit and Single Digit',
-                        'digits'        =>  'TD/SD',
-                        'rows'          =>  1,
-                        'sums'          =>  5,
-                        'max_negative'  =>  0
-                    ),
-                    array(
-                        'block_name'    =>  'D',
-                        'block_title'   =>  'Multiplication',
-                        'block_subtitle'=>  'Double Digit and Double Digit',
-                        'digits'        =>  'DD/DD',
-                        'rows'          =>  1,
-                        'sums'          =>  5,
-                        'max_negative'  =>  0
-                    ),
-                    array(
-                        'block_name'    =>  'D',
-                        'block_title'   =>  'Multiplication',
-                        'block_subtitle'=>  'Triple Digit and Double Digit',
-                        'digits'        =>  'TD/DD',
-                        'rows'          =>  1,
-                        'sums'          =>  5,
-                        'max_negative'  =>  0
+            );
+    
+            if($level_id == 'Module 1')
+            {
+                $level_info = (object)array(
+                    'programme'     =>  'LITTLE BOB',
+                    'level'         =>  'Module 1',
+                    'row_blocks'    =>  array(
+                        array(
+                            'block_name'    =>  'D',
+                            'block_title'   =>  'Addition',
+                            'block_subtitle'=>  'Add / Less Partner',
+                            'digits'        =>  'MOD1',
+                            'rows'          =>  2,
+                            'sums'          =>  10,
+                            'max_negative'  =>  0
+                        ),
+                        array(
+                            'block_name'    =>  'D',
+                            'block_title'   =>  'Addition',
+                            'block_subtitle'=>  'Add / Less Partner',
+                            'digits'        =>  'MOD1',
+                            'rows'          =>  3,
+                            'sums'          =>  10,
+                            'max_negative'  =>  0
+                        ),
                     )
-                )  
-                    );
+                );
+        
+            }else if($level_id == 'Module 2'){
+                $level_info = (object)array(
+                    'programme'     =>  'LITTLE BOB',
+                    'level'         =>  'Module 2',
+                    'row_blocks'    =>  array(
+                        array(
+                            'block_name'    =>  'D',
+                            'block_title'   =>  'Addition',
+                            'block_subtitle'=>  'Add / Less Partner',
+                            'digits'        =>  'MOD2',
+                            'rows'          =>  2,
+                            'sums'          =>  10,
+                            'max_negative'  =>  2
+                        ),
+                        array(
+                            'block_name'    =>  'D',
+                            'block_title'   =>  'Addition',
+                            'block_subtitle'=>  'Add / Less Partner',
+                            'digits'        =>  'MOD2',
+                            'rows'          =>  3,
+                            'sums'          =>  10,
+                            'max_negative'  =>  2
+                        ),
+                    )
+                );
+            }else if($level_id == 'Module 3') {
+                $level_info = (object)array(
+                    'programme'     =>  'LITTLE BOB',
+                    'level'         =>  'Module 3',
+                    'row_blocks'    =>  array(
+                        array(
+                            'block_name'    =>  'A',
+                            'block_title'   =>  'Addition',
+                            'block_subtitle'=>  'Add / Less Partner',
+                            'digits'        =>  'MOD2', 
+                            'rows'          =>  4,
+                            'sums'          =>  10,
+                            'max_negative'  =>  2
+                        ),
+                        array(
+                            'block_name'    =>  'B',
+                            'block_title'   =>  'Addition',
+                            'block_subtitle'=>  'Add / Less Partner',
+                            'digits'        =>  'MOD3-SD',
+                            'rows'          =>  4,
+                            'sums'          =>  10,
+                            'max_negative'  =>  2
+                        ),
+                    )
+                );
+        
+            } else if ( $level_id == 'Level 1'){
+                $level_info = (object)array(
+                    'programme'     =>  'BRAINOBRAIN',
+                    'level'         =>  'Level 1',
+                    'row_blocks'    =>  array(
+                        array(
+                            'block_name'    =>  'A',
+                            'block_title'   =>  'Addition',
+                            'block_subtitle'=>  'Add / Less Partner',
+                            'digits'        =>  'Level1-SD',
+                            'rows'          =>  3,
+                            'sums'          =>  10,
+                            'max_negative'  =>  2
+                        ),
+                        array(
+                            'block_name'    =>  'B',
+                            'block_title'   =>  'Addition',
+                            'block_subtitle'=>  'Add / Less Partner',
+                            'digits'        =>  'Level1-SD',
+                            'rows'          =>  5,
+                            'sums'          =>  10,
+                            'max_negative'  =>  3
+                        ),
+                    )
+                );
+        
+            } else if ( $level_id == 'Level 2') {
+                $level_info = (object)array(
+                    'programme'     =>  'BRAINOBRAIN',
+                    'level'         =>  'Level 2',
+                    'row_blocks'    =>  array(
+                        array(
+                            'block_name'    =>  'A',
+                            'block_title'   =>  'Addition',
+                            'block_subtitle'=>  'Add / Less Partner',
+                            'digits'        =>  'SD',
+                            'rows'          =>  4,
+                            'sums'          =>  10,
+                            'max_negative'  =>  2
+                        ),
+                        array(
+                            'block_name'    =>  'B',
+                            'block_title'   =>  'Addition',
+                            'block_subtitle'=>  'Add / Less Partner',
+                            'digits'        =>  'MOD3-SD', 
+                            'rows'          =>  5,
+                            'sums'          =>  5,
+                            'max_negative'  =>  2
+                        ),
+                        array(
+                            'block_name'    =>  'D',
+                            'block_title'   =>  'Addition',
+                            'block_subtitle'=>  'Add / Less Partner',
+                            'digits'        =>  'Level2-SD-2DD-Top',
+                            'rows'          =>  5,
+                            'sums'          =>  5,
+                            'max_negative'  =>  3
+                        )
+                    )
+                );
+        
+            } else if ( $level_id == 'Level 4') {
+                $level_info = (object)array(
+                    'programme'     =>  'BRAINOBRAIN',
+                    'level'         =>  'Level 3',
+                    'row_blocks'    =>  array(
+                        array(
+                            'block_name'    =>  'A',
+                            'block_title'   =>  'Addition',
+                            'block_subtitle'=>  'Add / Less Partner',
+                            'digits'        =>  'SD',
+                            'rows'          =>  4,
+                            'sums'          =>  5,
+                            'max_negative'  =>  2
+                        ),
+                        array(
+                            'block_name'    =>  'B',
+                            'block_title'   =>  'Addition',
+                            'block_subtitle'=>  'Add / Less Partner',
+                            'digits'        =>  'SD', 
+                            'rows'          =>  6,
+                            'sums'          =>  5,
+                            'max_negative'  =>  3
+                        ),
+                        array(
+                            'block_name'    =>  'D',
+                            'block_title'   =>  'Addition',
+                            'block_subtitle'=>  'Add / Less Partner',
+                            'digits'        =>  'MOD3-SD',
+                            'rows'          =>  3,
+                            'sums'          =>  10,
+                            'max_negative'  =>  3
+                        )
+                    )
+                );
+    
+            } else if ( $level_id == 'Level 4') {
+                $level_info = (object)array(
+                    'programme'     =>  'BRAINOBRAIN',
+                    'level'         =>  'Level 4',
+                    'row_blocks'    =>  array(
+                        array(
+                            'block_name'    =>  'A',
+                            'block_title'   =>  'Addition',
+                            'block_subtitle'=>  'Add / Less Partner',
+                            'digits'        =>  'SD',
+                            'rows'          =>  10,
+                            'sums'          =>  5,
+                            'max_negative'  =>  3
+                        ),
+                        array(
+                            'block_name'    =>  'B',
+                            'block_title'   =>  'Addition',
+                            'block_subtitle'=>  'Add / Less Partner',
+                            'digits'        =>  'DD', 
+                            'rows'          =>  4,
+                            'sums'          =>  5,
+                            'max_negative'  =>  4
+                        ),
+                        array(
+                            'block_name'    =>  'D',
+                            'block_title'   =>  'Multiplication',
+                            'block_subtitle'=>  'Add / Less Partner',
+                            'digits'        =>  'DD/SD',
+                            'rows'          =>  1,
+                            'sums'          =>  10,
+                            'max_negative'  =>  0
+                        )
+                    )
+                );
+    
+            } else if ( $level_id == 'Level 5') {
+                $level_info = (object)array(
+                    'programme'     =>  'BRAINOBRAIN',
+                    'level'         =>  'Level 5',
+                    'row_blocks'    =>  array(
+                        array(
+                            'block_name'    =>  'A',
+                            'block_title'   =>  'Addition',
+                            'block_subtitle'=>  'Add / Less Partner',
+                            'digits'        =>  'DD',
+                            'rows'          =>  4,
+                            'sums'          =>  5,
+                            'max_negative'  =>  4
+                        ),
+                        array(
+                            'block_name'    =>  'B',
+                            'block_title'   =>  'Addition',
+                            'block_subtitle'=>  'Add / Less Partner',
+                            'digits'        =>  'DD', 
+                            'rows'          =>  8,
+                            'sums'          =>  5,
+                            'max_negative'  =>  4
+                        ),
+                        array(
+                            'block_name'    =>  'D',
+                            'block_title'   =>  'Multiplication',
+                            'block_subtitle'=>  'Add / Less Partner',
+                            'digits'        =>  'DD/SD',
+                            'rows'          =>  1,
+                            'sums'          =>  10,
+                            'max_negative'  =>  0
+                        )
+                    )
+                );
+    
+            } else if ( $level_id == 'Level 6') {
+                $level_info = (object)array(
+                    'programme'     =>  'BRAINOBRAIN',
+                    'level'         =>  'Level 6',
+                    'row_blocks'    =>  array(
+                        array(
+                            'block_name'    =>  'A',
+                            'block_title'   =>  'Addition',
+                            'block_subtitle'=>  'Add / Less Partner',
+                            'digits'        =>  'DD',
+                            'rows'          =>  10,
+                            'sums'          =>  5,
+                            'max_negative'  =>  4
+                        ),
+                        array(
+                            'block_name'    =>  'B',
+                            'block_title'   =>  'Addition',
+                            'block_subtitle'=>  'Add / Less Partner',
+                            'digits'        =>  'TD', 
+                            'rows'          =>  2,
+                            'sums'          =>  5,
+                            'max_negative'  =>  3
+                        ),
+                        array(
+                            'block_name'    =>  'C',
+                            'block_title'   =>  'Multiplication',
+                            'block_subtitle'=>  'Add / Less Partner',
+                            'digits'        =>  'DD/SD',
+                            'rows'          =>  1,
+                            'sums'          =>  5,
+                            'max_negative'  =>  0
+                        ),
+                        array(
+                            'block_name'    =>  'D',
+                            'block_title'   =>  'Multiplication',
+                            'block_subtitle'=>  'Add / Less Partner',
+                            'digits'        =>  'TD/SD',
+                            'rows'          =>  1,
+                            'sums'          =>  5,
+                            'max_negative'  =>  0
+                        )
+                    )
+                );
+    
+            }else{
+                return view('parents');
+            }
+
+        }else{
+            return view('parents');
+        }
+
+
+
+
+        // {
+
+        //     $level_info = (object)array(
+        //         'programme'     =>  'Brainobrain',
+        //         'level'         =>  'Level 4',
+        //         'row_blocks'    =>  array(
+        //             array(
+        //                 'block_name'    =>  'A',
+        //                 'block_title'   =>  'Addition',
+        //                 'block_subtitle'=>  'Single Digit',
+        //                 'digits'        =>  'SD',
+        //                 'rows'          =>  2,
+        //                 'sums'          =>  5,
+        //                 'max_negative'  =>  2
+        //             ),
+        //             array(
+        //                 'block_name'    =>  'B',
+        //                 'block_title'   =>  'Addition',
+        //                 'block_subtitle'=>  'Double Digit',
+        //                 'digits'        =>  'DD',
+        //                 'rows'          =>  4,
+        //                 'sums'          =>  5,
+        //                 'max_negative'  =>  3
+        //             ),
+        //             array(
+        //                 'block_name'    =>  'C',
+        //                 'block_title'   =>  'Addition',
+        //                 'block_subtitle'=>  'Single / Double Digit',
+        //                 'digits'        =>  'SD/DD',
+        //                 'rows'          =>  3,
+        //                 'sums'          =>  5,
+        //                 'max_negative'  =>  1
+        //             ),
+        //             array(
+        //                 'block_name'    =>  'D',
+        //                 'block_title'   =>  'Addition',
+        //                 'block_subtitle'=>  'Add / Less Partner',
+        //                 'digits'        =>  'MOD1',
+        //                 'rows'          =>  2,
+        //                 'sums'          =>  2,
+        //                 'max_negative'  =>  0
+        //             ),
+        //             array(
+        //                 'block_name'    =>  'D',
+        //                 'block_title'   =>  'Addition',
+        //                 'block_subtitle'=>  'Add / Less Partner',
+        //                 'digits'        =>  'MOD2',
+        //                 'rows'          =>  2,
+        //                 'sums'          =>  10,
+        //                 'max_negative'  =>  2
+        //             ),
+        //             array(
+        //                 'block_name'    =>  'D',
+        //                 'block_title'   =>  'Addition',
+        //                 'block_subtitle'=>  'Add / Less Partner',
+        //                 'digits'        =>  'MOD2',
+        //                 'rows'          =>  3,
+        //                 'sums'          =>  10,
+        //                 'max_negative'  =>  2
+        //             ),
+        //             array(
+        //                 'block_name'    =>  'D',
+        //                 'block_title'   =>  'Addition',
+        //                 'block_subtitle'=>  'Add / Less Partner',
+        //                 'digits'        =>  'MOD3-SD', 
+        //                 'rows'          =>  4,
+        //                 'sums'          =>  10,
+        //                 'max_negative'  =>  2
+        //             ),
+        //             array(
+        //                 'block_name'    =>  'D',
+        //                 'block_title'   =>  'Addition',
+        //                 'block_subtitle'=>  'Add / Less Partner',
+        //                 'digits'        =>  'Level1-SD',
+        //                 'rows'          =>  3,
+        //                 'sums'          =>  10,
+        //                 'max_negative'  =>  2
+        //             ),
+        //             array(
+        //                 'block_name'    =>  'D',
+        //                 'block_title'   =>  'Addition',
+        //                 'block_subtitle'=>  'Add / Less Partner',
+        //                 'digits'        =>  'Level1-SD',
+        //                 'rows'          =>  5,
+        //                 'sums'          =>  10,
+        //                 'max_negative'  =>  3
+        //             ),
+        //             array(
+        //                 'block_name'    =>  'D',
+        //                 'block_title'   =>  'Addition',
+        //                 'block_subtitle'=>  'Add / Less Partner',
+        //                 'digits'        =>  'Level2-SD-2DD-Top',
+        //                 'rows'          =>  5,
+        //                 'sums'          =>  5,
+        //                 'max_negative'  =>  3
+        //             ),
+        //             array(
+        //                 'block_name'    =>  'D',
+        //                 'block_title'   =>  'Multiplication',
+        //                 'block_subtitle'=>  'Double Digit and Single Digit',
+        //                 'digits'        =>  'DD/SD',
+        //                 'rows'          =>  1,
+        //                 'sums'          =>  5,
+        //                 'max_negative'  =>  0
+        //             ),
+        //             array(
+        //                 'block_name'    =>  'D',
+        //                 'block_title'   =>  'Multiplication',
+        //                 'block_subtitle'=>  'Triple Digit and Single Digit',
+        //                 'digits'        =>  'TD/SD',
+        //                 'rows'          =>  1,
+        //                 'sums'          =>  5,
+        //                 'max_negative'  =>  0
+        //             ),
+        //             array(
+        //                 'block_name'    =>  'D',
+        //                 'block_title'   =>  'Multiplication',
+        //                 'block_subtitle'=>  'Double Digit and Double Digit',
+        //                 'digits'        =>  'DD/DD',
+        //                 'rows'          =>  1,
+        //                 'sums'          =>  5,
+        //                 'max_negative'  =>  0
+        //             ),
+        //             array(
+        //                 'block_name'    =>  'D',
+        //                 'block_title'   =>  'Multiplication',
+        //                 'block_subtitle'=>  'Triple Digit and Double Digit',
+        //                 'digits'        =>  'TD/DD',
+        //                 'rows'          =>  1,
+        //                 'sums'          =>  5,
+        //                 'max_negative'  =>  0
+        //             )
+        //         )  
+        //             );
     
  
-        }
+        // }
         
  
         // $student_info = (object)array(

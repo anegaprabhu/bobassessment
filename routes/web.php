@@ -34,10 +34,13 @@ Route::get('/logout/parents', 'Auth\LoginController@parentsLogout');
 
 
 Route::group(['middleware' => 'auth:parents'], function () {
-    Route::view('/parents', 'parents');
+    Route::resource('/parents', 'ParentController');
 
     //handle exam page
     Route::resource('exam', 'ExamController');
+    Route::resource('student', 'StudentController');
+    Route::resource('instruction', 'TestinstructionController');
+    Route::post('student/store','StudentController@store');
 
 });
 

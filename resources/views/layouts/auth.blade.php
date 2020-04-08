@@ -14,6 +14,13 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <link href="{{ asset('css/breakpoint.css') }}" rel="stylesheet">
+    <link href="{{ asset('dist/css/lobibox.css')}}" rel="stylesheet">
+
+    <!-- Date Picker -->
+    <link rel="stylesheet" href="{{ asset('/dist/plugins/datepicker/datepicker3.css') }}">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="{{ asset('/dist/plugins/daterangepicker/daterangepicker-bs3.css') }}">
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -29,7 +36,7 @@
 <div id="myNav" class="overlay">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <div class="overlay-content">
-  <a href="{{url('parents')}}">Take Test</a>
+  <a href="{{url('parents')}}">Students</a>
 
     <a class="dropdown-item" href="{{ route('logout') }}"
         onclick="event.preventDefault();
@@ -58,6 +65,13 @@
             @yield('content')
         </main>
     </div>
+
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.14/moment-timezone-with-data-2012-2022.min.js"></script>
+<script src="{{ asset('js/app.js') }}"></script>
+@stack('js')
+
     @yield('javascript')
 </body>
 </html>
