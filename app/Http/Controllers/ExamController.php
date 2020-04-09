@@ -23,8 +23,8 @@ class ExamController extends Controller
         $student = \DB::table('students')
             ->where('student_id',$student_id)
             ->get();
-
-        if(count($student))
+        // dd(count($student));
+        if(count($student) > 0)
         {
 
             $level_id = $student[0]->level;
@@ -33,7 +33,7 @@ class ExamController extends Controller
                 'programme'     =>  'Brainobrain',
                 'level'         =>  'Level 4',
             );
-    
+    // dd($level_id);
             if($level_id == 'Module 1')
             {
                 $level_info = (object)array(
@@ -173,7 +173,7 @@ class ExamController extends Controller
                     )
                 );
         
-            } else if ( $level_id == 'Level 4') {
+            } else if ( $level_id == 'Level 3') {
                 $level_info = (object)array(
                     'programme'     =>  'BRAINOBRAIN',
                     'level'         =>  'Level 3',
@@ -323,6 +323,7 @@ class ExamController extends Controller
                 );
     
             }else{
+                // dd('here');
                 return view('parents');
             }
 
