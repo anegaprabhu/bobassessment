@@ -69,7 +69,15 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        @if(Auth::user())
+                            @if(property_exists(Auth::user(),'franchisee_id_fk'))
+                            <a href="{{ url('/parent') }}">Home</a>
+                            @else
+                            <a href="{{ url('/home') }}">Home</a>
+                            @endif
+                        @else
+                        <a href="{{ url('/parent') }}">Home</a>
+                        @endif                        
                     @else
                         <a href="{{ route('login.parents') }}">Parent Login</a>
                         <a href="{{ route('register.parents') }}">Parent Register</a>
