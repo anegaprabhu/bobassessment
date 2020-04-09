@@ -6,7 +6,14 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header"> {{ isset($url) ? ucwords($url) : ""}} {{ __('Register') }}</div>
+                <div class="card-header"> {{ isset($url) ? ucwords($url) : ""}} {{ __('Register') }}
+                
+                @isset($url) 
+                    <span class="float-right">Parent</span>
+                @else
+                    <span class="float-right">Franchisee</span>
+                @endisset
+                </div>
                 
                 <div class="card-body">
                     @isset($url)
