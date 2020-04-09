@@ -34,6 +34,7 @@ class ExamController extends Controller
                 'level'         =>  'Level 4',
             );
     // dd($level_id);
+
             if($level_id == 'Module 1')
             {
                 $level_info = (object)array(
@@ -543,6 +544,8 @@ class ExamController extends Controller
         //     'digits'        =>      'SD',
         //     'row'           =>
         // ]];    
+        $level_info = getLevelDetails($level_id);
+
         return view('exam.daily-test',compact('student_info','level_info'));
     }
 

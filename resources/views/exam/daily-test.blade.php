@@ -28,7 +28,7 @@
             <!-- <br><br> -->
             <div class="col-md-4 col-lg-3 justify-content-center">
                 <div class="card">
-                    <div class="card-body">
+                    <div id="sumCardBody" class="card-body">
 
                         <table width="100%">
                             <tr>
@@ -305,6 +305,7 @@
             sumsArray[0]['start_time'] = '00:00:00';
             // console.log(sumsArray[0]);    
             $("#sum").html(getSum);
+            // alert($("#sumCardBody").innerHeight())
             $("#sum_count").text(1);
         }else if(sumsArray[0]['category'] == 'Multiplication'){
             $("#sumTitle").text(sumsArray[0]['title']);
