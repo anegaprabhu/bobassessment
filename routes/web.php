@@ -1,7 +1,7 @@
 <?php
 Route::view('/', 'welcome');
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'FranchiseeController@index')->name('home');
 
 Route::get('/login/parents', 'Auth\LoginController@showParentsLoginForm')->name('login.parents');
 Route::get('/login/admin', 'Auth\LoginController@showAdminLoginForm')->name('login.admin');
@@ -55,3 +55,8 @@ Route::group(['middleware' => 'auth:writer'], function () {
 //Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('home/get-state-list','HomeController@getStateList');
+Route::get('home/get-city-list','HomeController@getCityList');
+
+Route::post('home/store', 'FranchiseeController@store');
