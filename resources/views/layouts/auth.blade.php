@@ -38,14 +38,20 @@
   <div class="overlay-content">
 
   @if(Auth::user())  
-  <a class="dropdown-item" href="{{ url('parents') }}">
-  {{ Auth::user()->name }}
-  </a>
-  @endif  
+    @if(Auth::user()->franchisee_id_fk)  
+        <a class="dropdown-item" href="{{ url('parents') }}">
+            {{ Auth::user()->name }} 
+        </a>
+        <a href="{{url('parents')}}">Students</a>
+    @else
+        <a class="dropdown-item" href="{{ url('home') }}">
+        {{ Auth::user()->name }}
+        </a>
+    @endif
+  @endif
 
-  @isset($url)
-  <a href="{{url('parents')}}">Students</a>
-  @endisset  
+
+
     <a class="dropdown-item" href="{{ route('logout') }}"
         onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
