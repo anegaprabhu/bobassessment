@@ -29,6 +29,7 @@ class ParentController extends Controller
                 // dd($students);
             }    
         }
+        // dd(Auth::user()->id);
         return view('parents',compact('students'));
     }
 
