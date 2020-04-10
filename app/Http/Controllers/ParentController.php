@@ -8,6 +8,8 @@ use Auth;
 use Parents;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Schema;
+use DateTime;
+
 
 
 class ParentController extends Controller
@@ -29,7 +31,56 @@ class ParentController extends Controller
                 // dd($students);
             }    
         }
-        // dd(Auth::user()->id);
+        
+        if(count($students) > 0){
+
+            for($a=0;$a<count($students);$a++)
+            {   
+                //Europe/Stockholm | Asia/Calcutta
+                $time_zone_now = Carbon::now($students[$a]->local_timezone);
+                $competition = \DB::table('competitions')
+                    ->whereDate('start_date', '<=', $time_zone_now)
+                    ->get();
+
+                // $check_result = [];
+                if(count($competition) > 0)
+                {
+                    $dt = $time_zone_now;
+                    $dt = new DateTime((string)$dt);
+                    $dt = $dt->format('Y-m-d');
+                    // dd((string)$dt);
+                    for($b=0;$b<count($competition);$b++)
+                    {
+                        // dd($competition[$b]->competition_id);
+                        $check_result = \DB::table('results')
+                            ->where('student_id',$students[$a]->student_id)
+                            ->where('competition_id',$competition[$b]->competition_id)                            
+                            ->whereDate('exam_date',(string)$dt)
+                            ->get();
+                            // dd($check_result);
+                            if(count($check_result) > 0)
+                            {
+                                $students[$a]->exam_date = $check_result[0]->exam_date;
+                                $students[$a]->competition_today_status = 'Yes';
+                            }else{
+                                $students[$a]->exam_date = (string)$dt;
+                                $students[$a]->competition_today_status = 'No';
+                            }
+                    }
+                }
+                    
+
+            }
+
+    
+
+
+        }
+
+            // dd(Carbon::now('HST'));
+        // dd( date('d-m-Y h:m:s', strtotime($students[0]->created_at)));
+        // $students[0]->test = 'sample'; 
+        // dd($students);
         return view('parents',compact('students'));
     }
 

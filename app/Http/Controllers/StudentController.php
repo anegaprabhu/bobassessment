@@ -18,6 +18,7 @@ class StudentController extends Controller
      */
     public function index()
     {
+        // $carbon = new carbon('Asia/Calcutta');
         dd('tst');
     }
 
@@ -45,13 +46,13 @@ class StudentController extends Controller
     {
 
 
-        $carbon = new carbon('Asia/Calcutta');
+        // $carbon = new carbon('Asia/Calcutta');
         // $clTime = new carbon($request->time_zone);
         // dd($carbon->tz($request->time_zone)->toDayDateTimeString());
         // dd($request->local_time);
         $current_time_stamp= Carbon::now();
 
-
+        
         $parent_id = Auth::user()->id;
         $franchisee_id = Auth::user()->franchisee_id_fk;
         $local_time_zone = $request->time_zone;

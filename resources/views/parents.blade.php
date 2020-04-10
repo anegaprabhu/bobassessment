@@ -1,6 +1,7 @@
 @extends('layouts.auth')
 @section('content')
 <div class="container">
+@if(count($students) < 3)
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
@@ -9,11 +10,15 @@
                         <div class="col-md-3">
                             <a href="{{route('student.create')}}" type="button" class="btn btn-success btn-sm">Add Child</a>
                         </div>
+                        <div class="col-md-9">
+                            <p class="test-warning">Maximum 3 children can be registered</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+ @endif   
     @if(count($students) > 0)
 
     <div class="row justify-content-center">
@@ -34,12 +39,22 @@
                                 <h5>{{$student->programme}} ({{$student->level}})</h5>
                             </div>
                             <div class="col-md-6">
-                            <a class="btn btn-success btn-sm float-right" href="{{route('instruction.index',['id'=>base64_encode($student->student_id)])}}">Take Test</a>
+                            @if($student->competition_today_status == 'No')
+                                <a class="btn btn-success btn-sm float-right mr-1" href="{{route('instruction.index',['id'=>base64_encode($student->student_id)])}}">Competition</a>
+                            @endif
+                            <a class="btn btn-success btn-sm float-right mr-1" href="{{route('instruction.index',['id'=>base64_encode($student->student_id)])}}">Practice</a>
                             </div>
                         </div>
                     </div>
                 </div>
             @endforeach
+
+            <form method="get" id="go-to-instructon-page" action="{{url('/exam/show')}}" enctype="multipart/form-data">
+                {{ csrf_field() }}
+            <input type="hidden" id="hdn_test_data" name="hdn_test_data" value="" /> 
+            </form>
+
+
 
         </div> <!-- /.col-md-12 -->
     </div> <!-- /.row -->
@@ -53,7 +68,15 @@
 @section('javascript')
   <!-- JQuery 3.4.1 -->
   <script type="application/javascript" src="{{ URL::asset('js/jquery-3.4.1.min.js') }}"></script>
+
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.14/moment-timezone-with-data-2012-2022.min.js"></script>
+
+
   <script type="application/javascript">
+
+    console.log(moment.tz.names());
 
 function openNav() {
   document.getElementById("myNav").style.width = "100%";

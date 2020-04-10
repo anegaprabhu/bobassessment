@@ -20,8 +20,8 @@
 
     <div class="container">
     <form method="get" id="form-show-test-review" action="{{url('/exam/show')}}" enctype="multipart/form-data">
+        {{ csrf_field() }}
         <input type="hidden" id="hdn_test_data" name="hdn_test_data" value="" /> 
-    {{ csrf_field() }}
     </form>
 
         <div class="row justify-content-center">
