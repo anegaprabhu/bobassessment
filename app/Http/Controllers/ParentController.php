@@ -62,11 +62,17 @@ class ParentController extends Controller
                             {
                                 $students[$a]->exam_date = $check_result[0]->exam_date;
                                 $students[$a]->competition_today_status = 'Yes';
+                                $students[$a]->competition_id = $competition[$b]->competition_id;
                             }else{
                                 $students[$a]->exam_date = (string)$dt;
                                 $students[$a]->competition_today_status = 'No';
+                                $students[$a]->competition_id = $competition[$b]->competition_id;
                             }
                     }
+                }else{
+                    $students[$a]->exam_date = null;
+                    $students[$a]->competition_today_status = null;
+                    $students[$a]->competition_id = null;
                 }
                     
 

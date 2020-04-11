@@ -41,6 +41,7 @@ Route::group(['middleware' => 'auth:parents'], function () {
     Route::resource('student', 'StudentController');
     Route::resource('instruction', 'TestinstructionController');
     Route::post('student/store','StudentController@store');
+    Route::post('exam/store','ExamController@store');
 
 });
 

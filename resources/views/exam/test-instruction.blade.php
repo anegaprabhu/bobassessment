@@ -17,7 +17,7 @@
                             <div class="col-md-6 mb-3">
                                 <div class="card">
                                     <div class="card-body">
-                                        <p>Block: {{$row['block_name']}}<p>
+                                        <p>Section: {{$row['block_name']}}<p>
                                         <p>Type: {{$row['block_subtitle']}}</p>
                                         <p>Rows: {{$row['rows']}}</p>
                                         <p>Sums: {{$row['sums']}}</p>

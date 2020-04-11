@@ -10,6 +10,7 @@ if (!function_exists('getLevelDetails')) {
             $level_info = (object)array(
                 'programme'     =>  'LITTLE BOB',
                 'level'         =>  'Module 1',
+                'duration'      =>  '10', // in minutes
                 'row_blocks'    =>  array(
                     array(
                         'block_name'    =>  'A',
@@ -18,16 +19,18 @@ if (!function_exists('getLevelDetails')) {
                         'digits'        =>  'MOD1',
                         'rows'          =>  2,
                         'sums'          =>  10,
-                        'max_negative'  =>  0
+                        'max_negative'  =>  0,
+                        'total_time'    =>  ''
                     ),
                     array(
-                        'block_name'    =>  'D',
+                        'block_name'    =>  'B',
                         'block_title'   =>  'Addition',
                         'block_subtitle'=>  'Add / Less Partner',
                         'digits'        =>  'MOD1',
                         'rows'          =>  3,
                         'sums'          =>  10,
-                        'max_negative'  =>  0
+                        'max_negative'  =>  0,
+                        'total_time'    =>  ''
                     ),
                 )
             );
@@ -36,6 +39,7 @@ if (!function_exists('getLevelDetails')) {
             $level_info = (object)array(
                 'programme'     =>  'LITTLE BOB',
                 'level'         =>  'Module 2',
+                'duration'      =>  '10', // in minutes
                 'row_blocks'    =>  array(
                     array(
                         'block_name'    =>  'A',
@@ -61,6 +65,7 @@ if (!function_exists('getLevelDetails')) {
             $level_info = (object)array(
                 'programme'     =>  'LITTLE BOB',
                 'level'         =>  'Module 3',
+                'duration'      =>  '10', // in minutes
                 'row_blocks'    =>  array(
                     array(
                         'block_name'    =>  'A',
@@ -87,6 +92,7 @@ if (!function_exists('getLevelDetails')) {
             $level_info = (object)array(
                 'programme'     =>  'BRAINOBRAIN',
                 'level'         =>  'Level 1',
+                'duration'      =>  '10', // in minutes
                 'row_blocks'    =>  array(
                     array(
                         'block_name'    =>  'A',
@@ -113,6 +119,7 @@ if (!function_exists('getLevelDetails')) {
             $level_info = (object)array(
                 'programme'     =>  'BRAINOBRAIN',
                 'level'         =>  'Level 2',
+                'duration'      =>  '10', // in minutes
                 'row_blocks'    =>  array(
                     array(
                         'block_name'    =>  'A',
@@ -148,6 +155,7 @@ if (!function_exists('getLevelDetails')) {
             $level_info = (object)array(
                 'programme'     =>  'BRAINOBRAIN',
                 'level'         =>  'Level 3',
+                'duration'      =>  '10', // in minutes
                 'row_blocks'    =>  array(
                     array(
                         'block_name'    =>  'A',
@@ -183,6 +191,7 @@ if (!function_exists('getLevelDetails')) {
             $level_info = (object)array(
                 'programme'     =>  'BRAINOBRAIN',
                 'level'         =>  'Level 4',
+                'duration'      =>  '10', // in minutes
                 'row_blocks'    =>  array(
                     array(
                         'block_name'    =>  'A',
@@ -218,6 +227,7 @@ if (!function_exists('getLevelDetails')) {
             $level_info = (object)array(
                 'programme'     =>  'BRAINOBRAIN',
                 'level'         =>  'Level 5',
+                'duration'      =>  '10', // in minutes
                 'row_blocks'    =>  array(
                     array(
                         'block_name'    =>  'A',
@@ -253,6 +263,7 @@ if (!function_exists('getLevelDetails')) {
             $level_info = (object)array(
                 'programme'     =>  'BRAINOBRAIN',
                 'level'         =>  'Level 6',
+                'duration'      =>  '10', // in minutes
                 'row_blocks'    =>  array(
                     array(
                         'block_name'    =>  'A',

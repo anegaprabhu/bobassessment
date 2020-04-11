@@ -2,7 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Result;
 use Illuminate\Http\Request;
+use Vinkla\Hashids\Facades\Hashids;
+
+use Illuminate\Support\Facades\Schema;
+use Carbon\Carbon;
+use DateTime;
+
+
 
 class ExamController extends Controller
 {
@@ -16,14 +24,87 @@ class ExamController extends Controller
     public function index(Request $request)
     {
         // dd($request->id);
+        $student_detail = explode("_",$request->id);
+        $student_id = Hashids::decode($student_detail[0])[0];
+        $comp_id = $student_detail[2];
+        $enc_student_id = $request->id;
+        $comp_status = $student_detail[1];
 
 
-        $student_id = base64_decode($request->id);
+        // dd(explode("_",$request->id));
+
+
+        $student_id = Hashids::decode($student_detail[0])[0];
 
         $student = \DB::table('students')
             ->where('student_id',$student_id)
             ->get();
         // dd(count($student));
+
+
+        $time_zone_now = Carbon::now($student[0]->local_timezone);
+        $dt = $time_zone_now;
+        $dt = new DateTime((string)$dt);
+        $dt = $dt->format('Y-m-d');
+
+        if(Hashids::decode($comp_id)[0] != null)
+                {
+                    $check_result = \DB::table('results')
+                    ->where('student_id',$student_id)
+                    ->where('competition_id',Hashids::decode($comp_id)[0])                            
+                    ->whereDate('exam_date',(string)$dt)
+                    ->get();
+                    if(count($check_result) > 0)
+                    {
+                        $enc_student_id = Hashids::encode($student_id) . '_' . Hashids::encode(rand(30,50)) . '_' . $comp_id;
+                        $student_detail = explode('_',$enc_student_id);
+                        $comp_status = Hashids::encode(rand(30,50));
+                    }      
+                }else{
+
+                }
+                //Europe/Stockholm | Asia/Calcutta
+                // $time_zone_now = Carbon::now($students[0]->local_timezone);
+                $competition = \DB::table('competitions')
+                    ->whereDate('start_date', '<=', $time_zone_now)
+                    ->get();
+
+                // $check_result = [];
+                if(count($competition) > 0)
+                {
+                    $dt = $time_zone_now;
+                    $dt = new DateTime((string)$dt);
+                    $dt = $dt->format('Y-m-d');
+                    // dd((string)$dt);
+                    for($b=0;$b<count($competition);$b++)
+                    {
+                        // dd($competition[$b]->competition_id);
+                        $check_result = \DB::table('results')
+                            ->where('student_id',$student[0]->student_id)
+                            ->where('competition_id',$competition[$b]->competition_id)                            
+                            ->whereDate('exam_date',(string)$dt)
+                            ->get();
+                            // dd($check_result);
+                            if(count($check_result) > 0)
+                            {
+                                $student[0]->exam_date = $check_result[0]->exam_date;
+                                $student[0]->competition_today_status = 'Yes';
+                                $student[0]->competition_id = $competition[$b]->competition_id;
+                            }else{
+                                $student[0]->exam_date = (string)$dt;
+                                $student[0]->competition_today_status = 'No';
+                                $student[0]->competition_id = $competition[$b]->competition_id;
+                            }
+                    }
+                }else{
+                    $student[0]->exam_date = null;
+                    $student[0]->competition_today_status = null;
+                    $student[0]->competition_id = null;
+                }
+
+
+
+
         if(count($student) > 0)
         {
 
@@ -546,7 +627,7 @@ class ExamController extends Controller
         // ]];    
         $level_info = getLevelDetails($level_id);
 
-        return view('exam.daily-test',compact('student_info','level_info'));
+        return view('exam.daily-test',compact('student_info','level_info','student_detail'));
     }
 
     /**
@@ -567,7 +648,46 @@ class ExamController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $student_details = explode("_",$request->hdn_test_st_store);
+        $test_data = json_decode($request->hdn_test_data_store,true);
+        $comp_id = $student_details[2];
+
+        // dd($test_data);
+
+        $student = \DB::table('students')
+            ->where('student_id',Hashids::decode( $student_details[0] )[0])
+            ->get();
+
+
+        $time_zone_now = Carbon::now($student[0]->local_timezone);
+
+
+
+        $dt = $time_zone_now;
+        $dt = new DateTime((string)$dt);
+        $dt = $dt->format('Y-m-d');
+
+
+        $check_result = \DB::table('results')
+        ->where('student_id',Hashids::decode( $student_details[0] )[0])
+        ->where('competition_id',Hashids::decode( $student_details[2] )[0])                            
+        ->whereDate('exam_date',(string)$dt)
+        ->get();
+        if(count($check_result) > 0)
+        {
+            $enc_student_id = Hashids::encode(Hashids::decode( $student_details[0] )[0]) . '_' . Hashids::encode(rand(30,50)) . '_' . $comp_id;
+            $student_detail = explode('_',$enc_student_id);
+            $comp_status = Hashids::encode(rand(30,50));
+        }else{
+            $result = new Result;
+            $result->student_id = Hashids::decode( $student_details[0] )[0];
+            $result->competition_id = Hashids::decode( $student_details[2] )[0];
+            $result->exam_date  = '2020-04-11';   
+            $result->exam_data = $request->hdn_test_data_store;
+            $result->save();
+        }      
+
+        return view('exam.test-review',compact('test_data'));
     }
 
     /**
