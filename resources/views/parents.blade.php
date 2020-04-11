@@ -39,19 +39,19 @@
                                 <h5>{{$student->programme}} ({{$student->level}})</h5>
                             </div>
                             <div class="col-md-6">
-                            @if($student->competition_today_status == 'No')
-                                <a class="btn btn-success btn-sm float-right mr-1" href="{{route('instruction.index',['id'=>base64_encode($student->student_id)])}}">Competition</a>
+                            @if( property_exists($student,'competition_today_status') && $student->competition_today_status == 'No')
+                                <a class="btn btn-success btn-sm float-right mr-1" href="{{route('instruction.index',[ 'id' => Hashids::encode($student->student_id) . '_' . Hashids::encode(rand(60,90)) . '_' . Hashids::encode($student->competition_id) ])}}">Competition</a>
                             @endif
-                            <a class="btn btn-success btn-sm float-right mr-1" href="{{route('instruction.index',['id'=>base64_encode($student->student_id)])}}">Practice</a>
+                                <a class="btn btn-success btn-sm float-right mr-1" href="{{route('instruction.index',['id'=>Hashids::encode($student->student_id) . '_' . Hashids::encode(rand(30,50)) . '_' . Hashids::encode($student->competition_id)])}}">Practice</a>
                             </div>
                         </div>
                     </div>
                 </div>
             @endforeach
 
-            <form method="get" id="go-to-instructon-page" action="{{url('/exam/show')}}" enctype="multipart/form-data">
+            <form method="get" id="go-to-instructon-page" action="{{url('/instruction')}}" enctype="multipart/form-data">
                 {{ csrf_field() }}
-            <input type="hidden" id="hdn_test_data" name="hdn_test_data" value="" /> 
+            <input type="hidden" id="hdn_test_data" name="hdn_test_data" value="summa test thaan" /> 
             </form>
 
 
@@ -77,6 +77,10 @@
   <script type="application/javascript">
 
     console.log(moment.tz.names());
+
+    function goToInstruction(){
+        $("#go-to-instructon-page").submit();
+    }
 
 function openNav() {
   document.getElementById("myNav").style.width = "100%";
