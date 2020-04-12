@@ -26,7 +26,11 @@ class ExamController extends Controller
         // dd($request->id);
         $student_detail = explode("_",$request->id);
         $student_id = Hashids::decode($student_detail[0])[0];
-        $comp_id = $student_detail[2];
+        if($student_detail[2] == ""){
+            $comp_id = null;
+        }else{
+            $comp_id = $student_detail[2];
+        }
         $enc_student_id = $request->id;
         $comp_status = $student_detail[1];
 
@@ -47,7 +51,7 @@ class ExamController extends Controller
         $dt = new DateTime((string)$dt);
         $dt = $dt->format('Y-m-d');
 
-        if(Hashids::decode($comp_id)[0] != null)
+        if($comp_id != null)
                 {
                     $check_result = \DB::table('results')
                     ->where('student_id',$student_id)
@@ -700,9 +704,18 @@ class ExamController extends Controller
     {
         // dd($request->hdn_test_data[0]);
         // dd($request->hdn_test_data);
+        $student_detail = explode('_',$request->hdn_test_st);
         $test_data = json_decode($request->hdn_test_data,true);
         // dd($test_data);
-        return view('exam.test-review',compact('test_data'));
+        $correct_sums = 0;
+        foreach($test_data as $k => $data)
+        {
+            if($data['answer'] == $data['student_answer']){
+                $correct_sums += 1;
+            }
+        }
+        // dd($correct_sums);
+        return view('exam.test-review',compact('test_data','correct_sums','student_detail'));
     }
 
     /**

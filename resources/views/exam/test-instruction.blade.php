@@ -41,7 +41,7 @@
                 </div>
                 @if(count($level_details) > 0)
                 <div class="card-footer">
-                <a class="btn btn-primary float-right" href="{{route('exam.index',['id'=>$enc_student_id])}}">Take Test</a>
+                <a class="btn btn-primary float-right" href="{{route('exam.index',['id'=>$enc_student_id])}}"> {{Hashids::decode($student_detail[1])[0] < 50 ? 'Take Practice' : 'Take Competition' }}</a>
                 </div>
                 @endif
             </div>

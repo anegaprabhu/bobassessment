@@ -12,8 +12,14 @@
 @section('content')
 <div class="fwrapper py-5">
 
-    <div class="container">
+<div class="jumbotron bg-success text-light">
+  <div class="container">
+    <h1>Congratulations!!</h1>      
+    <p>You have successfully completed your today's competition. Please come again tomorrow to participate another exam.</p>
+  </div>
+</div>
 
+    <div class="container">
 
         <div class="row justify-content-left">
             @if(count($test_data) > 0)

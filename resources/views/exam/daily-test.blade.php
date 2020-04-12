@@ -59,6 +59,7 @@
     <form method="get" id="form-show-test-review" action="{{url('/exam/show')}}" enctype="multipart/form-data">
         {{ csrf_field() }}
         <input type="hidden" id="hdn_test_data" name="hdn_test_data" value="" /> 
+        <input type="hidden" id="hdn_test_st" name="hdn_test_st_store" value="" />
     </form>
 
     <form method="post" id="form-show-test-store" action="{{url('/exam/store')}}" enctype="multipart/form-data">
@@ -114,7 +115,7 @@
                     <td>
                         <table style=" width: 162px;">
                             <tr>
-                                <td><div class="text-center" onClick="keyPadBtn(1)" style=" width: 40px; height: 40px; border: 1px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">1</div></td>
+                                <td><div class="text-center keyPadBtn" onClick="keyPadBtn(1)" style=" width: 40px; height: 40px; border: 1px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">1</div></td>
                                 <td><div class="text-center keyPadBtn" onClick="keyPadBtn(2)" style=" width: 40px; height: 40px; border: 1px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">2</div></td>
                                 <td><div class="text-center keyPadBtn" onClick="keyPadBtn(3)" style=" width: 40px; height: 40px; border: 1px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">3</div></td>
                                 <td><div class="text-center keyPadBtn" onClick="keyPadBtn(4)" style=" width: 40px; height: 40px; border: 1px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">4</div></td>
@@ -131,7 +132,7 @@
                                 <td><div class="text-center" style=" width: 40px; height: 40px; border: 1px solid black; margin: 2px; padding: 12px 18px; font-weight: bold">=</div></td>
                             </tr> -->
                             <tr>
-                                <td><div onClick="backspace()" class="text-center" style=" width: 40px; height: 40px; border: 1px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;"><</div></td>
+                                <td><div onClick="backspace()" class="text-center keyPadBtn" style=" width: 40px; height: 40px; border: 1px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;"><</div></td>
                                 <td id="nextBtnContainer" colspan="3"><button onClick="next()" data-ord="1" id="nextBtn" class="text-center" style=" width: 132px; height: 40px; border: 1px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; cursor: pointer; display: none;">NEXT</button></td>
                                 <td><div class="text-center keyPadBtn" onClick="keyPadBtn('.')" style=" width: 40px; height: 40px; border: 1px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">.</div></td>
                                
@@ -142,7 +143,7 @@
                             </tr>
                             @elseif(count($student_detail) > 0 && Hashids::decode($student_detail[1])[0] < 50)
                             <tr>
-                                <td colspan="5"><button id="showResult" onClick="showResult()" type="button" class="btn btn-success btn-sm btn-block " style="display: none;">Submit</button></td>
+                                <td colspan="5"><button id="showResult" onClick="showResult('{{ $student_detail[0] . '_' . $student_detail[1] . '_' . $student_detail[2] }}')" type="button" class="btn btn-success btn-sm btn-block " style="display: none;">Submit</button></td>
                             </tr>
                             @endif
                         </table>
@@ -364,9 +365,9 @@
 
                     var sumString = "<tr><td style=' border-top: 2px solid black; min-width: 102px;'>";
                 if(virtual_keyboard == 'yes'){
-                    sumString += "<input id='answer_input' type='text' readonly='readonly' class='text-right pr-1' style='width:100px; border: 1px solid black;' value='' />"; // placeholder='"+arr['answer']+"'
+                    sumString += "<input id='answer_input' type='text' readonly='readonly' class='text-right pr-3' style='width:100px; border: 1px solid black;' value='' />"; // placeholder='"+arr['answer']+"'
                 }else{
-                    sumString += "<input id='answer_input' type='text' class='text-right pr-1' style='width:100px; border: 1px solid black;' value='' />";
+                    sumString += "<input id='answer_input' type='text' class='text-right pr-3' style='width:100px; border: 1px solid black;' value='' />";
                 }
                 sumString += "</td></tr>";
                     console.log(total_sums - parseInt(curOrd))
@@ -461,9 +462,9 @@
 
                     var sumString = "<tr><td style=' border-top: 2px solid black; min-width: 102px;'>";
                 if(virtual_keyboard == 'yes'){
-                    sumString += "<input id='answer_input' type='text' readonly='readonly' class='text-right pr-1' style='width:100px; border: 1px solid black;' value='' />"; // placeholder='"+arr['answer']+"'
+                    sumString += "<input id='answer_input' type='text' readonly='readonly' class='text-right pr-3' style='width:100px; border: 1px solid black;' value='' />"; // placeholder='"+arr['answer']+"'
                 }else{
-                    sumString += "<input id='answer_input' type='text' class='text-right pr-1' style='width:100px; border: 1px solid black;' value='' />";
+                    sumString += "<input id='answer_input' type='text' class='text-right pr-3' style='width:100px; border: 1px solid black;' value='' />";
                 }
                 sumString += "</td></tr>";
 
@@ -513,11 +514,12 @@ function submitResult(id){
     $("#form-show-test-store").submit();
 }
 
-function showResult(){
+function showResult(id){
     if($("#answer_input").val() == "" || $("#answer_input").val() == null)
     {
         return;
     }
+    $("#hdn_test_st").val(id);
     $("#hdn_test_data").val(JSON.stringify(sumsArray));
     $("#form-show-test-review").submit();
 }
