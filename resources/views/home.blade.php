@@ -2,12 +2,6 @@
 
 @section('content')
 
-@push('styles')
-    <!-- Select2 -->
-    <link rel="stylesheet" href="{{ asset('/dist/plugins/select2/select2.min.css') }}">
-    <link href="{{ asset('dist/css/lobibox.css')}}" rel="stylesheet">
-@endpush
-
 <div class="wrapper">
 <div class="container">
     @if(count($franchisee) > 0)
