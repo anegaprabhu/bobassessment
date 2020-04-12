@@ -100,7 +100,7 @@ if (!function_exists('getLevelDetails')) {
                         'block_subtitle'=>  'Add / Less Partner',
                         'digits'        =>  'Level1-SD',
                         'rows'          =>  3,
-                        'sums'          =>  2,
+                        'sums'          =>  10,
                         'max_negative'  =>  2
                     ),
                     array(
@@ -109,7 +109,7 @@ if (!function_exists('getLevelDetails')) {
                         'block_subtitle'=>  'Add / Less Partner',
                         'digits'        =>  'Level1-SD',
                         'rows'          =>  5,
-                        'sums'          =>  2,
+                        'sums'          =>  10,
                         'max_negative'  =>  3
                     ),
                 )
@@ -193,24 +193,24 @@ if (!function_exists('getLevelDetails')) {
                 'level'         =>  'Level 4',
                 'duration'      =>  '10', // in minutes
                 'row_blocks'    =>  array(
-                    // array(
-                    //     'block_name'    =>  'A',
-                    //     'block_title'   =>  'Addition',
-                    //     'block_subtitle'=>  'Add / Less Partner',
-                    //     'digits'        =>  'SD',
-                    //     'rows'          =>  10,
-                    //     'sums'          =>  5,
-                    //     'max_negative'  =>  3
-                    // ),
-                    // array(
-                    //     'block_name'    =>  'B',
-                    //     'block_title'   =>  'Addition',
-                    //     'block_subtitle'=>  'Add / Less Partner',
-                    //     'digits'        =>  'DD', 
-                    //     'rows'          =>  4,
-                    //     'sums'          =>  5,
-                    //     'max_negative'  =>  4
-                    // ),
+                    array(
+                        'block_name'    =>  'A',
+                        'block_title'   =>  'Addition',
+                        'block_subtitle'=>  'Add / Less Partner',
+                        'digits'        =>  'SD',
+                        'rows'          =>  10,
+                        'sums'          =>  5,
+                        'max_negative'  =>  3
+                    ),
+                    array(
+                        'block_name'    =>  'B',
+                        'block_title'   =>  'Addition',
+                        'block_subtitle'=>  'Add / Less Partner',
+                        'digits'        =>  'DD', 
+                        'rows'          =>  4,
+                        'sums'          =>  5,
+                        'max_negative'  =>  4
+                    ),
                     array(
                         'block_name'    =>  'C',
                         'block_title'   =>  'Multiplication',
