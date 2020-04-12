@@ -1,26 +1,31 @@
 @extends('layouts.auth')
 
 @section('content')
+<div class="fwrapper py-5">
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">Instruction</div>
-                <div class="card-body">
+            <div class="card cards">
+                <div class="headline"><h4>Competition Information</h4></div>
+                <div class="card-body bg-gray">
                 @if(count($level_details) > 0)
                     <div class="row">
-                        <div class="col-md-12 text-success">
-                            <p>Programme: {{$level_details['programme']}}</p>
-                            <p>Level: {{$level_details['level']}}</p>
+                        <div class="col-md-12">
+                            <div class="d-flex justify-between">
+                            <p class="pr-3">Programme: <b>{{$level_details['programme']}}</b></p>
+                            <p>Level: <span class="highlight">{{$level_details['level']}}</span></p>
+                            </div>
                         </div>
                         @foreach($level_details['row_blocks'] as $k => $row)
                             <div class="col-md-6 mb-3">
                                 <div class="card">
                                     <div class="card-body">
-                                        <p>Section: {{$row['block_name']}}<p>
+                                        <p><b>Section: {{$row['block_name']}}</b><p>
                                         <p>Type: {{$row['block_subtitle']}}</p>
-                                        <p>Rows: {{$row['rows']}}</p>
-                                        <p>Sums: {{$row['sums']}}</p>
+                                        <div class="d-flex">
+                                            <p>Rows: <span class="highlight">{{$row['rows']}}</span></p>
+                                            <p class="pl-3">Sums: <span class="highlight">{{$row['sums']}}</span></p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -36,13 +41,14 @@
                 </div>
                 @if(count($level_details) > 0)
                 <div class="card-footer">
-                <a class="btn btn-success btn-sm float-right" href="{{route('exam.index',['id'=>$enc_student_id])}}">Take Test</a>
+                <a class="btn btn-primary float-right" href="{{route('exam.index',['id'=>$enc_student_id])}}">Take Test</a>
                 </div>
                 @endif
             </div>
         </div>
 
     </div>
+</div>
 </div>
 @endsection
 @section('javascript')

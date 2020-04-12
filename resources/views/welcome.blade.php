@@ -7,11 +7,12 @@
 
         <title>Laravel</title>
 
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-<link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
         <!-- Styles -->
         <style>
             html, body {
@@ -31,6 +32,7 @@
                 align-items: center;
                 display: flex;
                 justify-content: center;
+                min-height:72vh;
             }
 
             .position-ref {
@@ -49,6 +51,7 @@
 
             .title {
                 font-size: 84px;
+                padding-top:60px;
             }
 
             .links > a {
@@ -64,39 +67,81 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+            .homebg {
+                background:url("{{ asset('images/web-bg.jpg') }}") no-repeat 0 0;
+            }
+            .barnbtn {
+                display:none;
+            }
+            .links a:hover {
+                color:#f79633;
+            }
+            .navbar {
+                display:flex;
+                justify-content:space-between;
+                align-items:center;
+                padding:10px 40px;
+                background-color:#fff;
+            }
+            .barbtn {
+                display:none
+            }
+            
+            @media all and (max-width:768px) {
+                .links {
+                    display:none;
+                }
+                .links.toggled {
+                    display: block;
+                    width: 240px;
+                    height: 100vh;
+                    padding: 30px 30px;
+                    background: #f9f9f9;
+                    position: absolute;
+                    right: 0;
+                    top: 90px;
+                }
+                .links a {
+                    display:block;
+                    padding:10px 0;
+                }
+                .barbtn {
+                    width: 32px;
+                    height: 32px;
+                    /* padding: 8px; */
+                    display: block;
+                    line-height: 32px;
+                    text-align: -webkit-center;
+                    cursor: pointer;
+                }
+                .bar {
+                    width:24px;
+                    height:2px;
+                    background-color:#333;
+                   
+                }
+                .bar:nth-child(2) {
+                    margin:4px 0;
+                }
+                .title {
+                    font-size:40px;
+                }
+                .top-right {
+                    top:0;
+                    right:0;
+                }
+            }
         </style>
     </head>
-    <body>
-   <!-- <div class="container-fluid">
-    <nav class="navbar navbar-expand-lg navbar-light">
-
-      <a class="navbar-brand" href="#">
-        <i class="fa fa-globe" aria-hidden="true"></i> Brand Name
-      </a>
-
-      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="fa fa-angle-double-down"></i>
-      </button>
-
-      <div class="navbar-collapse collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item"><a href="#" class="nav-link ">Link 1</a></li>
-          <li class="nav-item"><a href="#" class="nav-link ">Link 2</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">Link 3</a></li>
-        </ul>
-        <ul class="navbar-nav">
-          <li class="nav-item"><a href="#" class="nav-link ">Sign In</a></li>
-          <li class="nav-item"><a href="#" class="nav-link ">Register</a></li>
-          <li class="nav-item"><a href="#" class="nav-link ">Log Out</a></li>
-        </ul>
-      </div>
-
-    </nav>
-  </div> -->
-    
-        <div class="flex-center position-ref full-height">
+    <body class="homebg">
+        
+       
             @if (Route::has('login'))
-                <div class="top-right links">
+            <div class="navbar">    
+                <div>
+                        <img width="75" src="{{ asset('images/brainobrain-logo.png') }}" alt="logo" />
+                </div>
+                <div class="links">
                     @auth
                         @if(Auth::user())
                             @if(property_exists(Auth::user(),'franchisee_id_fk'))
@@ -114,27 +159,31 @@
                         <a href="{{ route('register') }}">Franchisee Register</a>
                     @endauth
                 </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    BRAINOBRAIN
+                <div class="barbtn">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
                 </div>
-
-                <!-- <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div> -->
+            </div>    
+            @endif
+            <div class="flex-center">
+            <div class="title m-b-md pt-4">
+                    BRAINOBRAIN
             </div>
+            <div>
         </div>
+        
+        <script>
+            let actionBtn = $(".barbtn");
+            let menuContainer = $(".links");
+            $(actionBtn).click(function() {
+                $(menuContainer).toggleClass("toggled");
+                if ($(menuContainer).hasClass("toggled")) {
+                    //$(menubarBtn).removeClass("fa-bars").toggleClass("fa-arrow-left");
+                } else {
+                   // $(menubarBtn).removeClass("fa-arrow-left").toggleClass("fa-bars");
+                }
+            });
+        </script>
     </body>
-
-
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-
 </html>

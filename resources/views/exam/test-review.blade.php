@@ -10,6 +10,8 @@
 @endsection
 
 @section('content')
+<div class="fwrapper py-5">
+
     <div class="container">
 
 
@@ -63,7 +65,7 @@
                                     </tr>
                                     @if($sum['student_answer'] == "" ||  $sum['student_answer'] == null || $sum['student_answer'] != $sum['answer'])
                                     <tr>
-                                        <td id="checkBtnContainer_{{$k}}" colspan="3"><button onClick="checkBtn({{$k}},{{$sum['answer']}})" data-container-class="checkBtnContainer_{{$k}}" data-ans="{{$sum['answer']}}" class="btn btn-success btn-sm btn-block checkBtn">Check</button></td>
+                                        <td id="checkBtnContainer_{{$k}}" colspan="3"><button onClick="checkBtn({{$k}},{{$sum['answer']}})" data-container-class="checkBtnContainer_{{$k}}" data-ans="{{$sum['answer']}}" class="btn btn-success btn-sm btn-block checkBtn">Check Answer</button></td>
                                     </tr>
                                     @endif
                                 </table>
@@ -76,6 +78,7 @@
             @endif
         </div>
     </div>
+</div>
 @endsection
 
 @section('javascript')

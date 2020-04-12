@@ -1,65 +1,85 @@
 @extends('layouts.auth')
 @section('content')
-<div class="container">
-@if(count($students) < 3)
-    <div class="row justify-content-center">
-        <div class="col-md-12">
+<div class="wrapper">
+@if(count($students) < 1)
+        <div class="card-shadow">
             <div class="card">
+                <div class="text-center">
+                    <img src="{{ asset('images/kids-on-computer.jpg') }}" alt="logo" class="img-fluid" />
+                </div>
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <a href="{{route('student.create')}}" type="button" class="btn btn-success btn-sm">Add Child</a>
+                    <div class="text-center">
+                    
+                        <h4>Hi {{Auth::user()->name}}</h4>
+                        <p class="mb-4 lead">Click below button to add your child</p>
+                        <div class="text-center">
+                            <a href="{{route('student.create')}}" type="button" class="btn btn-primary btn-lg btn-block"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add Child</a>
                         </div>
-                        <div class="col-md-9">
-                            <p class="test-warning">Maximum 3 children can be registered</p>
-                        </div>
+                        <p class="mb-4 lead">Maximum 3 children can be registered</p>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
- @endif   
+                </div> <!-- /.card-body -->
+            </div> <!-- /.card -->
+        </div> <!-- /.card-shadow -->
+    @endif
     @if(count($students) > 0)
-
-    <div class="row justify-content-center">
+    <div class="container">
+    <div class="row justify-content-center mt-5">
         <div class="col-md-12">
-        <br>
-            <div class="card">
-                <div class="card-header">
-                    <h4>Student List</h4>
+            <div class="headline">
+                
+                <h4>Students</h4>
+                @if(count($students) < 3)
+                <div class="float-right">
+                <a href="{{route('student.create')}}" title="Maximum 3 children can be registered" type="button" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add Child</a>
                 </div>
+                @endif
             </div>
+            
 
-            @foreach($students as $k => $student)
-                <div class="card mt-2">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h4>{{$student->student_name}}</h4>
-                                <h5>{{$student->programme}} ({{$student->level}})</h5>
-                            </div>
-                            <div class="col-md-6">
+            
+                <div class="card  bg-gray">
+
+                    <ul class="row list">
+                    @foreach($students as $k => $student)
+                        <li class="col-md-4">
+                            <div class="card shadow">
+                                <!-- <div class="absicon">
+                                    <a title="Practice Test" href="{{route('instruction.index',['id'=>Hashids::encode($student->student_id) . '_' . Hashids::encode(rand(30,50)) . '_' . Hashids::encode($student->competition_id)])}}"><i class="fa fa-pencil-square-o mr-1 mt-1"></i></a>
+                                </div> -->
+                                <div class="card-body">
+                                    
+                                    <div class="mb-4">
+                                        <small class="highlight">{{$student->programme}}</small>
+                                        <h4 class="mt-3"><i class="fa fa-user-o"></i> <span class="pl-2">{{$student->student_name}}</span></h4>
+                                    </div>
+                                    <div class="d-flex">
+                                        
+                                        <h5>{{$student->level}}</h5> 
+                                    </div>     
+                                </div>
                             @if( property_exists($student,'competition_today_status') && $student->competition_today_status == 'No')
-                                <a class="btn btn-success btn-sm float-right mr-1" href="{{route('instruction.index',[ 'id' => Hashids::encode($student->student_id) . '_' . Hashids::encode(rand(60,90)) . '_' . Hashids::encode($student->competition_id) ])}}">Competition</a>
+                                <div class="text-center">
+                                    <a title="Daily Competition. Only one attempt is allowed" class="btn btn-primary btn-block" href="{{route('instruction.index',[ 'id' => Hashids::encode($student->student_id) . '_' . Hashids::encode(rand(60,90)) . '_' . Hashids::encode($student->competition_id) ])}}">Competition</a>
+                                </div>
+                            @else    
+                                <div class="text-center">
+                                    <a title="Practice Test" class="btn btn-warning btn-block" href="{{route('instruction.index',['id'=>Hashids::encode($student->student_id) . '_' . Hashids::encode(rand(30,50)) . '_' . Hashids::encode($student->competition_id)])}}">Take Practice</a>
+                                </div>
                             @endif
-                                <a class="btn btn-success btn-sm float-right mr-1" href="{{route('instruction.index',['id'=>Hashids::encode($student->student_id) . '_' . Hashids::encode(rand(30,50)) . '_' . Hashids::encode($student->competition_id)])}}">Practice</a>
                             </div>
-                        </div>
-                    </div>
+                        </li>
+                        @endforeach
+                    </ul>
                 </div>
-            @endforeach
-
-            <form method="get" id="go-to-instructon-page" action="{{url('/instruction')}}" enctype="multipart/form-data">
-                {{ csrf_field() }}
-            <input type="hidden" id="hdn_test_data" name="hdn_test_data" value="summa test thaan" /> 
-            </form>
-
-
+           
 
         </div> <!-- /.col-md-12 -->
-    </div> <!-- /.row -->
+    </div>
+    <br/>
+    </div> <!-- /.container -->
     @endif
-</div> <!-- /.container -->
+ 
+    </div>
 
 
 
@@ -68,19 +88,7 @@
 @section('javascript')
   <!-- JQuery 3.4.1 -->
   <script type="application/javascript" src="{{ URL::asset('js/jquery-3.4.1.min.js') }}"></script>
-
-<!-- Scripts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.14/moment-timezone-with-data-2012-2022.min.js"></script>
-
-
   <script type="application/javascript">
-
-    console.log(moment.tz.names());
-
-    function goToInstruction(){
-        $("#go-to-instructon-page").submit();
-    }
 
 function openNav() {
   document.getElementById("myNav").style.width = "100%";

@@ -8,13 +8,14 @@
 
 
 
+<div class="wrapper">
 
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="card">
+            <div class="card mt-5">
                 <div class="card-header">
-                    <h4>Student Details</h4>
+                    <h4>Provide Student Details</h4>
                 </div>
                 <div class="card-body">
                 <form method="POST" id="form-student-registration" action="{{url('student/store')}}" enctype="multipart/form-data">
@@ -103,7 +104,7 @@
                     </div> <!-- /.row -->
                     <div class="row">
                         <div class="col-md-12">
-                            <button type="button" onClick="addStudent()" class="btn btn-success btn-sm float-right" >Add</button>
+                            <button type="button" onClick="addStudent()" class="btn btn-primary btn-sm float-right" >Add</button>
                         </div>
                     </div>
                     </form>
@@ -112,6 +113,8 @@
         </div> <!-- /.col-md-4 -->
     </div>  <!-- /.row -->
 </div> <!-- /.container -->
+
+</div>
 @endsection
 
 @section('javascript')

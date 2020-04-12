@@ -119,7 +119,7 @@ class TestinstructionController extends Controller
         $level_details = (array)$level_details;
         // dd($level_details);
         $level = $student[0]->level;
-        return view('exam.test-instruction', compact('level_details','level','enc_student_id','comp_status','comp_id','student_detail'));
+        return view('exam.test-instruction', compact('student','level_details','level','enc_student_id','comp_status','comp_id','student_detail'));
     }
 
     /**

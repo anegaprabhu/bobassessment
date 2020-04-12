@@ -1,10 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+<div class="authwrapper">
+    <div class="row loginbox">
+        <div class=""> <!-- empty class div -->
+            <div class="text-center mb-4">
+                    <img src="{{ asset('images/brainobrain-logo.png') }}" alt="logo" />
+            </div> <!-- /.text-center bg image container -->
             <div class="card">
+                
                 <div class="card-header">{{ isset($url) ? ucwords($url) : ""}} {{ __('Login') }}
                 
                 @isset($url) 
@@ -13,7 +17,7 @@
                     <span class="float-right">Franchisee</span>
                 @endisset
                 
-                </div>
+                </div> <!-- /.card-header -->
 
                 <div class="card-body">
                     @isset($url)
@@ -23,10 +27,10 @@
                     @endisset
                         @csrf
 
-                        <div class="form-group row">
-                            <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                        <div class="form-group">
+                            <label for="email" class="col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
-                            <div class="col-md-6">
+                            <div>
                                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
 
                                 @if ($errors->has('email'))
@@ -34,13 +38,13 @@
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
-                            </div>
-                        </div>
+                            </div> <!-- /div -->
+                        </div> <!-- /.form-group -->
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                        <div class="form-group">
+                            <label for="password" class="col-form-label text-md-right">{{ __('Password') }}</label>
 
-                            <div class="col-md-6">
+                            <div>
                                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
 
                                 @if ($errors->has('password'))
@@ -49,33 +53,37 @@
                                     </span>
                                 @endif
                             </div>
-                        </div>
+                        </div> <!-- /.form-group -->
 
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
+                        <div class="form-group mb-0">
+                            <div class="">
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Remember Me') }}
+                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }} /> {{ __('Remember Me') }}
                                     </label>
                                 </div>
                             </div>
-                        </div>
+                        </div> <!-- /.form-group -->
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                        <div class="form-group mb-0">
+                            <div class="text-center">
+                                <button type="submit" class="ctabtn btn btn-primary d-block ctabtn mb-2">
                                     {{ __('Login') }}
                                 </button>
+                                <div class="text-center">
+                                    <small>
+                                    <a href="{{ route('password.request') }}">
+                                        {{ __('Forgot Password?') }}
+                                    </a>
+                                    </small>
+                                </div> <!-- /div -->
+                            </div> <!-- /.text-center -->
+                        </div> <!-- /.form-group -->
 
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
-                                </a>
-                            </div>
-                        </div>
                     </form>
-                </div>
-            </div>
-        </div>
+                </div> <!-- /.card-body -->
+            </div> <!-- /.card -->
+        </div> <!-- /. empty class div -->
     </div>
 </div>
 @endsection
