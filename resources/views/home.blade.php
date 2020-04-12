@@ -8,7 +8,7 @@
     <link href="{{ asset('dist/css/lobibox.css')}}" rel="stylesheet">
 @endpush
 
-
+<div class="wrapper">
 <div class="container">
     @if(count($franchisee) > 0)
       @if($franchisee[0]->profile_status == "N")
@@ -167,6 +167,7 @@
       @endif
 
     @endif
+</div>
 </div>
 @endsection
 
