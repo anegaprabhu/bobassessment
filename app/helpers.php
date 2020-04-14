@@ -87,6 +87,32 @@ if (!function_exists('getLevelDetails')) {
                     ),
                 )
             );
+        }else if($level_id == 'Module 4') {
+            $level_info = (object)array(
+                'programme'     =>  'LITTLE BOB',
+                'level'         =>  'Module 4',
+                'duration'      =>  '10', // in minutes
+                'row_blocks'    =>  array(
+                    array(
+                        'block_name'    =>  'A',
+                        'block_title'   =>  'Addition',
+                        'block_subtitle'=>  'Add / Less Partner',
+                        'digits'        =>  'SD', 
+                        'rows'          =>  5,
+                        'sums'          =>  2,
+                        'max_negative'  =>  2
+                    ),
+                    array(
+                        'block_name'    =>  'B',
+                        'block_title'   =>  'Addition',
+                        'block_subtitle'=>  'Add / Less Partner',
+                        'digits'        =>  'DD',
+                        'rows'          =>  3,
+                        'sums'          =>  2,
+                        'max_negative'  =>  2
+                    ),
+                )
+            );
     
         } else if ( $level_id == 'Level 1'){
             $level_info = (object)array(
@@ -229,29 +255,38 @@ if (!function_exists('getLevelDetails')) {
                 'level'         =>  'Level 5',
                 'duration'      =>  '10', // in minutes
                 'row_blocks'    =>  array(
+                    // array(
+                    //     'block_name'    =>  'A',
+                    //     'block_title'   =>  'Addition',
+                    //     'block_subtitle'=>  'Add / Less Partner',
+                    //     'digits'        =>  'DD',
+                    //     'rows'          =>  4,
+                    //     'sums'          =>  5,
+                    //     'max_negative'  =>  4
+                    // ),
+                    // array(
+                    //     'block_name'    =>  'B',
+                    //     'block_title'   =>  'Addition',
+                    //     'block_subtitle'=>  'Add / Less Partner',
+                    //     'digits'        =>  'DD', 
+                    //     'rows'          =>  8,
+                    //     'sums'          =>  5,
+                    //     'max_negative'  =>  4
+                    // ),
+                    // array(
+                    //     'block_name'    =>  'C',
+                    //     'block_title'   =>  'Multiplication',
+                    //     'block_subtitle'=>  'Add / Less Partner',
+                    //     'digits'        =>  'DD/SD',
+                    //     'rows'          =>  1,
+                    //     'sums'          =>  10,
+                    //     'max_negative'  =>  0
+                    // ),
                     array(
-                        'block_name'    =>  'A',
-                        'block_title'   =>  'Addition',
+                        'block_name'    =>  'D',
+                        'block_title'   =>  'Division',
                         'block_subtitle'=>  'Add / Less Partner',
-                        'digits'        =>  'DD',
-                        'rows'          =>  4,
-                        'sums'          =>  5,
-                        'max_negative'  =>  4
-                    ),
-                    array(
-                        'block_name'    =>  'B',
-                        'block_title'   =>  'Addition',
-                        'block_subtitle'=>  'Add / Less Partner',
-                        'digits'        =>  'DD', 
-                        'rows'          =>  8,
-                        'sums'          =>  5,
-                        'max_negative'  =>  4
-                    ),
-                    array(
-                        'block_name'    =>  'C',
-                        'block_title'   =>  'Multiplication',
-                        'block_subtitle'=>  'Add / Less Partner',
-                        'digits'        =>  'DD/SD',
+                        'digits'        =>  'TD/SD',
                         'rows'          =>  1,
                         'sums'          =>  10,
                         'max_negative'  =>  0
@@ -265,33 +300,33 @@ if (!function_exists('getLevelDetails')) {
                 'level'         =>  'Level 6',
                 'duration'      =>  '10', // in minutes
                 'row_blocks'    =>  array(
-                    array(
-                        'block_name'    =>  'A',
-                        'block_title'   =>  'Addition',
-                        'block_subtitle'=>  'Add / Less Partner',
-                        'digits'        =>  'DD',
-                        'rows'          =>  10,
-                        'sums'          =>  5,
-                        'max_negative'  =>  4
-                    ),
-                    array(
-                        'block_name'    =>  'B',
-                        'block_title'   =>  'Addition',
-                        'block_subtitle'=>  'Add / Less Partner',
-                        'digits'        =>  'TD', 
-                        'rows'          =>  2,
-                        'sums'          =>  5,
-                        'max_negative'  =>  3
-                    ),
-                    array(
-                        'block_name'    =>  'C',
-                        'block_title'   =>  'Multiplication',
-                        'block_subtitle'=>  'Add / Less Partner',
-                        'digits'        =>  'DD/SD',
-                        'rows'          =>  1,
-                        'sums'          =>  5,
-                        'max_negative'  =>  0
-                    ),
+                    // array(
+                    //     'block_name'    =>  'A',
+                    //     'block_title'   =>  'Addition',
+                    //     'block_subtitle'=>  'Add / Less Partner',
+                    //     'digits'        =>  'DD',
+                    //     'rows'          =>  10,
+                    //     'sums'          =>  5,
+                    //     'max_negative'  =>  4
+                    // ),
+                    // array(
+                    //     'block_name'    =>  'B',
+                    //     'block_title'   =>  'Addition',
+                    //     'block_subtitle'=>  'Add / Less Partner',
+                    //     'digits'        =>  'TD', 
+                    //     'rows'          =>  2,
+                    //     'sums'          =>  5,
+                    //     'max_negative'  =>  3
+                    // ),
+                    // array(
+                    //     'block_name'    =>  'C',
+                    //     'block_title'   =>  'Multiplication',
+                    //     'block_subtitle'=>  'Add / Less Partner',
+                    //     'digits'        =>  'DD/SD',
+                    //     'rows'          =>  1,
+                    //     'sums'          =>  5,
+                    //     'max_negative'  =>  0
+                    // ),
                     array(
                         'block_name'    =>  'D',
                         'block_title'   =>  'Multiplication',

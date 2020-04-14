@@ -197,7 +197,33 @@ class ExamController extends Controller
                         ),
                     )
                 );
-        
+            }else if($level_id == 'Module 4') {
+                $level_info = (object)array(
+                    'programme'     =>  'LITTLE BOB',
+                    'level'         =>  'Module 4',
+                    'duration'      =>  '10', // in minutes
+                    'row_blocks'    =>  array(
+                        array(
+                            'block_name'    =>  'A',
+                            'block_title'   =>  'Addition',
+                            'block_subtitle'=>  'Add / Less Partner',
+                            'digits'        =>  'SD', 
+                            'rows'          =>  5,
+                            'sums'          =>  10,
+                            'max_negative'  =>  2
+                        ),
+                        array(
+                            'block_name'    =>  'B',
+                            'block_title'   =>  'Addition',
+                            'block_subtitle'=>  'Add / Less Partner',
+                            'digits'        =>  'DD',
+                            'rows'          =>  3,
+                            'sums'          =>  10,
+                            'max_negative'  =>  2
+                        ),
+                    )
+                );
+            
             } else if ( $level_id == 'Level 1'){
                 $level_info = (object)array(
                     'programme'     =>  'BRAINOBRAIN',

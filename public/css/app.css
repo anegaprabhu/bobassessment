@@ -9308,7 +9308,8 @@ main,
 #app,
 .authwrapper,
 .wrapper,
-.fwrapper {
+.fwrapper,
+.twrapper {
     width: 100%;
     height: 100%;
 }
@@ -9321,11 +9322,24 @@ main,
     background-size: cover;
 }
 
+.twrapper {
+    display: flex;
+    align-items: center;
+    background: url("../images/bg-content2.png") no-repeat center 0;
+    background-size: cover;
+}
+
 .wrapper,
 .fwrapper {
     background: url("../images/bg-content1.png") no-repeat right bottom;
     background-size: cover;
 }
+
+.twrapper {
+    background: url("../images/bg-content2.png") no-repeat right top;
+    background-size: cover;
+}
+
 
 #app main {
     padding: 0!important;
@@ -9618,7 +9632,8 @@ input[type=number]:focus,
     #app,
     .authwrapper,
     .wrapper,
-    .fwrapper {
+    .fwrapper,
+    .twrapper {
         height: auto;
     }
     .authwrapper {
@@ -9626,6 +9641,22 @@ input[type=number]:focus,
     }
 }
 
+.menbar {
+    font-size: 24px;
+}
+
+.testlink {
+    position: absolute;
+    top: 500;
+    left: 0;
+    z-index: 10;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+@media all and (max-width:576px) {   
+    #navbarToggler.navbar-collapse {    display:block!important;    flex-basis: 0;        flex-grow: 0;    }
+   }
 
 .jumbotron{
     background: url("../images/bg.jpg") no-repeat center center; 
@@ -9634,3 +9665,4 @@ input[type=number]:focus,
     -o-background-size: 100% 100%;
     background-size: 100% 100%;
 }
+

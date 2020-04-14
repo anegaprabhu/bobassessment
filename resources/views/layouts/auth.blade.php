@@ -73,12 +73,15 @@
         && \Route::current()->getName() != 'login.parents'
         && \Route::current()->getName() != 'register.parents'
     ) 
-    <span style=" position: absolute; top: 500; left: 0; z-index: 10; font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
+    <!--<span class="testlink" onclick="openNav()"><i class="fa fa-bars"></i></span>-->
+    <!--<span style=" position: absolute; top: 500; left: 0; z-index: 10; font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>-->
 @endif
 
 
         <main class="py-4">
+            @include('/layouts/header')
             @yield('content')
+           @include('/layouts/footer')
         </main>
     </div>
 

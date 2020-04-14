@@ -31,7 +31,7 @@ class ParentController extends Controller
                 // dd($students);
             }    
         }
-        
+        // dd($students);
         if(count($students) > 0){
 
             for($a=0;$a<count($students);$a++)
