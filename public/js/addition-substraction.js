@@ -30,16 +30,36 @@
         },
         generateMultiplicationsum: function(arr,vk){
             // console.log(arr);
-            sumString = "<table style=' font-size: 20px; font-weight: bold;'>";
+            sumString = "<table style=' font-size: 30px; font-weight: bold; margin-top: 20px;'>";
             for(y=0;y<(arr['multiplicand']).length;y++){
                 sumString += "<tr>";
-                sumString += "<td>" + arr['multiplicand'][y] + "</td>";
-                sumString += "<td>X</td>";
-                sumString += "<td>" + arr['multiplier'][y] + "</td>";
+                sumString += "<td style=' padding-right: 5px;'>" + arr['multiplicand'][y] + "</td>";
+                sumString += "<td>&times;</td>";
+                sumString += "<td style=' padding-right: 5px;'>" + arr['multiplier'][y] + "</td>";
                 if(vk == 'yes'){
-                    sumString += "<td><input id='answer_input' type='text' readonly='readonly' class='text-right pr-1' style='width:100px; border: 1px solid black;' value='' /></td>"; // placeholder='"+arr['answer']+"'
+                    sumString += "<td style='padding: 0px 5px;'><input id='answer_input' type='text' readonly='readonly' class='text-right pr-1' style='width:100px; border: 1px solid black;' value='' /></td>"; // placeholder='"+arr['answer']+"'
                 }else{
-                    sumString += "<td><input id='answer_input' type='text' class='text-right pr-1' style='width:100px; border: 1px solid black;' value='' /></td>";
+                    sumString += "<td style='padding: 0px 5px;'><input id='answer_input' type='text' class='text-right pr-1' style='width:100px; border: 1px solid black;' value='' /></td>";
+                }
+                sumString += "</tr>";
+            }
+            sumString += "</table>";
+            return sumString;
+        },
+        generateDivisionsum: function(arr,vk){
+            // console.log(arr);
+            sumString = "<table style=' font-size: 30px; font-weight: bold; margin-top: 20px;'>";
+            for(y=0;y<(arr['dividend']).length;y++){
+                sumString += "<tr>";
+                sumString += "<td style=' padding-right: 5px;'>" + arr['dividend'][y] + "</td>";
+                sumString += "<td>&#xF7;</td>";
+                sumString += "<td style=' padding-right: 5px;'>" + arr['divisor'][y] + "</td><tr>";
+                if(vk == 'yes'){
+                    sumString += "<tr><td style='padding: 0px 5px;'><input id='answer_input' type='text' readonly='readonly' class='text-right pr-1' style='width:100px; border: 1px solid black;' value='' /></td>"; // placeholder='"+arr['answer']+"'
+                    sumString += "<td style='padding: 0px 5px;'><input id='answer_input_remainder' type='text' readonly='readonly' class='text-right pr-1' style='width:100px; border: 1px solid black;' value='' /></td></tr>"; // placeholder='"+arr['answer']+"'
+                }else{
+                    sumString += "<tr><td style='padding: 0px 5px;'><input id='answer_input' type='text' class='text-right pr-1' style='width:100px; border: 1px solid black;' value='' /></td>";
+                    sumString += "<td style='padding: 0px 5px;'><input id='answer_input_remainder' type='text' class='text-right pr-1' style='width:100px; border: 1px solid black;' value='' /></td></tr>";
                 }
                 sumString += "</tr>";
             }
@@ -54,7 +74,35 @@
                 random_negative_index.push(ni);
             }
             return random_negative_index;
-        }        
+        },
+        tripleDigitSingleDigitWithoutRemainder: function(rem)
+        {
+            console.log(random_negative_index);
+            var dividend = BOBASSESSMENT.general.randomIntFromInterval(100, 999);
+            var divisor = BOBASSESSMENT.general.randomIntFromInterval(2, 9);
+            var remainder = dividend % divisor;
+            console.log("out: " + dividend + "_" + divisor);
+            console.log("remainder: " + (dividend % divisor));
+            var result_val = "";
+
+            // result_val  = dividend % divisor;
+
+            if(rem == 'yes'){
+                result_val = dividend + "_" + divisor + "_" + remainder;
+            }else{
+                if(dividend % divisor != 0)
+                {
+                    console.log('loop_again');
+                    result_val = BOBASSESSMENT.general.tripleDigitSingleDigitWithoutRemainder();
+                }else{
+                    result_val = dividend + "_" + divisor + "_" + remainder;
+                    console.log("return: " + result_val);
+                }
+            }
+            console.log("final_return: " + result_val);
+            return result_val;
+
+        }
     }
 
     BOBASSESSMENT.mod1 = {
@@ -510,5 +558,24 @@
            
         }
     }  
+    BOBASSESSMENT.division = {
+        tripleDigitsSingleDigit: function(rem)
+        {
+
+            var dividend_arr = [];
+            var divisor_arr = [];
+            var sumup_loop = 0;
+
+            var returnValue = BOBASSESSMENT.general.tripleDigitSingleDigitWithoutRemainder(rem);
+                console.log('returned_value: ' + returnValue);
+                returnValue = returnValue.split('_');
+                dividend_arr.push(returnValue[0]);
+                divisor_arr.push(returnValue[1]);
+                sumup_loop = returnValue[0] / returnValue[1];
+                // alert([{'devidend' : multiplicand_arr, 'divisor' : multiplier_arr, 'answer' : sumup_loop}]);
+                // return;
+                return [{'devidend' : dividend_arr, 'divisor' : divisor_arr, 'answer' : sumup_loop, 'remainder' : returnValue[2]}];
+            }
+    }
 	
 })(jQuery);

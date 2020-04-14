@@ -45,9 +45,21 @@
                                             <td>
                                                 <div class="text-right pr-3">{{$sum_item}}</div>
                                             </td>
-                                            <td><div class="text-right pr-3">X</div></td>
+                                            <td><div class="text-right pr-3">&times;</div></td>
                                             <td>
                                             <div class="text-right pr-3">{{$sum['multiplier'][$l]}}</div>
+                                            </td>
+                                            </tr>
+                                        @endforeach
+                                    @elseif($sum['title'] == 'Division')
+                                        @foreach($sum['dividend'] as $l => $sum_item)
+                                            <tr>
+                                            <td>
+                                                <div class="text-right pr-3">{{$sum_item}}</div>
+                                            </td>
+                                            <td><div class="text-right pr-3">&#xF7;</div></td>
+                                            <td>
+                                            <div class="text-right pr-3">{{$sum['divisor'][$l]}}</div>
                                             </td>
                                             </tr>
                                         @endforeach

@@ -53,7 +53,7 @@
 
 
 <!-- <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span> -->
-<div class="wrapper">
+<div class="twrapper">
 
     <div class="container">
     <form method="get" id="form-show-test-review" action="{{url('/exam/show')}}" enctype="multipart/form-data">
@@ -84,14 +84,14 @@
             </div>   
         </div> -->
 
+            <h1 style="color: #ff7040; font-weight: strong;">BRAINOBRAIN</h1>
         <div class="headline">
            <h4> <i class="fa fa-file-text-o"></i> <b class="pl-2">Sum: <b id="sum_count"></b></b></h4>
            <h4 class="float-right"><i class="fa fa-clock-o"></i> <b class="Timer pl-2"></b></h4>
         </div>
 
-        <div class="row justify-content-center testbox">
+        <div class="row justify-content-center testbox" style=" border: 2px solid #00a159;">
             <!-- <br><br> -->
-
             <div class="p-0 col-md-4 col-lg-7 v-top">
                 <div class="progress ml-5 mr-5 mt-2">
                     <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" style="width:70%">70%</div>
@@ -114,6 +114,11 @@
                         <td width="20%"></td>
                     <td>
                         <table style=" width: 162px;">
+                            <tr>
+                                <td></td>
+                                <td colspan="3"><input id="toggle-demo" type="checkbox" style=" padding-top: 5px;" checked data-toggle="toggle" data-on="Answer" data-off="Remainder" data-onstyle="success" data-offstyle="danger" data-size="xs"></td>
+                                <td></td>    
+                            </tr>
                             <tr>
                                 <td><div class="text-center keyPadBtn" onClick="keyPadBtn(1)" style=" width: 40px; height: 40px; border: 1px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">1</div></td>
                                 <td><div class="text-center keyPadBtn" onClick="keyPadBtn(2)" style=" width: 40px; height: 40px; border: 1px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">2</div></td>
@@ -188,7 +193,7 @@
     // function randomIntFromInterval(min, max) { // min and max included
     //     return Math.floor(Math.random() * (max - min + 1) + min);
     // }
-
+    // $('#toggle-demo').bootstrapToggle();
     function codeAddress(address) {
             return address;
       }
@@ -279,6 +284,26 @@
                             var sdReturn = BOBASSESSMENT.multiplication.tripleDigitDoubleDigit();
                             // console.log(sdReturn);
                             sumsArray.push({'category' : block_category, 'title'     :   block['block_title'], 'sub_title' : block['block_subtitle'], 'sum_no'    :   b + 1, 'sum_items' :  [], 'ans_breakup': [], 'multiplicand' : sdReturn[0]['multiplicand'], 'multiplier' : sdReturn[0]['multiplier'], 'answer'    :  sdReturn[0]['answer'], 'student_answer'   : null});
+                         }
+                    }else if(block_type == 'TD/SD' && block_category == 'Division'){
+                        var random_negative_index = BOBASSESSMENT.general.negativeIndex(block['sums'],3);
+                         for(b=0;b<block['sums'];b++){
+                            var cnt = 0;
+                            for(c=0;c<random_negative_index.length;c++)
+                                {
+                                    if(random_negative_index[c] == b)
+                                    {
+                                        cnt += 1;
+                                    }
+                                }
+                                if(cnt > 0)
+                                {
+                                    var sdReturn = BOBASSESSMENT.division.tripleDigitsSingleDigit('yes');
+                                }else{
+                                    var sdReturn = BOBASSESSMENT.division.tripleDigitsSingleDigit('no');
+                                }
+                            // console.log(sdReturn);
+                            sumsArray.push({'category' : block_category, 'title'     :   block['block_title'], 'sub_title' : block['block_subtitle'], 'sum_no'    :   b + 1, 'sum_items' :  [], 'ans_breakup': [], 'dividend' : sdReturn[0]['devidend'], 'divisor' : sdReturn[0]['divisor'], 'answer'    :  sdReturn[0]['answer'], 'remainder' : sdReturn[0]['remainder'], 'student_answer'   : null});
                          }
                     }else{
 
@@ -420,7 +445,35 @@
                     $("#showResult").css('display','block');
                     }
    
-                }
+                    $("#sum_count").text(parseInt(curOrd) + 1);
+                    $(".progress-bar").css('width', ((parseInt(curOrd) + 1) / total_sums) * 100 + '%');
+                    $(".progress-bar").text((parseInt(curOrd) + 1) + ' of ' + total_sums);
+                }else if (sumsArray[curOrd]['category'] == 'Division'){
+                    sumsArray[parseInt(curOrd) - 1]['student_answer'] = $("#answer_input").val();
+                    sumsArray[parseInt(curOrd) - 1]['end_time']    = $('.Timer').text();
+                    sumsArray[parseInt(curOrd)]['start_time']    = $('.Timer').text();  
+                    // console.log(curOrd);
+                    $("#nextBtn").attr('data-ord',parseInt(curOrd)+1);
+                    $("#sumTitle").text(sumsArray[curOrd]['title']);
+                    $("#sumSubTitle").text(sumsArray[curOrd]['sub_title']);
+                    var getSum = BOBASSESSMENT.general.generateDivisionsum(sumsArray[curOrd],virtual_keyboard);
+                    sumsArray[curOrd]['start_time'] = $('.Timer').text();
+                    // console.log(sumsArray[0]);    
+                    $("#sum").html(getSum);
+                    var sum_cnt = parseInt(parseInt(curOrd) + 1);
+                    $("#sum_count").text(sum_cnt);
+                    $("#nextBtn").css('display','block');
+                    if(total_sums - parseInt(curOrd) == 1)
+                    {
+                        $("#nextBtn").css('display','none');
+                    $("#submitResult").css('display','block');
+                    $("#showResult").css('display','block');
+                    }
+   
+                    $("#sum_count").text(parseInt(curOrd) + 1);
+                    $(".progress-bar").css('width', ((parseInt(curOrd) + 1) / total_sums) * 100 + '%');
+                    $(".progress-bar").text((parseInt(curOrd) + 1) + ' of ' + total_sums);
+               }
             }else{
                 // if(sumsArray[0]['category'] == 'Addition'){
 
@@ -456,6 +509,7 @@
             counter = 0,
             timer = setInterval(function(){
                 //   codeAddress(addressArr[counter]);
+
                   $("#generatedSumBlock").append("<tr><td style=' min-width: 102px;' class='text-right sum_item pr-3'>" + codeAddress(addressArr[counter]) + "</td></tr>");
                   counter++
                   if (counter === addressArr.length) {
@@ -497,8 +551,27 @@
 
             $("#nextBtn").css('display','block');
 
+            $(".progress-bar").css('width', (1 / total_sums) * 100 + '%');
+            $(".progress-bar").text( '1' );
+            $("#sum_count").text(1);
+        }else if(sumsArray[0]['category'] == 'Division'){
+            $("#sumTitle").text(sumsArray[0]['title']);
+            $("#sumSubTitle").text(sumsArray[0]['sub_title']);
+
+            var getSum = BOBASSESSMENT.general.generateDivisionsum(sumsArray[0],virtual_keyboard);
+            sumsArray[0]['start_time'] = $('.Timer').text();
+            // console.log(sumsArray[0]);    
+            $("#sum").html(getSum);
+            var sum_cnt = parseInt($("#sum_count").text());
+            $("#sum_count").text(sum_cnt + 1);
+
+            $("#nextBtn").css('display','block');
+
+            $(".progress-bar").css('width', (1 / total_sums) * 100 + '%');
+            $(".progress-bar").text( '1' );
+            $("#sum_count").text(1);
         }
-    // });
+        // });
 
 
 function submitResult(id){
