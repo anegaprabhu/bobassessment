@@ -430,10 +430,44 @@ class ExamController extends Controller
                             'rows'          =>  1,
                             'sums'          =>  5,
                             'max_negative'  =>  0
+                        ),
+                        array(
+                            'block_name'    =>  'D',
+                            'block_title'   =>  'Division',
+                            'block_subtitle'=>  'Add / Less Partner',
+                            'digits'        =>  'TD/SD',
+                            'rows'          =>  1,
+                            'sums'          =>  5,
+                            'max_negative'  =>  0
+                        ),
+                        array(
+                            'block_name'    =>  'D',
+                            'block_title'   =>  'Division',
+                            'block_subtitle'=>  'Add / Less Partner',
+                            'digits'        =>  'FD/SD',
+                            'rows'          =>  1,
+                            'sums'          =>  10,
+                            'max_negative'  =>  0
                         )
+    
                     )
                 );
-    
+            } else if ( $level_id == 'Level 7') {
+                $level_info = (object)array(
+                    'programme'     =>  'BRAINOBRAIN',
+                    'level'         =>  'Level 7',
+                    'row_blocks'    =>  array(
+                        array(
+                            'block_name'    =>  'A',
+                            'block_title'   =>  'Addition',
+                            'block_subtitle'=>  'Add / Less Partner',
+                            'digits'        =>  'singleDigitDecimal',
+                            'rows'          =>  5,
+                            'sums'          =>  10,
+                            'max_negative'  =>  2
+                        ),
+                    )
+                )  ;  
             }else{
                 // dd('here');
                 return view('parents');

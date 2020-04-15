@@ -116,7 +116,7 @@
                         <table style=" width: 162px;">
                             <tr>
                                 <td></td>
-                                <td colspan="3"><input id="toggle-demo" type="checkbox" style=" padding-top: 5px;" checked data-toggle="toggle" data-on="Answer" data-off="Remainder" data-onstyle="success" data-offstyle="danger" data-size="xs"></td>
+                                <td colspan="3" class="align-items-center justify-content-center pl-3"><input id="toggle-demo" onChange="switchChange()" type="checkbox" style=" padding-top: 5px;" checked data-toggle="toggle" data-on="Remainder" data-off="Answer" data-onstyle="danger" data-offstyle="success" data-size="xs"></td>
                                 <td></td>    
                             </tr>
                             <tr>
@@ -184,6 +184,8 @@
   <!-- JQuery 3.4.1 -->
   <script type="application/javascript" src="{{ URL::asset('js/jquery-3.4.1.min.js') }}"></script>
   <script type="application/javascript" src="{{ URL::asset('js/addition-substraction.js') }}"></script>
+  <script type="application/javascript" src="http://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+
     <script type="application/javascript">
     // $(document).load(function(){
         console.log($("#nextBtn"));
@@ -197,7 +199,10 @@
     function codeAddress(address) {
             return address;
       }
-
+      function switchChange(){
+          alert(($(this).parent()));
+        // alert($("#toggle-demo").prop("checked"));
+      };
  
         var app = @json($level_info);
         var sumsArray = []; 
@@ -279,6 +284,12 @@
                             // console.log(sdReturn);
                             // sumsArray.push({'category' : block_category, 'title'     :   block['block_title'], 'sub_title' : block['block_subtitle'], 'sum_no'    :   b + 1, 'sum_items' :  [], 'ans_breakup': [], 'multiplicand' : sdReturn[0]['multiplicand'], 'multiplier' : sdReturn[0]['multiplier'], 'answer'    :  sdReturn[0]['answer'], 'student_answer'   : null});
                          }
+                    }else if(block_type == 'singleDigitDecimal' && block_category == 'Addition'){
+                        for(b=0;b<block['sums'];b++){
+                            var sdReturn = BOBASSESSMENT.decimal.singleDigitDecimal(block['rows'],block['max_negative']);
+                            // alert(sdReturn);
+                            sumsArray.push({'category' : block_category, 'title'     :   block['block_title'], 'sub_title' : block['block_subtitle'], 'sum_no'    :   b + 1, 'sum_items' :  sdReturn[0]['sum_items'], 'ans_breakup': sdReturn[0]['ans_breakup'], 'answer'    :  sdReturn[0]['answer'], 'student_answer'   : null});
+                        }    
                     }else if(block_type == 'TD/DD' && block_category == 'Multiplication'){
                          for(b=0;b<block['sums'];b++){
                             var sdReturn = BOBASSESSMENT.multiplication.tripleDigitDoubleDigit();
@@ -300,7 +311,27 @@
                                 {
                                     var sdReturn = BOBASSESSMENT.division.tripleDigitsSingleDigit('yes');
                                 }else{
-                                    var sdReturn = BOBASSESSMENT.division.tripleDigitsSingleDigit('no');
+                                    var sdReturn = BOBASSESSMENT.division.tripleDigitsSingleDigit('yes');
+                                }
+                            // console.log(sdReturn);
+                            sumsArray.push({'category' : block_category, 'title'     :   block['block_title'], 'sub_title' : block['block_subtitle'], 'sum_no'    :   b + 1, 'sum_items' :  [], 'ans_breakup': [], 'dividend' : sdReturn[0]['devidend'], 'divisor' : sdReturn[0]['divisor'], 'answer'    :  sdReturn[0]['answer'], 'remainder' : sdReturn[0]['remainder'], 'student_answer'   : null});
+                         }
+                    }else if(block_type == 'FD/SD' && block_category == 'Division'){
+                        var random_negative_index = BOBASSESSMENT.general.negativeIndex(block['sums'],3);
+                         for(b=0;b<block['sums'];b++){
+                            var cnt = 0;
+                            for(c=0;c<random_negative_index.length;c++)
+                                {
+                                    if(random_negative_index[c] == b)
+                                    {
+                                        cnt += 1;
+                                    }
+                                }
+                                if(cnt > 0)
+                                {
+                                    var sdReturn = BOBASSESSMENT.division.fourDigitsSingleDigit('yes');
+                                }else{
+                                    var sdReturn = BOBASSESSMENT.division.fourDigitsSingleDigit('yes');
                                 }
                             // console.log(sdReturn);
                             sumsArray.push({'category' : block_category, 'title'     :   block['block_title'], 'sub_title' : block['block_subtitle'], 'sum_no'    :   b + 1, 'sum_items' :  [], 'ans_breakup': [], 'dividend' : sdReturn[0]['devidend'], 'divisor' : sdReturn[0]['divisor'], 'answer'    :  sdReturn[0]['answer'], 'remainder' : sdReturn[0]['remainder'], 'student_answer'   : null});
@@ -330,21 +361,45 @@
 
         function keyPadBtn(n){
             // alert(n)
+            // $("#toggle-demo").prop("checked")
             var curVal = $("#answer_input").val();
-            if(n == '.')
-            {
+            var curVal_remainder = $("#answer_input_remainder").val();
+
+            if($("#toggle-demo").prop("checked")){
                 // alert('one');
-                if($("#answer_input").val() == "" || $("#answer_input").val() == 0){
-                    $("#answer_input").val('.');
+                if(n == '.')
+                {
+                    // alert('one');
+                    if($("#answer_input").val() == "" || $("#answer_input").val() == 0){
+                        $("#answer_input").val('.');
+                    }else{
+                        $("#answer_input").val( ($("#answer_input").val()).toString() + n.toString() )
+                    }
                 }else{
-                    $("#answer_input").val( ($("#answer_input").val()).toString() + n.toString() )
+                    // alert('two');
+                    if(curVal == null || curVal == 0){
+                        $("#answer_input").val(n);
+                    }else{
+                        $("#answer_input").val( ($("#answer_input").val()).toString() + n.toString() )
+                    }
                 }
             }else{
                 // alert('two');
-                if(curVal == null || curVal == 0){
-                    $("#answer_input").val(n);
+                if(n == '.')
+                {
+                    // alert('one');
+                    if($("#answer_input_remainder").val() == "" || $("#answer_input_remainder").val() == 0){
+                        $("#answer_input").val('.');
+                    }else{
+                        $("#answer_input_remainder").val( ($("#answer_input_remainder").val()).toString() + n.toString() )
+                    }
                 }else{
-                    $("#answer_input").val( ($("#answer_input").val()).toString() + n.toString() )
+                    // alert('two');
+                    if(curVal == null || curVal == 0){
+                        $("#answer_input_remainder").val(n);
+                    }else{
+                        $("#answer_input_remainder").val( ($("#answer_input_remainder").val()).toString() + n.toString() )
+                    }
                 }
             }
         }
@@ -357,10 +412,18 @@
                 return;
             }
             $("#nextBtn").css('display','none');
+            // $('#toggle-demo').bootstrapToggle('off');
+            // $("#toggle-demo").prop("checked",false);
+            // if($('#toggle-demo').hasClass( "toggle-off" ))
+            // {
+            //     $('#toggle-demo').removeClass('toggle-off');
+            //     $('#toggle-demo').addClass('toggle-on');
+            // }
 
-            console.log(total_sums);
+
+            // console.log(total_sums);
             var curOrd = $("#nextBtn").attr('data-ord');
-            console.log(curOrd);
+            // console.log(curOrd);
             // console.log(sumsArray[parseInt(curOrd) - 1]);
             // $("#last_answer").text(sumsArray[parseInt(curOrd) - 1]['student_answer']);
 
@@ -638,6 +701,38 @@ function closeNav() {
 }
 
 
+
+
+
+function generate() {
+  // Numbers [2-9]
+  //Single Digit
+  var small = Math.floor(Math.random() * 8) + 2
+    //Double Digit
+//   var small = Math.floor(Math.random() * (99 - 10 + 1) + 10);
+
+  // This will give the limit of current divider
+  // for double digit: give 85 and 9
+  // for Triple digit/Double digit 800 and 100
+  // for 4 digit single digit: give 9000 and 1001
+  var limit = Math.ceil(8500 / small)
+  
+  // We check the minimum now
+  var minimum = Math.floor(1001 / small)
+
+  // We create a new random with given limit
+  var big = Math.ceil(Math.random() * limit) + minimum
+
+  // Create the product
+  var product = big * small;
+
+  return { question: product + ' / ' + small, answer: big, remainder: (big * small) % small }
+
+}
+for(a=0;a<100;a++){
+    // console.log(generate())
+
+}
     </script>
 
 @endsection

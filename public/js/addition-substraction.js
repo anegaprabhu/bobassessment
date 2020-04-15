@@ -7,7 +7,8 @@
         randomIntFromInterval: function (min, max) { // min and max included
             return Math.floor(Math.random() * (max - min + 1) + min);
         },
-        randomNumberWithDecimal: function genRand(min, max, decimalPlaces) {  
+        randomNumberWithDecimal: function (min, max, decimalPlaces) {  
+            //(BOBASSESSMENT.general.randomNumberWithDecimal(0,9,2) * 1).toString().replace(/^0+/, '')
             var rand = Math.random() < 0.5 ? ((1-Math.random()) * (max-min) + min) : (Math.random() * (max-min) + min);  // could be min or max or anything in between
             var power = Math.pow(10, decimalPlaces);
             return Math.floor(rand*power) / power;
@@ -28,6 +29,19 @@
             sumString += "</table>";
             return sumString;
         },
+        addZerointoDecimal: function(num) {
+            // Convert input string to a number and store as a variable.
+                var value = Number(num);      
+            // Split the input string into two arrays containing integers/decimals
+                var res = (num).toString().split(".");     
+            // If there is no decimal point or only one decimal place found.
+                if(res.length == 1 || res[1].length < 3) { 
+            // Set the number to two decimal places
+                    value = value.toFixed(2);
+                }
+            // Return updated or original number.
+            return value;
+            },
         generateMultiplicationsum: function(arr,vk){
             // console.log(arr);
             sumString = "<table style=' font-size: 30px; font-weight: bold; margin-top: 20px;'>";
@@ -75,7 +89,23 @@
             }
             return random_negative_index;
         },
-        tripleDigitSingleDigitWithoutRemainder: function(rem)
+        tripleDigitSingleDigitWithoutRemainder: function(rem){
+              var small = Math.floor(Math.random() * 8) + 2;
+              var limit = Math.ceil(850 / small)
+              var minimum = Math.floor(100 / small)
+              var big = Math.ceil(Math.random() * limit) + minimum
+              var result_val = (big * small) + "_" + small + "_" + big % small;
+              return result_val;
+        },
+        fourDigitSingleDigitWithoutRemainder: function(rem){
+              var small = Math.floor(Math.random() * 8) + 2;
+              var limit = Math.ceil(8500 / small)
+              var minimum = Math.floor(1001 / small)
+              var big = Math.ceil(Math.random() * limit) + minimum
+              var result_val = (big * small) + "_" + small + "_" + big % small;
+              return result_val;
+        },
+        tripleDigitSingleDigitWithoutRemainder_old: function(rem)
         {
             console.log(random_negative_index);
             var dividend = BOBASSESSMENT.general.randomIntFromInterval(100, 999);
@@ -575,7 +605,75 @@
                 // alert([{'devidend' : multiplicand_arr, 'divisor' : multiplier_arr, 'answer' : sumup_loop}]);
                 // return;
                 return [{'devidend' : dividend_arr, 'divisor' : divisor_arr, 'answer' : sumup_loop, 'remainder' : returnValue[2]}];
+            },
+            fourDigitsSingleDigit: function(rem)
+            {
+    
+                var dividend_arr = [];
+                var divisor_arr = [];
+                var sumup_loop = 0;
+    
+                var returnValue = BOBASSESSMENT.general.fourDigitSingleDigitWithoutRemainder(rem);
+                    console.log('returned_value: ' + returnValue);
+                    returnValue = returnValue.split('_');
+                    dividend_arr.push(returnValue[0]);
+                    divisor_arr.push(returnValue[1]);
+                    sumup_loop = returnValue[0] / returnValue[1];
+                    // alert([{'devidend' : multiplicand_arr, 'divisor' : multiplier_arr, 'answer' : sumup_loop}]);
+                    // return;
+                    return [{'devidend' : dividend_arr, 'divisor' : divisor_arr, 'answer' : sumup_loop, 'remainder' : returnValue[2]}];
+                }
+    
+    }
+    BOBASSESSMENT.decimal = {
+        singleDigitDecimal: function(rows,negCount) 
+        {
+            var addend = [];
+            var ansArr = [];
+            var sumup_loop = 0;
+            var random_negative_index = BOBASSESSMENT.general.negativeIndex(rows,negCount);
+            var zero_index = BOBASSESSMENT.general.negativeIndex(rows,negCount);
+
+            for(c=0;c<rows;c++){
+                var n = BOBASSESSMENT.general.randomNumberWithDecimal(1, 9, 2);
+                    // n = BOBASSESSMENT.general.addZerointoDecimal(n);
+                var negative_number = BOBASSESSMENT.general.randomNumberWithDecimal(-9, -1, 2); //Math.floor(Math.random() * 9) -9 //randomIntFromInterval(1, 9)
+                    // negative_number = BOBASSESSMENT.general.addZerointoDecimal(negative_number);
+                var zero_number = BOBASSESSMENT.general.randomNumberWithDecimal(0, 1, 2);
+                    // zero_number = BOBASSESSMENT.general.addZerointoDecimal(zero_number);
+                var tmpCnt = 0;
+                var tmpCnt1 = 0;
+                for(e=0;e<random_negative_index.length;e++){
+                    if(c === random_negative_index[e]){
+                        console.log("test: " + e + " _ " + random_negative_index[e]);
+                        if(sumup_loop + negative_number > 0){
+                            tmpCnt = 1;
+                        }        
+                    }else if(c === zero_index[e]){
+                        if(sumup_loop + zero_number > 0){
+                            tmpCnt1 = 1;
+                        }        
+                    }
+                }
+                if(tmpCnt == 0){
+                    sumup_loop += n;
+                    addend.push(BOBASSESSMENT.general.addZerointoDecimal(n));
+                    ansArr.push(sumup_loop);
+                }else if (tmpCnt1 != 0){
+                    sumup_loop += zero_number;
+                    addend.push(BOBASSESSMENT.general.addZerointoDecimal(zero_number));
+                    ansArr.push(sumup_loop);
+                }else{
+                    sumup_loop += negative_number;
+                    addend.push(negative_number);
+                    ansArr.push(sumup_loop);
+                }
+                // debugger;
             }
+            // console.log(addend);
+            return [{'sum_items' :addend, 'ans_breakup': ansArr,'answer': sumup_loop}];
+           
+        }
     }
 	
 })(jQuery);
