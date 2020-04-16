@@ -9,6 +9,13 @@ use User;
 
 class FranchiseeController extends Controller
 {
+
+
+   public function __construct(Request $request)
+    { //dd($request);
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
