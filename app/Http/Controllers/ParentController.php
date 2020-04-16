@@ -9,18 +9,39 @@ use Parents;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Schema;
 use DateTime;
-
+use Session;
 
 
 class ParentController extends Controller
 {
+
+
+
+    public function __construct(Request $request)
+    {
+        $this->middleware(function ($request, $next) {
+            if(Session::get('login_parents_59ba36addc2b2f9401580f014c7f58ea4e30989d') == NULL)
+            {
+                return redirect()->intended('/login/parents');
+            }else{
+                return $next($request);
+            }
+        });
+    }
+
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        
+        if($request->session()->get('login_parents_59ba36addc2b2f9401580f014c7f58ea4e30989d') == NULL){
+            return redirect()->intended('/login/parents');
+        }
+        
         $students = [];
         if(Schema::hasTable('students')){
             $students = \DB::table('students')
