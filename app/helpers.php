@@ -510,22 +510,22 @@ if (!function_exists('getLevelDetails')) {
                     //     'sums'          =>  10,
                     //     'max_negative'  =>  0
                     // ),
-                    // array(
-                    //     'block_name'    =>  'E',
-                    //     'block_title'   =>  'Multiplication',
-                    //     'block_subtitle'=>  'Add / Less Partner',
-                    // 'instruction'   =>  'Multiplication',
-                    //     'digits'        =>  'TD/SD',
-                    //     'rows'          =>  1,
-                    //     'sums'          =>  5,
-                    //     'max_negative'  =>  0
-                    // ),
                     array(
                         'block_name'    =>  'D',
                         'block_title'   =>  'Division',
                         'block_subtitle'=>  'Add / Less Partner',
                         'instruction'   =>  'Division',
                         'digits'        =>  'DD/DD',
+                        'rows'          =>  1,
+                        'sums'          =>  5,
+                        'max_negative'  =>  0
+                    ),
+                    array(
+                        'block_name'    =>  'D',
+                        'block_title'   =>  'Division',
+                        'block_subtitle'=>  'Add / Less Partner',
+                        'instruction'   =>  'Division',
+                        'digits'        =>  'TD/DD',
                         'rows'          =>  1,
                         'sums'          =>  5,
                         'max_negative'  =>  0

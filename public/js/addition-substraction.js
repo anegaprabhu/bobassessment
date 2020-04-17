@@ -118,6 +118,33 @@
             var result_val = dividend + "_" + divisor + "_" + dividend % divisor;
               return result_val;
         },
+        tripleDigitDoubleDigitWithoutRemainder: function(rem){
+            var divisor = BOBASSESSMENT.general.randomIntFromInterval(10, 99);
+            if(divisor < 20){
+                var dividend = divisor * 4;
+            }else if(divisor < 30 && divisor >= 10){
+                var multiplier = BOBASSESSMENT.general.randomIntFromInterval(1, 33);
+                var dividend = divisor * multiplier;
+            }else if(divisor < 50 && divisor >= 30){
+                var multiplier = BOBASSESSMENT.general.randomIntFromInterval(1, 19);
+                var dividend = divisor * multiplier;
+            }else if(divisor < 60 && divisor >= 50){
+                var multiplier = BOBASSESSMENT.general.randomIntFromInterval(1, 16);
+                var dividend = divisor * multiplier;
+            }else if(divisor < 70 && divisor >= 60){
+                var multiplier = BOBASSESSMENT.general.randomIntFromInterval(1, 14);
+                var dividend = divisor * multiplier;
+            }else if(divisor < 85 && divisor >= 70){
+                var multiplier = BOBASSESSMENT.general.randomIntFromInterval(1, 11);
+                var dividend = divisor * multiplier;
+            }else if(divisor <= 99 && divisor >= 85){
+                var multiplier = BOBASSESSMENT.general.randomIntFromInterval(1, 9);
+                var dividend = divisor * multiplier;
+            }
+
+            var result_val = dividend + "_" + divisor + "_" + dividend % divisor;
+              return result_val;
+        },
         tripleDigitSingleDigitWithoutRemainder_old: function(rem)
         {
             console.log(random_negative_index);
@@ -644,6 +671,23 @@
                 var sumup_loop = 0;
     
                 var returnValue = BOBASSESSMENT.general.doubleDigitDoubleDigitWithoutRemainder(rem);
+                    console.log('returned_value: ' + returnValue);
+                    returnValue = returnValue.split('_');
+                    dividend_arr.push(returnValue[0]);
+                    divisor_arr.push(returnValue[1]);
+                    sumup_loop = returnValue[0] / returnValue[1];
+                    // alert([{'devidend' : multiplicand_arr, 'divisor' : multiplier_arr, 'answer' : sumup_loop}]);
+                    // return;
+                    return [{'devidend' : dividend_arr, 'divisor' : divisor_arr, 'answer' : sumup_loop, 'remainder' : returnValue[2]}];
+            },
+            tripleDigitDoubleDigit: function(rem)
+            {
+    
+                var dividend_arr = [];
+                var divisor_arr = [];
+                var sumup_loop = 0;
+    
+                var returnValue = BOBASSESSMENT.general.tripleDigitDoubleDigitWithoutRemainder(rem);
                     console.log('returned_value: ' + returnValue);
                     returnValue = returnValue.split('_');
                     dividend_arr.push(returnValue[0]);
