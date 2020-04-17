@@ -21,9 +21,9 @@
             }
                 sumString += "<tr><td style=' border-top: 2px solid black;'>";
                 if(vk == 'yes'){
-                    sumString += "<input id='answer_input' type='text' readonly='readonly' class='text-right pr-1' style='width:100px; border: 1px solid black;' value='' />"; // placeholder='"+arr['answer']+"'
+                    sumString += "<input id='answer_input' type='text' readonly='readonly' class='text-right pr-1' style='width:100px; border: 0px solid black;' value='' />"; // placeholder='"+arr['answer']+"'
                 }else{
-                    sumString += "<input id='answer_input' type='text' class='text-right pr-1' style='width:100px; border: 1px solid black;' value='' />";
+                    sumString += "<input id='answer_input' type='text' class='text-right pr-1' style='width:100px; border: 0px solid black;' value='' />";
                 }
                 sumString += "</td></tr>";
             sumString += "</table>";
@@ -51,9 +51,9 @@
                 sumString += "<td>&times;</td>";
                 sumString += "<td style=' padding-right: 5px;'>" + arr['multiplier'][y] + "</td>";
                 if(vk == 'yes'){
-                    sumString += "<td style='padding: 0px 5px;'><input id='answer_input' type='text' readonly='readonly' class='text-right pr-1' style='width:100px; border: 1px solid black;' value='' /></td>"; // placeholder='"+arr['answer']+"'
+                    sumString += "<td style='padding: 0px 5px;'><input id='answer_input' type='text' readonly='readonly' class='text-right pr-1' style='width:100px; border: 0px solid black;' value='' /></td>"; // placeholder='"+arr['answer']+"'
                 }else{
-                    sumString += "<td style='padding: 0px 5px;'><input id='answer_input' type='text' class='text-right pr-1' style='width:100px; border: 1px solid black;' value='' /></td>";
+                    sumString += "<td style='padding: 0px 5px;'><input id='answer_input' type='text' class='text-right pr-1' style='width:100px; border: 0px solid black;' value='' /></td>";
                 }
                 sumString += "</tr>";
             }
@@ -69,11 +69,11 @@
                 sumString += "<td>&#xF7;</td>";
                 sumString += "<td style=' padding-right: 5px;'>" + arr['divisor'][y] + "</td><tr>";
                 if(vk == 'yes'){
-                    sumString += "<tr><td style='padding: 0px 5px;'><input id='answer_input' type='text' readonly='readonly' class='text-right pr-1' style='width:100px; border: 1px solid black;' value='' /></td>"; // placeholder='"+arr['answer']+"'
-                    sumString += "<td style='padding: 0px 5px;'><input id='answer_input_remainder' type='text' readonly='readonly' class='text-right pr-1' style='width:100px; border: 1px solid black;' value='' /></td></tr>"; // placeholder='"+arr['answer']+"'
+                    sumString += "<tr><td style='padding: 0px 5px;'><input id='answer_input' type='text' readonly='readonly' class='text-right pr-1' style='width:100px; border: 0px solid black;' value='' /></td>"; // placeholder='"+arr['answer']+"'
+                    sumString += "<td style='padding: 0px 5px;'><input id='answer_input_remainder' type='text' readonly='readonly' class='text-right pr-1' style='width:100px; border: 0px solid black;' value='' /></td></tr>"; // placeholder='"+arr['answer']+"'
                 }else{
-                    sumString += "<tr><td style='padding: 0px 5px;'><input id='answer_input' type='text' class='text-right pr-1' style='width:100px; border: 1px solid black;' value='' /></td>";
-                    sumString += "<td style='padding: 0px 5px;'><input id='answer_input_remainder' type='text' class='text-right pr-1' style='width:100px; border: 1px solid black;' value='' /></td></tr>";
+                    sumString += "<tr><td style='padding: 0px 5px;'><input id='answer_input' type='text' class='text-right pr-1' style='width:100px; border: 0px solid black;' value='' /></td>";
+                    sumString += "<td style='padding: 0px 5px;'><input id='answer_input_remainder' type='text' class='text-right pr-1' style='width:100px; border: 0px solid black;' value='' /></td></tr>";
                 }
                 sumString += "</tr>";
             }
@@ -103,6 +103,19 @@
               var minimum = Math.floor(1001 / small)
               var big = Math.ceil(Math.random() * limit) + minimum
               var result_val = (big * small) + "_" + small + "_" + big % small;
+              return result_val;
+        },
+        doubleDigitDoubleDigitWithoutRemainder: function(rem){
+            var divisor = BOBASSESSMENT.general.randomIntFromInterval(10, 45);
+            if(divisor < 20){
+                var dividend = divisor * 4;
+            }else if(divisor < 30 && divisor >= 20){
+                var dividend = divisor * 3;
+            }else if(divisor <= 45 && divisor >= 30){
+                var dividend = divisor * 2;
+            }
+
+            var result_val = dividend + "_" + divisor + "_" + dividend % divisor;
               return result_val;
         },
         tripleDigitSingleDigitWithoutRemainder_old: function(rem)
@@ -622,7 +635,24 @@
                     // alert([{'devidend' : multiplicand_arr, 'divisor' : multiplier_arr, 'answer' : sumup_loop}]);
                     // return;
                     return [{'devidend' : dividend_arr, 'divisor' : divisor_arr, 'answer' : sumup_loop, 'remainder' : returnValue[2]}];
-                }
+            },
+            doubleDigitDoubleDigit: function(rem)
+            {
+    
+                var dividend_arr = [];
+                var divisor_arr = [];
+                var sumup_loop = 0;
+    
+                var returnValue = BOBASSESSMENT.general.doubleDigitDoubleDigitWithoutRemainder(rem);
+                    console.log('returned_value: ' + returnValue);
+                    returnValue = returnValue.split('_');
+                    dividend_arr.push(returnValue[0]);
+                    divisor_arr.push(returnValue[1]);
+                    sumup_loop = returnValue[0] / returnValue[1];
+                    // alert([{'devidend' : multiplicand_arr, 'divisor' : multiplier_arr, 'answer' : sumup_loop}]);
+                    // return;
+                    return [{'devidend' : dividend_arr, 'divisor' : divisor_arr, 'answer' : sumup_loop, 'remainder' : returnValue[2]}];
+            }
     
     }
     BOBASSESSMENT.decimal = {
@@ -645,7 +675,7 @@
                 var tmpCnt1 = 0;
                 for(e=0;e<random_negative_index.length;e++){
                     if(c === random_negative_index[e]){
-                        console.log("test: " + e + " _ " + random_negative_index[e]);
+                        // console.log("test: " + e + " _ " + random_negative_index[e]);
                         if(sumup_loop + negative_number > 0){
                             tmpCnt = 1;
                         }        
@@ -660,12 +690,68 @@
                     addend.push(BOBASSESSMENT.general.addZerointoDecimal(n));
                     ansArr.push(sumup_loop);
                 }else if (tmpCnt1 != 0){
+                    console.log('modified: ' + BOBASSESSMENT.general.addZerointoDecimal(zero_number).toString().replace(/^0+/, ''));
+                    console.log('original: ' + BOBASSESSMENT.general.addZerointoDecimal(zero_number))
                     sumup_loop += zero_number;
-                    addend.push(BOBASSESSMENT.general.addZerointoDecimal(zero_number));
+                    addend.push(BOBASSESSMENT.general.addZerointoDecimal(zero_number).toString().replace(/^0+/, ''));
                     ansArr.push(sumup_loop);
                 }else{
                     sumup_loop += negative_number;
-                    addend.push(negative_number);
+                    addend.push(BOBASSESSMENT.general.addZerointoDecimal(negative_number));
+                    ansArr.push(sumup_loop);
+                }
+                // debugger;
+            }
+            // console.log(addend);
+            return [{'sum_items' :addend, 'ans_breakup': ansArr,'answer': sumup_loop}];
+           
+        },
+        singleDigitDecimalWithoutLessThanOne: function(rows,negCount) 
+        {
+            var addend = [];
+            var ansArr = [];
+            var sumup_loop = 0;
+            var random_negative_index = BOBASSESSMENT.general.negativeIndex(rows,negCount);
+            // var zero_index = BOBASSESSMENT.general.negativeIndex(rows,negCount);
+
+            for(c=0;c<rows;c++){
+                var n = BOBASSESSMENT.general.randomNumberWithDecimal(1, 9, 2);
+                    // n = BOBASSESSMENT.general.addZerointoDecimal(n);
+                var negative_number = BOBASSESSMENT.general.randomNumberWithDecimal(-9, -1, 2); //Math.floor(Math.random() * 9) -9 //randomIntFromInterval(1, 9)
+                    // negative_number = BOBASSESSMENT.general.addZerointoDecimal(negative_number);
+                // var zero_number = BOBASSESSMENT.general.randomNumberWithDecimal(0, 1, 2);
+                    // zero_number = BOBASSESSMENT.general.addZerointoDecimal(zero_number);
+                var tmpCnt = 0;
+                var tmpCnt1 = 0;
+                for(e=0;e<random_negative_index.length;e++){
+                    if(c === random_negative_index[e]){
+                        // console.log("test: " + e + " _ " + random_negative_index[e]);
+                        if(sumup_loop + negative_number > 0){
+                            tmpCnt = 1;
+                        }        
+                    }
+                    // else if(c === zero_index[e]){
+                    //     if(sumup_loop + zero_number > 0){
+                    //         tmpCnt1 = 1;
+                    //     }        
+                    // }
+                }
+                if(tmpCnt == 0){
+                    sumup_loop += n;
+                    addend.push(BOBASSESSMENT.general.addZerointoDecimal(n));
+                    ansArr.push(sumup_loop);
+                }
+                // else if (tmpCnt1 != 0){
+                //     console.log('modified: ' + BOBASSESSMENT.general.addZerointoDecimal(zero_number).toString().replace(/^0+/, ''));
+                //     console.log('original: ' + BOBASSESSMENT.general.addZerointoDecimal(zero_number))
+                //     sumup_loop += zero_number;
+                //     addend.push(BOBASSESSMENT.general.addZerointoDecimal(zero_number).toString().replace(/^0+/, ''));
+                //     ansArr.push(sumup_loop);
+                // }
+                else
+                {
+                    sumup_loop += negative_number;
+                    addend.push(BOBASSESSMENT.general.addZerointoDecimal(negative_number));
                     ansArr.push(sumup_loop);
                 }
                 // debugger;
