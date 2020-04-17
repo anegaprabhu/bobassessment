@@ -9665,4 +9665,91 @@ input[type=number]:focus,
     -o-background-size: 100% 100%;
     background-size: 100% 100%;
 }
+.keyPadBtn{
+  border: 0;
+  background: url("../images/btn.png");
+  -webkit-background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  background-size: 100% 100%;
+  color: white;
+}
 
+.keyPadBtn:hover{
+    border: 0;
+    background: url("../images/btn-hover.png");
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: 100% 100%;
+    color: white;
+  }
+
+#nextBtn {
+    border: 0;
+    background: url("../images/nextBtn.png");
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: 100% 100%;
+    color: white;
+    display: none;
+  }
+
+#answer_input {
+    border: 0;
+    background: url("../images/inputBg.png");
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: 100% 100%;
+    color: white;
+}
+
+.keybox {
+    border: 0;
+    background: url("../images/keypadBg.png");
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: 100% 100%;
+    color: white;
+}
+
+  .btnClick {
+    -webkit-animation-name: cssAnimation;
+    -webkit-animation-duration:3s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-fill-mode: forwards;
+  }
+  @-webkit-keyframes cssAnimation {
+    0% {
+        border: 0;
+        background: url("../images/btn.png");
+        -webkit-background-size: 100% 100%;
+        -moz-background-size: 100% 100%;
+        -o-background-size: 100% 100%;
+        background-size: 100% 100%;
+        color: white;
+    }
+    50% {
+        border: 0;
+        background: url("../images/btn-hover.png");
+        -webkit-background-size: 100% 100%;
+        -moz-background-size: 100% 100%;
+        -o-background-size: 100% 100%;
+        background-size: 100% 100%;
+        color: white;
+    }
+    100% {
+        border: 0;
+        background: url("../images/btn.png");
+        -webkit-background-size: 100% 100%;
+        -moz-background-size: 100% 100%;
+        -o-background-size: 100% 100%;
+        background-size: 100% 100%;
+        color: white;
+    }
+  
+  }

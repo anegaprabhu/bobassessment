@@ -468,6 +468,22 @@ class ExamController extends Controller
                         ),
                     )
                 )  ;  
+            } else if ( $level_id == 'Level 8') {
+                $level_info = (object)array(
+                    'programme'     =>  'BRAINOBRAIN',
+                    'level'         =>  'Level 8',
+                    'row_blocks'    =>  array(
+                        array(
+                            'block_name'    =>  'A',
+                            'block_title'   =>  'Division',
+                            'block_subtitle'=>  'Add / Less Partner',
+                            'digits'        =>  'DD/DD',
+                            'rows'          =>  1,
+                            'sums'          =>  5,
+                            'max_negative'  =>  2
+                        ),
+                    )
+                )  ;  
             }else{
                 // dd('here');
                 return view('parents');
@@ -712,6 +728,8 @@ class ExamController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->hdn_test_data_store);
+
         $student_details = explode("_",$request->hdn_test_st_store);
         $test_data = json_decode($request->hdn_test_data_store,true);
         $comp_id = $student_details[2];
@@ -722,7 +740,7 @@ class ExamController extends Controller
             ->where('student_id',Hashids::decode( $student_details[0] )[0])
             ->get();
 
-
+// dd($student);
         $time_zone_now = Carbon::now($student[0]->local_timezone);
 
 
@@ -751,7 +769,19 @@ class ExamController extends Controller
             $result->save();
         }      
 
-        return view('exam.test-review',compact('test_data'));
+        $correct_sums = 0;
+        foreach($test_data as $k => $data)
+        {
+            if($data['answer'] == $data['student_answer']){
+                $correct_sums += 1;
+            }
+        }
+        $total_sums = count($test_data);
+
+
+
+        // dd($result);
+        return view('exam.test-review',compact('test_data','correct_sums','total_sums','student'));
     }
 
     /**
@@ -766,16 +796,24 @@ class ExamController extends Controller
         // dd($request->hdn_test_data);
         $student_detail = explode('_',$request->hdn_test_st);
         $test_data = json_decode($request->hdn_test_data,true);
-        // dd($test_data);
-        $correct_sums = 0;
-        foreach($test_data as $k => $data)
-        {
-            if($data['answer'] == $data['student_answer']){
-                $correct_sums += 1;
-            }
-        }
-        // dd($correct_sums);
-        return view('exam.test-review',compact('test_data','correct_sums','student_detail'));
+        // dd($student_detail);
+        $student = \DB::table('students')
+            ->where('student_id',Hashids::decode( $student_detail[0] )[0])
+            ->get();
+
+        // dd($student);
+        // $correct_sums = 0;
+        // foreach($test_data as $k => $data)
+        // {
+        //     if($data['answer'] == $data['student_answer']){
+        //         $correct_sums += 1;
+        //     }
+        // }
+        // dd($test_data['correct_answer']);
+        $correct_sums = $test_data['correct_answer'];
+        $total_sums = $test_data['total_sums'];
+        return view('exam.test-review',compact('test_data','correct_sums','total_sums','student'));
+        // return view('exam.test-review',compact('test_data'));
     }
 
     /**

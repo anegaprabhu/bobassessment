@@ -59,7 +59,7 @@
     <form method="get" id="form-show-test-review" action="{{url('/exam/show')}}" enctype="multipart/form-data">
         {{ csrf_field() }}
         <input type="hidden" id="hdn_test_data" name="hdn_test_data" value="" /> 
-        <input type="hidden" id="hdn_test_st" name="hdn_test_st_store" value="" />
+        <input type="hidden" id="hdn_test_st" name="hdn_test_st" value="" />
     </form>
 
     <form method="post" id="form-show-test-store" action="{{url('/exam/store')}}" enctype="multipart/form-data">
@@ -120,26 +120,26 @@
                                 <td></td>    
                             </tr>
                             <tr>
-                                <td><div class="text-center keyPadBtn" onClick="keyPadBtn(1)" style=" width: 40px; height: 40px; border: 1px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">1</div></td>
-                                <td><div class="text-center keyPadBtn" onClick="keyPadBtn(2)" style=" width: 40px; height: 40px; border: 1px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">2</div></td>
-                                <td><div class="text-center keyPadBtn" onClick="keyPadBtn(3)" style=" width: 40px; height: 40px; border: 1px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">3</div></td>
-                                <td><div class="text-center keyPadBtn" onClick="keyPadBtn(4)" style=" width: 40px; height: 40px; border: 1px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">4</div></td>
-                                <td><div class="text-center keyPadBtn" onClick="keyPadBtn(5)" style=" width: 40px; height: 40px; border: 1px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">5</div></td>
+                                <td><div class="text-center keyPadBtn" onClick="keyPadBtn(1,this)" style=" width: 40px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">1</div></td>
+                                <td><div class="text-center keyPadBtn" onClick="keyPadBtn(2)" style=" width: 40px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">2</div></td>
+                                <td><div class="text-center keyPadBtn" onClick="keyPadBtn(3)" style=" width: 40px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">3</div></td>
+                                <td><div class="text-center keyPadBtn" onClick="keyPadBtn(4)" style=" width: 40px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">4</div></td>
+                                <td><div class="text-center keyPadBtn" onClick="keyPadBtn(5)" style=" width: 40px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">5</div></td>
                             </tr>
                             <tr>
-                                <td><div class="text-center keyPadBtn" onClick="keyPadBtn(6)" style=" width: 40px; height: 40px; border: 1px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">6</div></td>
-                                <td><div class="text-center keyPadBtn" onClick="keyPadBtn(7)" style=" width: 40px; height: 40px; border: 1px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">7</div></td>
-                                <td><div class="text-center keyPadBtn" onClick="keyPadBtn(8)" style=" width: 40px; height: 40px; border: 1px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">8</div></td>
-                                <td><div class="text-center keyPadBtn" onClick="keyPadBtn(9)" style=" width: 40px; height: 40px; border: 1px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">9</div></td>
-                                <td><div class="text-center keyPadBtn" onClick="keyPadBtn(0)" style=" width: 40px; height: 40px; border: 1px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">0</div></td>
+                                <td><div class="text-center keyPadBtn" onClick="keyPadBtn(6)" style=" width: 40px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">6</div></td>
+                                <td><div class="text-center keyPadBtn" onClick="keyPadBtn(7)" style=" width: 40px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">7</div></td>
+                                <td><div class="text-center keyPadBtn" onClick="keyPadBtn(8)" style=" width: 40px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">8</div></td>
+                                <td><div class="text-center keyPadBtn" onClick="keyPadBtn(9)" style=" width: 40px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">9</div></td>
+                                <td><div class="text-center keyPadBtn" onClick="keyPadBtn(0)" style=" width: 40px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">0</div></td>
                             </tr>
                             <!-- <tr>
                                 <td><div class="text-center" style=" width: 40px; height: 40px; border: 1px solid black; margin: 2px; padding: 12px 18px; font-weight: bold">=</div></td>
                             </tr> -->
                             <tr>
-                                <td><div onClick="backspace()" class="text-center keyPadBtn" style=" width: 40px; height: 40px; border: 1px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;"><</div></td>
-                                <td id="nextBtnContainer" colspan="3"><button onClick="next()" data-ord="1" id="nextBtn" class="text-center" style=" width: 132px; height: 40px; border: 1px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; cursor: pointer; display: none;">NEXT</button></td>
-                                <td><div class="text-center keyPadBtn" onClick="keyPadBtn('.')" style=" width: 40px; height: 40px; border: 1px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">.</div></td>
+                                <td><div onClick="backspace()" class="text-center keyPadBtn" style=" width: 40px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;"><</div></td>
+                                <td id="nextBtnContainer" colspan="3"><button onClick="next()" data-ord="1" id="nextBtn" class="text-center" style=" width: 132px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; cursor: pointer; display: none;">NEXT</button></td>
+                                <td><div class="text-center keyPadBtn" onClick="keyPadBtn('.')" style=" width: 40px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">.</div></td>
                                
                             </tr>
                             @if(count($student_detail) > 0 && Hashids::decode($student_detail[1])[0] > 60)
@@ -336,6 +336,26 @@
                             // console.log(sdReturn);
                             sumsArray.push({'category' : block_category, 'title'     :   block['block_title'], 'sub_title' : block['block_subtitle'], 'sum_no'    :   b + 1, 'sum_items' :  [], 'ans_breakup': [], 'dividend' : sdReturn[0]['devidend'], 'divisor' : sdReturn[0]['divisor'], 'answer'    :  sdReturn[0]['answer'], 'remainder' : sdReturn[0]['remainder'], 'student_answer'   : null});
                          }
+                    }else if(block_type == 'DD/DD' && block_category == 'Division'){
+                        var random_negative_index = BOBASSESSMENT.general.negativeIndex(block['sums'],3);
+                         for(b=0;b<block['sums'];b++){
+                            var cnt = 0;
+                            for(c=0;c<random_negative_index.length;c++)
+                                {
+                                    if(random_negative_index[c] == b)
+                                    {
+                                        cnt += 1;
+                                    }
+                                }
+                                if(cnt > 0)
+                                {
+                                    var sdReturn = BOBASSESSMENT.division.doubleDigitDoubleDigit('yes');
+                                }else{
+                                    var sdReturn = BOBASSESSMENT.division.doubleDigitDoubleDigit('yes');
+                                }
+                            // console.log(sdReturn);
+                            sumsArray.push({'category' : block_category, 'title'     :   block['block_title'], 'sub_title' : block['block_subtitle'], 'sum_no'    :   b + 1, 'sum_items' :  [], 'ans_breakup': [], 'dividend' : sdReturn[0]['devidend'], 'divisor' : sdReturn[0]['divisor'], 'answer'    :  sdReturn[0]['answer'], 'remainder' : sdReturn[0]['remainder'], 'student_answer'   : null});
+                         }
                     }else{
 
                     }
@@ -359,9 +379,11 @@
             }
         }
 
-        function keyPadBtn(n){
+        function keyPadBtn(n,thisElem){
             // alert(n)
             // $("#toggle-demo").prop("checked")
+            // thisElem.classList.remove("btnClick");
+            // thisElem.classList.add("btnClick");
             var curVal = $("#answer_input").val();
             var curVal_remainder = $("#answer_input_remainder").val();
 
@@ -453,7 +475,7 @@
 
                     var sumString = "<tr><td style=' border-top: 2px solid black; min-width: 102px;'>";
                 if(virtual_keyboard == 'yes'){
-                    sumString += "<input id='answer_input' type='text' readonly='readonly' class='text-right pr-3' style='width:100px; border: 1px solid black;' value='' />"; // placeholder='"+arr['answer']+"'
+                    sumString += "<input id='answer_input' type='text' readonly='readonly' class='text-right pr-3' style='width:100px; border: 0px solid black;' value='' />"; // placeholder='"+arr['answer']+"'
                 }else{
                     sumString += "<input id='answer_input' type='text' class='text-right pr-3' style='width:100px; border: 1px solid black;' value='' />";
                 }
@@ -475,7 +497,7 @@
                   }
 
 
-            },2000);
+            },500);
 
 
                     // var getSum = BOBASSESSMENT.general.generateSum(sumsArray[curOrd],virtual_keyboard);  
@@ -512,6 +534,7 @@
                     $(".progress-bar").css('width', ((parseInt(curOrd) + 1) / total_sums) * 100 + '%');
                     $(".progress-bar").text((parseInt(curOrd) + 1) + ' of ' + total_sums);
                 }else if (sumsArray[curOrd]['category'] == 'Division'){
+                    debugger;
                     sumsArray[parseInt(curOrd) - 1]['student_answer'] = $("#answer_input").val();
                     sumsArray[parseInt(curOrd) - 1]['end_time']    = $('.Timer').text();
                     sumsArray[parseInt(curOrd)]['start_time']    = $('.Timer').text();  
@@ -579,9 +602,9 @@
 
                     var sumString = "<tr><td style=' border-top: 2px solid black; min-width: 102px;'>";
                 if(virtual_keyboard == 'yes'){
-                    sumString += "<input id='answer_input' type='text' readonly='readonly' class='text-right pr-3' style='width:100px; border: 1px solid black;' value='' />"; // placeholder='"+arr['answer']+"'
+                    sumString += "<input id='answer_input' type='text' readonly='readonly' class='text-right pr-3' style='width:100px; border: 0px solid black;' value='' />"; // placeholder='"+arr['answer']+"'
                 }else{
-                    sumString += "<input id='answer_input' type='text' class='text-right pr-3' style='width:100px; border: 1px solid black;' value='' />";
+                    sumString += "<input id='answer_input' type='text' class='text-right pr-3' style='width:100px; border: 0px solid black;' value='' />";
                 }
                 sumString += "</td></tr>";
 
@@ -590,7 +613,7 @@
                         $("#nextBtn").css('display','block');
                         clearInterval(timer);
                   }
-            },2000);
+            },500);
 
                     $(".progress-bar").css('width', (1 / total_sums) * 100 + '%');
                     // $(".progress-bar").text( 1 + ' of ' + total_sums);
@@ -642,6 +665,9 @@ function submitResult(id){
     {
         return;
     }
+    sumsArray[sumsArray.length - 1]['student_answer'] = $("#answer_input").val();
+    sumsArray[sumsArray.length - 1]['end_time']    = $('.Timer').text();
+    sumsArray[sumsArray.length - 1]['start_time']    = $('.Timer').text();  
 
     $("#hdn_test_st_store").val(id);
     // alert(JSON.stringify(sumsArray));
@@ -655,8 +681,19 @@ function showResult(id){
     {
         return;
     }
+    sumsArray[sumsArray.length - 1]['student_answer'] = $("#answer_input").val();
+    sumsArray[sumsArray.length - 1]['end_time']    = $('.Timer').text();
+    sumsArray[sumsArray.length - 1]['start_time']    = $('.Timer').text();  
     $("#hdn_test_st").val(id);
-    $("#hdn_test_data").val(JSON.stringify(sumsArray));
+
+    correctAns = 0;
+    for(xx=0;xx<sumsArray.length;xx++){
+        if(sumsArray[xx]['answer'] == sumsArray[xx]['student_answer']){
+            correctAns += 1
+        }
+    }
+
+    $("#hdn_test_data").val(JSON.stringify({'correct_answer':correctAns, 'total_sums': sumsArray.length}));
     $("#form-show-test-review").submit();
 }
 
@@ -707,7 +744,8 @@ function closeNav() {
 function generate() {
   // Numbers [2-9]
   //Single Digit
-  var small = Math.floor(Math.random() * 8) + 2
+//   var small = Math.floor(Math.random() * 80) + 2
+  var small = Math.floor(Math.random() * (99 - 10 + 1) + 10);
     //Double Digit
 //   var small = Math.floor(Math.random() * (99 - 10 + 1) + 10);
 
@@ -715,10 +753,10 @@ function generate() {
   // for double digit: give 85 and 9
   // for Triple digit/Double digit 800 and 100
   // for 4 digit single digit: give 9000 and 1001
-  var limit = Math.ceil(8500 / small)
+  var limit = Math.ceil(80 / small)
   
   // We check the minimum now
-  var minimum = Math.floor(1001 / small)
+  var minimum = Math.floor(9 / small)
 
   // We create a new random with given limit
   var big = Math.ceil(Math.random() * limit) + minimum
@@ -730,7 +768,7 @@ function generate() {
 
 }
 for(a=0;a<100;a++){
-    // console.log(generate())
+    console.log(generate())
 
 }
     </script>

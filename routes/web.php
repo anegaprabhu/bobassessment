@@ -42,6 +42,7 @@ Route::group(['middleware' => 'auth:parents'], function () {
     Route::resource('instruction', 'TestinstructionController');
     Route::post('student/store','StudentController@store');
     Route::post('exam/store','ExamController@store');
+    Route::get('exam/show','ExamController@show');
 
 });
 
