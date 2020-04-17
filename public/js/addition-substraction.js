@@ -47,9 +47,9 @@
             sumString = "<table style=' font-size: 30px; font-weight: bold; margin-top: 20px;'>";
             for(y=0;y<(arr['multiplicand']).length;y++){
                 sumString += "<tr>";
-                sumString += "<td style=' padding-right: 5px;'>" + arr['multiplicand'][y] + "</td>";
+                sumString += "<td style=' padding-right: 15px;'>" + arr['multiplicand'][y] + "</td>";
                 sumString += "<td>&times;</td>";
-                sumString += "<td style=' padding-right: 5px;'>" + arr['multiplier'][y] + "</td>";
+                sumString += "<td style=' padding-left: 15px; padding-right: 15px;'>" + arr['multiplier'][y] + "</td>";
                 if(vk == 'yes'){
                     sumString += "<td style='padding: 0px 5px;'><input id='answer_input' type='text' readonly='readonly' class='text-right pr-1' style='width:100px; border: 0px solid black;' value='' /></td>"; // placeholder='"+arr['answer']+"'
                 }else{
@@ -65,15 +65,15 @@
             sumString = "<table style=' font-size: 30px; font-weight: bold; margin-top: 20px;'>";
             for(y=0;y<(arr['dividend']).length;y++){
                 sumString += "<tr>";
-                sumString += "<td style=' padding-right: 5px;'>" + arr['dividend'][y] + "</td>";
+                sumString += "<td style=' padding-right: 15px;'>" + arr['dividend'][y] + "</td>";
                 sumString += "<td>&#xF7;</td>";
-                sumString += "<td style=' padding-right: 5px;'>" + arr['divisor'][y] + "</td><tr>";
+                sumString += "<td style=' padding-left: 15px; padding-right: 15px;'>" + arr['divisor'][y] + "</td>";
                 if(vk == 'yes'){
-                    sumString += "<tr><td style='padding: 0px 5px;'><input id='answer_input' type='text' readonly='readonly' class='text-right pr-1' style='width:100px; border: 0px solid black;' value='' /></td>"; // placeholder='"+arr['answer']+"'
-                    sumString += "<td style='padding: 0px 5px;'><input id='answer_input_remainder' type='text' readonly='readonly' class='text-right pr-1' style='width:100px; border: 0px solid black;' value='' /></td></tr>"; // placeholder='"+arr['answer']+"'
+                    sumString += "<td style='padding: 0px 5px;'><input id='answer_input' type='text' readonly='readonly' class='text-right pr-1' style='width:100px; border: 0px solid black;' value='' /></td>"; // placeholder='"+arr['answer']+"'
+                    // sumString += "<td style='padding: 0px 5px;'><input id='answer_input_remainder' type='text' readonly='readonly' class='text-right pr-1' style='width:100px; border: 0px solid black;' value='' /></td></tr>"; // placeholder='"+arr['answer']+"'
                 }else{
-                    sumString += "<tr><td style='padding: 0px 5px;'><input id='answer_input' type='text' class='text-right pr-1' style='width:100px; border: 0px solid black;' value='' /></td>";
-                    sumString += "<td style='padding: 0px 5px;'><input id='answer_input_remainder' type='text' class='text-right pr-1' style='width:100px; border: 0px solid black;' value='' /></td></tr>";
+                    sumString += "<td style='padding: 0px 5px;'><input id='answer_input' type='text' class='text-right pr-1' style='width:100px; border: 0px solid black;' value='' /></td>";
+                    // sumString += "<td style='padding: 0px 5px;'><input id='answer_input_remainder' type='text' class='text-right pr-1' style='width:100px; border: 0px solid black;' value='' /></td></tr>";
                 }
                 sumString += "</tr>";
             }
@@ -121,8 +121,8 @@
         tripleDigitDoubleDigitWithoutRemainder: function(rem){
             var divisor = BOBASSESSMENT.general.randomIntFromInterval(10, 99);
             if(divisor < 20){
-                var dividend = divisor * 4;
-            }else if(divisor < 30 && divisor >= 10){
+                var dividend = divisor * 10;
+            }else if(divisor < 30 && divisor >= 20){
                 var multiplier = BOBASSESSMENT.general.randomIntFromInterval(1, 33);
                 var dividend = divisor * multiplier;
             }else if(divisor < 50 && divisor >= 30){
@@ -139,6 +139,60 @@
                 var dividend = divisor * multiplier;
             }else if(divisor <= 99 && divisor >= 85){
                 var multiplier = BOBASSESSMENT.general.randomIntFromInterval(1, 9);
+                var dividend = divisor * multiplier;
+            }
+
+            var result_val = dividend + "_" + divisor + "_" + dividend % divisor;
+              return result_val;
+        },
+        fourDigitDoubleDigitWithoutRemainder: function(rem){
+            var divisor = BOBASSESSMENT.general.randomIntFromInterval(10, 99);
+            if(divisor < 20){
+                var dividend = divisor * 91;
+            }else if(divisor < 30 && divisor >= 20){
+                var multiplier = BOBASSESSMENT.general.randomIntFromInterval(34, 333);
+                var dividend = divisor * multiplier;
+            }else if(divisor < 50 && divisor >= 30){
+                var multiplier = BOBASSESSMENT.general.randomIntFromInterval(21, 199);
+                var dividend = divisor * multiplier;
+            }else if(divisor < 60 && divisor >= 50){
+                var multiplier = BOBASSESSMENT.general.randomIntFromInterval(17, 166);
+                var dividend = divisor * multiplier;
+            }else if(divisor < 70 && divisor >= 60){
+                var multiplier = BOBASSESSMENT.general.randomIntFromInterval(15, 142);
+                var dividend = divisor * multiplier;
+            }else if(divisor < 85 && divisor >= 70){
+                var multiplier = BOBASSESSMENT.general.randomIntFromInterval(12, 117);
+                var dividend = divisor * multiplier;
+            }else if(divisor <= 99 && divisor >= 85){
+                var multiplier = BOBASSESSMENT.general.randomIntFromInterval(11, 101);
+                var dividend = divisor * multiplier;
+            }
+
+            var result_val = dividend + "_" + divisor + "_" + dividend % divisor;
+              return result_val;
+        },
+        fiveDigitDoubleDigitWithoutRemainder: function(rem){
+            var divisor = BOBASSESSMENT.general.randomIntFromInterval(10, 99);
+            if(divisor < 20){
+                var dividend = divisor * 910;
+            }else if(divisor < 30 && divisor >= 20){
+                var multiplier = BOBASSESSMENT.general.randomIntFromInterval(334, 3334);
+                var dividend = divisor * multiplier;
+            }else if(divisor < 50 && divisor >= 30){
+                var multiplier = BOBASSESSMENT.general.randomIntFromInterval(201, 1999);
+                var dividend = divisor * multiplier;
+            }else if(divisor < 60 && divisor >= 50){
+                var multiplier = BOBASSESSMENT.general.randomIntFromInterval(167, 1666);
+                var dividend = divisor * multiplier;
+            }else if(divisor < 70 && divisor >= 60){
+                var multiplier = BOBASSESSMENT.general.randomIntFromInterval(143, 1428);
+                var dividend = divisor * multiplier;
+            }else if(divisor < 85 && divisor >= 70){
+                var multiplier = BOBASSESSMENT.general.randomIntFromInterval(118, 1176);
+                var dividend = divisor * multiplier;
+            }else if(divisor <= 99 && divisor >= 85){
+                var multiplier = BOBASSESSMENT.general.randomIntFromInterval(102, 1010);
                 var dividend = divisor * multiplier;
             }
 
@@ -436,6 +490,43 @@
             }
             return [{'sum_items' :addend, 'ans_breakup': ansArr,'answer': sumup_loop}];
 
+        }, //end of singleDigit
+        doubleDigitLessThanHundred: function(rows,negCount)
+		{
+            var addend = [];
+            var ansArr = [];
+            var sumup_loop = 0;
+            var random_negative_index = this.negativeIndex(rows,negCount);
+
+            for(c=0;c<rows;c++){
+                var n = BOBASSESSMENT.general.randomIntFromInterval(11, 32)
+                var negative_number = Math.floor(Math.random() * 20) -30 //randomIntFromInterval(1, 9)
+
+                var tmpCnt = 0;
+                for(e=0;e<random_negative_index.length;e++){
+                    if(c==random_negative_index[e]){
+                        if(sumup_loop + negative_number > 0){
+                            // sumup_loop += negative_number;
+                            // addend.push(negative_number);
+                            tmpCnt = 1;
+                            // break;
+                        }        
+                    }
+                    // console.log(e);
+                }
+                if(tmpCnt == 0){
+                    sumup_loop += n;
+                    addend.push(n);
+                    ansArr.push(sumup_loop);
+                }else{
+                    sumup_loop += negative_number;
+                    addend.push(negative_number);
+                    ansArr.push(sumup_loop);
+                }
+                // debugger;
+            }
+            return [{'sum_items' :addend, 'ans_breakup': ansArr,'answer': sumup_loop}];
+
         }, //end of doubleDigit
         singleDoubleDigit: function(rows,negCount) {
 
@@ -696,7 +787,42 @@
                     // alert([{'devidend' : multiplicand_arr, 'divisor' : multiplier_arr, 'answer' : sumup_loop}]);
                     // return;
                     return [{'devidend' : dividend_arr, 'divisor' : divisor_arr, 'answer' : sumup_loop, 'remainder' : returnValue[2]}];
-            }
+            },
+            fourDigitDoubleDigit: function(rem)
+            {
+    
+                var dividend_arr = [];
+                var divisor_arr = [];
+                var sumup_loop = 0;
+    
+                var returnValue = BOBASSESSMENT.general.fourDigitDoubleDigitWithoutRemainder(rem);
+                    console.log('returned_value: ' + returnValue);
+                    returnValue = returnValue.split('_');
+                    dividend_arr.push(returnValue[0]);
+                    divisor_arr.push(returnValue[1]);
+                    sumup_loop = returnValue[0] / returnValue[1];
+                    // alert([{'devidend' : multiplicand_arr, 'divisor' : multiplier_arr, 'answer' : sumup_loop}]);
+                    // return;
+                    return [{'devidend' : dividend_arr, 'divisor' : divisor_arr, 'answer' : sumup_loop, 'remainder' : returnValue[2]}];
+            },
+            fiveDigitDoubleDigit: function(rem)
+            {
+    
+                var dividend_arr = [];
+                var divisor_arr = [];
+                var sumup_loop = 0;
+    
+                var returnValue = BOBASSESSMENT.general.fiveDigitDoubleDigitWithoutRemainder(rem);
+                    console.log('returned_value: ' + returnValue);
+                    returnValue = returnValue.split('_');
+                    dividend_arr.push(returnValue[0]);
+                    divisor_arr.push(returnValue[1]);
+                    sumup_loop = returnValue[0] / returnValue[1];
+                    // alert([{'devidend' : multiplicand_arr, 'divisor' : multiplier_arr, 'answer' : sumup_loop}]);
+                    // return;
+                    return [{'devidend' : dividend_arr, 'divisor' : divisor_arr, 'answer' : sumup_loop, 'remainder' : returnValue[2]}];
+            },
+
     
     }
     BOBASSESSMENT.decimal = {
@@ -792,6 +918,114 @@
                 //     addend.push(BOBASSESSMENT.general.addZerointoDecimal(zero_number).toString().replace(/^0+/, ''));
                 //     ansArr.push(sumup_loop);
                 // }
+                else
+                {
+                    sumup_loop += negative_number;
+                    addend.push(BOBASSESSMENT.general.addZerointoDecimal(negative_number));
+                    ansArr.push(sumup_loop);
+                }
+                // debugger;
+            }
+            // console.log(addend);
+            return [{'sum_items' :addend, 'ans_breakup': ansArr,'answer': sumup_loop}];
+           
+        },
+        doubleDigitDecimalWithoutLessThanOne: function(rows,negCount) 
+        {
+            var addend = [];
+            var ansArr = [];
+            var sumup_loop = 0;
+            var random_negative_index = BOBASSESSMENT.general.negativeIndex(rows,negCount);
+            // var zero_index = BOBASSESSMENT.general.negativeIndex(rows,negCount);
+
+            for(c=0;c<rows;c++){
+                var n = BOBASSESSMENT.general.randomNumberWithDecimal(11, 99, 2);
+                    // n = BOBASSESSMENT.general.addZerointoDecimal(n);
+                var negative_number = BOBASSESSMENT.general.randomNumberWithDecimal(-70, -11, 2); //Math.floor(Math.random() * 9) -9 //randomIntFromInterval(1, 9)
+                    // negative_number = BOBASSESSMENT.general.addZerointoDecimal(negative_number);
+                // var zero_number = BOBASSESSMENT.general.randomNumberWithDecimal(0, 1, 2);
+                    // zero_number = BOBASSESSMENT.general.addZerointoDecimal(zero_number);
+                var tmpCnt = 0;
+                var tmpCnt1 = 0;
+                for(e=0;e<random_negative_index.length;e++){
+                    if(c === random_negative_index[e]){
+                        // console.log("test: " + e + " _ " + random_negative_index[e]);
+                        if(sumup_loop + negative_number > 0){
+                            tmpCnt = 1;
+                        }        
+                    }
+                    // else if(c === zero_index[e]){
+                    //     if(sumup_loop + zero_number > 0){
+                    //         tmpCnt1 = 1;
+                    //     }        
+                    // }
+                }
+                if(tmpCnt == 0){
+                    sumup_loop += n;
+                    addend.push(BOBASSESSMENT.general.addZerointoDecimal(n));
+                    ansArr.push(sumup_loop);
+                }
+                // else if (tmpCnt1 != 0){
+                //     console.log('modified: ' + BOBASSESSMENT.general.addZerointoDecimal(zero_number).toString().replace(/^0+/, ''));
+                //     console.log('original: ' + BOBASSESSMENT.general.addZerointoDecimal(zero_number))
+                //     sumup_loop += zero_number;
+                //     addend.push(BOBASSESSMENT.general.addZerointoDecimal(zero_number).toString().replace(/^0+/, ''));
+                //     ansArr.push(sumup_loop);
+                // }
+                else
+                {
+                    sumup_loop += negative_number;
+                    addend.push(BOBASSESSMENT.general.addZerointoDecimal(negative_number));
+                    ansArr.push(sumup_loop);
+                }
+                // debugger;
+            }
+            // console.log(addend);
+            return [{'sum_items' :addend, 'ans_breakup': ansArr,'answer': sumup_loop}];
+           
+        },
+        singleDoubleDigitDecimalWithoutLessThanOne: function(rows,negCount) 
+        {
+            var addend = [];
+            var ansArr = [];
+            var sumup_loop = 0;
+            var random_negative_index = BOBASSESSMENT.general.negativeIndex(rows,negCount);
+            var zero_index = BOBASSESSMENT.general.negativeIndex(rows,negCount);
+
+            for(c=0;c<rows;c++){
+                var n = BOBASSESSMENT.general.randomNumberWithDecimal(11, 99, 2);
+                    // n = BOBASSESSMENT.general.addZerointoDecimal(n);
+                var negative_number = BOBASSESSMENT.general.randomNumberWithDecimal(-70, -1, 2); //Math.floor(Math.random() * 9) -9 //randomIntFromInterval(1, 9)
+                    // negative_number = BOBASSESSMENT.general.addZerointoDecimal(negative_number);
+                var zero_number = BOBASSESSMENT.general.randomNumberWithDecimal(1, 9, 2);
+                    zero_number = BOBASSESSMENT.general.addZerointoDecimal(zero_number);
+                var tmpCnt = 0;
+                var tmpCnt1 = 0;
+                for(e=0;e<random_negative_index.length;e++){
+                    if(c === random_negative_index[e]){
+                        // console.log("test: " + e + " _ " + random_negative_index[e]);
+                        if(sumup_loop + negative_number > 0){
+                            tmpCnt = 1;
+                        }        
+                    }
+                    else if(c === zero_index[e]){
+                        if(sumup_loop + zero_number > 0){
+                            tmpCnt1 = 1;
+                        }        
+                    }
+                }
+                if(tmpCnt == 0){
+                    sumup_loop += n;
+                    addend.push(BOBASSESSMENT.general.addZerointoDecimal(n));
+                    ansArr.push(sumup_loop);
+                }
+                else if (tmpCnt1 != 0){
+                    // console.log('modified: ' + BOBASSESSMENT.general.addZerointoDecimal(zero_number).toString().replace(/^0+/, ''));
+                    // console.log('original: ' + BOBASSESSMENT.general.addZerointoDecimal(zero_number))
+                    sumup_loop += zero_number;
+                    addend.push(BOBASSESSMENT.general.addZerointoDecimal(zero_number).toString().replace(/^0+/, ''));
+                    ansArr.push(sumup_loop);
+                }
                 else
                 {
                     sumup_loop += negative_number;

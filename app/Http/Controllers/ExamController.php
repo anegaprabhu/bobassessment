@@ -487,6 +487,38 @@ class ExamController extends Controller
                         ),
                     )
                 )  ;  
+            } else if ( $level_id == 'Level 9') {
+                $level_info = (object)array(
+                    'programme'     =>  'BRAINOBRAIN',
+                    'level'         =>  'Level 9',
+                    'row_blocks'    =>  array(
+                        array(
+                            'block_name'    =>  'A',
+                            'block_title'   =>  'Division',
+                            'block_subtitle'=>  'Add / Less Partner',
+                            'digits'        =>  'DD/DD',
+                            'rows'          =>  1,
+                            'sums'          =>  5,
+                            'max_negative'  =>  2
+                        ),
+                    )
+                )  ;  
+            } else if ( $level_id == 'Level 10') {
+                $level_info = (object)array(
+                    'programme'     =>  'BRAINOBRAIN',
+                    'level'         =>  'Level 9',
+                    'row_blocks'    =>  array(
+                        array(
+                            'block_name'    =>  'A',
+                            'block_title'   =>  'Division',
+                            'block_subtitle'=>  'Add / Less Partner',
+                            'digits'        =>  'DD/DD',
+                            'rows'          =>  1,
+                            'sums'          =>  5,
+                            'max_negative'  =>  2
+                        ),
+                    )
+                )  ;  
             }else{
                 // dd('here');
                 return view('parents');

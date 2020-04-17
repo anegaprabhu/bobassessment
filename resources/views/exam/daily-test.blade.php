@@ -112,7 +112,7 @@
 
                 <table witdth="100%">
                     <tr>
-                        <td width="20%"></td>
+                        <td width="25%"></td>
                     <td>
                         <table style=" width: 162px;">
                             <!-- <tr>
@@ -139,19 +139,22 @@
                             </tr> -->
                             <tr>
                                 <td><div onClick="backspace()" class="text-center keyPadBtn" style=" width: 40px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;"><</div></td>
-                                <td id="nextBtnContainer" colspan="3"><button onClick="next()" data-ord="1" id="nextBtn" class="text-center" style=" width: 132px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; cursor: pointer; display: none;">NEXT</button></td>
+                                <td colspan="3">
+                                <button onClick="next()" data-ord="1" id="nextBtn" class="text-center" style=" width: 132px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; cursor: pointer; display: none;">NEXT</button>
+                                    @if(count($student_detail) > 0 && Hashids::decode($student_detail[1])[0] > 60)
+                                        <button id="submitResult" onClick="submitResult('{{ $student_detail[0] . '_' . $student_detail[1] . '_' . $student_detail[2] }}')" type="button" class="btn btn-success btn-md btn-block " style="display: none;">Submit</button>
+                                    @elseif(count($student_detail) > 0 && Hashids::decode($student_detail[1])[0] < 50)
+                                        <button id="showResult" onClick="showResult('{{ $student_detail[0] . '_' . $student_detail[1] . '_' . $student_detail[2] }}')" type="button" class="btn btn-success btn-md btn-block " style="display: none;">Submit</button>
+                                    @endif
+                                
+                                </td>
+
+
+
+                                @if($student[0]->level == 'Level 8' || $student[0]->level == 'Level 9' || $student[0]->level == 'Level 10')
                                 <td><div class="text-center keyPadBtn" onClick="keyPadBtn('.')" style=" width: 40px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">.</div></td>
-                               
+                               @endif
                             </tr>
-                            @if(count($student_detail) > 0 && Hashids::decode($student_detail[1])[0] > 60)
-                            <tr>
-                                <td colspan="5"><button id="submitResult" onClick="submitResult('{{ $student_detail[0] . '_' . $student_detail[1] . '_' . $student_detail[2] }}')" type="button" class="btn btn-success btn-sm btn-block " style="display: none;">Submit</button></td>
-                            </tr>
-                            @elseif(count($student_detail) > 0 && Hashids::decode($student_detail[1])[0] < 50)
-                            <tr>
-                                <td colspan="5"><button id="showResult" onClick="showResult('{{ $student_detail[0] . '_' . $student_detail[1] . '_' . $student_detail[2] }}')" type="button" class="btn btn-success btn-sm btn-block " style="display: none;">Submit</button></td>
-                            </tr>
-                            @endif
                         </table>
                     </td>
                         <td width="20%"></td>
@@ -230,6 +233,12 @@
                             sumsArray.push({'category' : block_category, 'title'     :   block['block_title'], 'sub_title' : block['block_subtitle'], 'sum_no'    :   b + 1, 'sum_items' :  sdReturn[0]['sum_items'], 'ans_breakup': sdReturn[0]['ans_breakup'], 'answer'    :  sdReturn[0]['answer'], 'student_answer'   : null});
                         }    
 
+                    }else if(block_type == 'DD100' && block_category == 'Addition'){ // Double Digit
+                        for(b=0;b<block['sums'];b++){
+                            var sdReturn = BOBASSESSMENT.additionAndSubstration.doubleDigitLessThanHundred(block['rows'],block['max_negative']);
+                            sumsArray.push({'category' : block_category, 'title'     :   block['block_title'], 'sub_title' : block['block_subtitle'], 'sum_no'    :   b + 1, 'sum_items' :  sdReturn[0]['sum_items'], 'ans_breakup': sdReturn[0]['ans_breakup'], 'answer'    :  sdReturn[0]['answer'], 'student_answer'   : null});
+                        }    
+
                     }else if(block_type == 'TD' && block_category == 'Addition'){ // Double Digit
                         for(b=0;b<block['sums'];b++){
                             var sdReturn = BOBASSESSMENT.additionAndSubstration.tripleDigit(block['rows'],block['max_negative']);
@@ -288,6 +297,24 @@
                     }else if(block_type == 'singleDigitDecimal' && block_category == 'Addition'){
                         for(b=0;b<block['sums'];b++){
                             var sdReturn = BOBASSESSMENT.decimal.singleDigitDecimal(block['rows'],block['max_negative']);
+                            // alert(sdReturn);
+                            sumsArray.push({'category' : block_category, 'title'     :   block['block_title'], 'sub_title' : block['block_subtitle'], 'sum_no'    :   b + 1, 'sum_items' :  sdReturn[0]['sum_items'], 'ans_breakup': sdReturn[0]['ans_breakup'], 'answer'    :  sdReturn[0]['answer'], 'student_answer'   : null});
+                        }    
+                    }else if(block_type == 'singleDigitDecimalWithoutLessThanOne' && block_category == 'Addition'){
+                        for(b=0;b<block['sums'];b++){
+                            var sdReturn = BOBASSESSMENT.decimal.singleDigitDecimalWithoutLessThanOne(block['rows'],block['max_negative']);
+                            // alert(sdReturn);
+                            sumsArray.push({'category' : block_category, 'title'     :   block['block_title'], 'sub_title' : block['block_subtitle'], 'sum_no'    :   b + 1, 'sum_items' :  sdReturn[0]['sum_items'], 'ans_breakup': sdReturn[0]['ans_breakup'], 'answer'    :  sdReturn[0]['answer'], 'student_answer'   : null});
+                        }    
+                    }else if(block_type == 'doubleDigitDecimalWithoutLessThanOne' && block_category == 'Addition'){
+                        for(b=0;b<block['sums'];b++){
+                            var sdReturn = BOBASSESSMENT.decimal.doubleDigitDecimalWithoutLessThanOne(block['rows'],block['max_negative']);
+                            // alert(sdReturn);
+                            sumsArray.push({'category' : block_category, 'title'     :   block['block_title'], 'sub_title' : block['block_subtitle'], 'sum_no'    :   b + 1, 'sum_items' :  sdReturn[0]['sum_items'], 'ans_breakup': sdReturn[0]['ans_breakup'], 'answer'    :  sdReturn[0]['answer'], 'student_answer'   : null});
+                        }    
+                    }else if(block_type == 'singleDoubleDigitDecimalWithoutLessThanOne' && block_category == 'Addition'){
+                        for(b=0;b<block['sums'];b++){
+                            var sdReturn = BOBASSESSMENT.decimal.singleDoubleDigitDecimalWithoutLessThanOne(block['rows'],block['max_negative']);
                             // alert(sdReturn);
                             sumsArray.push({'category' : block_category, 'title'     :   block['block_title'], 'sub_title' : block['block_subtitle'], 'sum_no'    :   b + 1, 'sum_items' :  sdReturn[0]['sum_items'], 'ans_breakup': sdReturn[0]['ans_breakup'], 'answer'    :  sdReturn[0]['answer'], 'student_answer'   : null});
                         }    
@@ -373,6 +400,46 @@
                                     var sdReturn = BOBASSESSMENT.division.tripleDigitDoubleDigit('yes');
                                 }else{
                                     var sdReturn = BOBASSESSMENT.division.tripleDigitDoubleDigit('yes');
+                                }
+                            // console.log(sdReturn);
+                            sumsArray.push({'category' : block_category, 'title'     :   block['block_title'], 'sub_title' : block['block_subtitle'], 'sum_no'    :   b + 1, 'sum_items' :  [], 'ans_breakup': [], 'dividend' : sdReturn[0]['devidend'], 'divisor' : sdReturn[0]['divisor'], 'answer'    :  sdReturn[0]['answer'], 'remainder' : sdReturn[0]['remainder'], 'student_answer'   : null});
+                         }
+                    }else if(block_type == 'FD/DD' && block_category == 'Division'){
+                        var random_negative_index = BOBASSESSMENT.general.negativeIndex(block['sums'],3);
+                         for(b=0;b<block['sums'];b++){
+                            var cnt = 0;
+                            for(c=0;c<random_negative_index.length;c++)
+                                {
+                                    if(random_negative_index[c] == b)
+                                    {
+                                        cnt += 1;
+                                    }
+                                }
+                                if(cnt > 0)
+                                {
+                                    var sdReturn = BOBASSESSMENT.division.fourDigitDoubleDigit('yes');
+                                }else{
+                                    var sdReturn = BOBASSESSMENT.division.fourDigitDoubleDigit('yes');
+                                }
+                            // console.log(sdReturn);
+                            sumsArray.push({'category' : block_category, 'title'     :   block['block_title'], 'sub_title' : block['block_subtitle'], 'sum_no'    :   b + 1, 'sum_items' :  [], 'ans_breakup': [], 'dividend' : sdReturn[0]['devidend'], 'divisor' : sdReturn[0]['divisor'], 'answer'    :  sdReturn[0]['answer'], 'remainder' : sdReturn[0]['remainder'], 'student_answer'   : null});
+                         }
+                    }else if(block_type == 'FiD/DD' && block_category == 'Division'){
+                        var random_negative_index = BOBASSESSMENT.general.negativeIndex(block['sums'],3);
+                         for(b=0;b<block['sums'];b++){
+                            var cnt = 0;
+                            for(c=0;c<random_negative_index.length;c++)
+                                {
+                                    if(random_negative_index[c] == b)
+                                    {
+                                        cnt += 1;
+                                    }
+                                }
+                                if(cnt > 0)
+                                {
+                                    var sdReturn = BOBASSESSMENT.division.fiveDigitDoubleDigit('yes');
+                                }else{
+                                    var sdReturn = BOBASSESSMENT.division.fiveDigitDoubleDigit('yes');
                                 }
                             // console.log(sdReturn);
                             sumsArray.push({'category' : block_category, 'title'     :   block['block_title'], 'sub_title' : block['block_subtitle'], 'sum_no'    :   b + 1, 'sum_items' :  [], 'ans_breakup': [], 'dividend' : sdReturn[0]['devidend'], 'divisor' : sdReturn[0]['divisor'], 'answer'    :  sdReturn[0]['answer'], 'remainder' : sdReturn[0]['remainder'], 'student_answer'   : null});
