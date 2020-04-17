@@ -47,6 +47,8 @@ class ExamController extends Controller
 
 
         $time_zone_now = Carbon::now($student[0]->local_timezone);
+        $time_zone_now = date('Y-m-d h:i:s',strtotime($time_zone_now));
+       
         $dt = $time_zone_now;
         $dt = new DateTime((string)$dt);
         $dt = $dt->format('Y-m-d');
@@ -71,6 +73,7 @@ class ExamController extends Controller
                 // $time_zone_now = Carbon::now($students[0]->local_timezone);
                 $competition = \DB::table('competitions')
                     ->whereDate('start_date', '<=', $time_zone_now)
+                    ->whereDate('end_date', '>', $time_zone_now)
                     ->get();
 
                 // $check_result = [];
@@ -707,7 +710,7 @@ class ExamController extends Controller
         // ]];    
         $level_info = getLevelDetails($level_id);
 
-        return view('exam.daily-test',compact('student_info','level_info','student_detail'));
+        return view('exam.daily-test',compact('student_info','level_info','student_detail','student'));
     }
 
     /**

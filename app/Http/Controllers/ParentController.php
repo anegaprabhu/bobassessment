@@ -59,8 +59,12 @@ class ParentController extends Controller
             {   
                 //Europe/Stockholm | Asia/Calcutta
                 $time_zone_now = Carbon::now($students[$a]->local_timezone);
+                // dd($time_zone_now);
+                $time_zone_now = date('Y-m-d h:i:s',strtotime($time_zone_now));
+                // dd(date('Y-m-d h:i:s',strtotime($time_zone_now)));
                 $competition = \DB::table('competitions')
                     ->whereDate('start_date', '<=', $time_zone_now)
+                    ->whereDate('end_date', '>', $time_zone_now)
                     ->get();
 
                 // $check_result = [];

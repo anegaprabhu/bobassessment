@@ -85,6 +85,7 @@
         </div> -->
 
             <h1 style="color: #ff7040; font-weight: strong;">BRAINOBRAIN</h1>
+            <h3><small>Student:</small> <span class="highlight">{{$student[0]->student_name}}</span>   (<small>{{$student[0]->programme}}</small> - <span><small>{{$student[0]->level}}</small></span>)</h3>
         <div class="headline">
            <h4> <i class="fa fa-file-text-o"></i> <b class="pl-2">Sum: <b id="sum_count"></b></b></h4>
            <h4 class="float-right"><i class="fa fa-clock-o"></i> <b class="Timer pl-2"></b></h4>
@@ -114,11 +115,11 @@
                         <td width="20%"></td>
                     <td>
                         <table style=" width: 162px;">
-                            <tr>
+                            <!-- <tr>
                                 <td></td>
                                 <td colspan="3" class="align-items-center justify-content-center pl-3"><input id="toggle-demo" onChange="switchChange()" type="checkbox" style=" padding-top: 5px;" checked data-toggle="toggle" data-on="Remainder" data-off="Answer" data-onstyle="danger" data-offstyle="success" data-size="xs"></td>
                                 <td></td>    
-                            </tr>
+                            </tr> -->
                             <tr>
                                 <td><div class="text-center keyPadBtn" onClick="keyPadBtn(1,this)" style=" width: 40px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">1</div></td>
                                 <td><div class="text-center keyPadBtn" onClick="keyPadBtn(2)" style=" width: 40px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">2</div></td>
@@ -387,7 +388,7 @@
             var curVal = $("#answer_input").val();
             var curVal_remainder = $("#answer_input_remainder").val();
 
-            if($("#toggle-demo").prop("checked")){
+            // if($("#toggle-demo").prop("checked")){
                 // alert('one');
                 if(n == '.')
                 {
@@ -405,25 +406,25 @@
                         $("#answer_input").val( ($("#answer_input").val()).toString() + n.toString() )
                     }
                 }
-            }else{
-                // alert('two');
-                if(n == '.')
-                {
-                    // alert('one');
-                    if($("#answer_input_remainder").val() == "" || $("#answer_input_remainder").val() == 0){
-                        $("#answer_input").val('.');
-                    }else{
-                        $("#answer_input_remainder").val( ($("#answer_input_remainder").val()).toString() + n.toString() )
-                    }
-                }else{
-                    // alert('two');
-                    if(curVal == null || curVal == 0){
-                        $("#answer_input_remainder").val(n);
-                    }else{
-                        $("#answer_input_remainder").val( ($("#answer_input_remainder").val()).toString() + n.toString() )
-                    }
-                }
-            }
+            // }else{
+            //     // alert('two');
+            //     if(n == '.')
+            //     {
+            //         // alert('one');
+            //         if($("#answer_input_remainder").val() == "" || $("#answer_input_remainder").val() == 0){
+            //             $("#answer_input").val('.');
+            //         }else{
+            //             $("#answer_input_remainder").val( ($("#answer_input_remainder").val()).toString() + n.toString() )
+            //         }
+            //     }else{
+            //         // alert('two');
+            //         if(curVal == null || curVal == 0){
+            //             $("#answer_input_remainder").val(n);
+            //         }else{
+            //             $("#answer_input_remainder").val( ($("#answer_input_remainder").val()).toString() + n.toString() )
+            //         }
+            //     }
+            // }
         }
         var virtual_keyboard = 'yes';
         // console.log(total_sums);

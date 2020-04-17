@@ -9706,7 +9706,7 @@ input[type=number]:focus,
     color: white;
 }
 
-.keybox {
+/* .keybox {
     border: 0;
     background: url("../images/keypadBg.png");
     -webkit-background-size: 100% 100%;
@@ -9714,7 +9714,7 @@ input[type=number]:focus,
     -o-background-size: 100% 100%;
     background-size: 100% 100%;
     color: white;
-}
+} */
 
   .btnClick {
     -webkit-animation-name: cssAnimation;
