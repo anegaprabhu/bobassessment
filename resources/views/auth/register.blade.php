@@ -18,6 +18,16 @@
                 @endisset
                 </div>
                 
+                <div class="header card-title" style="background: aliceblue;padding:20px;" >
+                @isset($url) 
+                      <div class="float-left"><b>Parent Registration</b></div>
+                      <div class="float-right"><a href="{{ route('register') }}">Switch to Franchisee Registration</a></div>
+                @else
+                      <div class="float-left"><b>Franchisee Registration</b></div>
+                      <div class="float-right"><a href="{{ route('register.parents') }}">Switch to Parent Registration</a></div>        
+                @endisset
+                 </div>
+
                 <div class="card-body">
                     @isset($url)
                     <form method="POST" action='{{ url("register/$url") }}' aria-label="{{ __('Register') }}">
