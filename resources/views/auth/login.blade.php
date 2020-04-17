@@ -21,10 +21,10 @@
 
                 <div class="header card-title" style="background: aliceblue;padding:20px;width: 400px;" >
                 @isset($url) 
-                      <div class="float-left">Parent Login</div>
+                      <div class="float-left"><b>Parent Login</b></div>
                       <div class="float-right"><a href="{{ route('login') }}">Switch to Franchisee Login</a></div>
                 @else
-                      <div class="float-left">Franchisee Login</div>
+                      <div class="float-left"><b>Franchisee Login</b></div>
                       <div class="float-right"><a href="{{ route('login.parents') }}">Switch to Parent Login</a></div>        
                 @endisset
                  </div>
