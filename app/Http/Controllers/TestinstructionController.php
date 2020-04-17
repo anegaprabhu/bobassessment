@@ -45,6 +45,7 @@ class TestinstructionController extends Controller
         }
         
         $time_zone_now = Carbon::now($students[0]->local_timezone);
+        $time_zone_now = date('Y-m-d h:i:s',strtotime($time_zone_now));
         $dt = $time_zone_now;
         $dt = new DateTime((string)$dt);
         $dt = $dt->format('Y-m-d');
@@ -67,6 +68,7 @@ class TestinstructionController extends Controller
                 // $time_zone_now = Carbon::now($students[0]->local_timezone);
                 $competition = \DB::table('competitions')
                     ->whereDate('start_date', '<=', $time_zone_now)
+                    ->whereDate('end_date', '>', $time_zone_now)
                     ->get();
 
                 // $check_result = [];

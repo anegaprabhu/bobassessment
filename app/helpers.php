@@ -11,6 +11,7 @@ if (!function_exists('getLevelDetails')) {
                 'programme'     =>  'LITTLE BOB',
                 'level'         =>  'Module 1',
                 'duration'      =>  '10', // in minutes
+                'instruction'   =>  'Direct Addition & Subtraction, Add & Less Partners',
                 'row_blocks'    =>  array(
                     array(
                         'block_name'    =>  'A',
@@ -40,11 +41,13 @@ if (!function_exists('getLevelDetails')) {
                 'programme'     =>  'LITTLE BOB',
                 'level'         =>  'Module 2',
                 'duration'      =>  '10', // in minutes
+                'instruction'   =>  'Direct Addition & Subtraction, Add & Less Partners, Add Friends',
                 'row_blocks'    =>  array(
                     array(
                         'block_name'    =>  'A',
                         'block_title'   =>  'Addition',
                         'block_subtitle'=>  'Add / Less Partner',
+                        'instruction'   =>  'Addition & Subtraction',
                         'digits'        =>  'MOD2',
                         'rows'          =>  2,
                         'sums'          =>  10,
@@ -54,6 +57,7 @@ if (!function_exists('getLevelDetails')) {
                         'block_name'    =>  'D',
                         'block_title'   =>  'Addition',
                         'block_subtitle'=>  'Add / Less Partner',
+                        'instruction'   =>  'Addition & Subtraction',
                         'digits'        =>  'MOD2',
                         'rows'          =>  3,
                         'sums'          =>  10,
@@ -66,10 +70,12 @@ if (!function_exists('getLevelDetails')) {
                 'programme'     =>  'LITTLE BOB',
                 'level'         =>  'Module 3',
                 'duration'      =>  '10', // in minutes
+                'instruction'   =>  'Direct Addition & Subtraction, Add & Less Partners, Add & Less Friends',
                 'row_blocks'    =>  array(
                     array(
                         'block_name'    =>  'A',
                         'block_title'   =>  'Addition',
+                        'instruction'   =>  'Addition & Subtraction',
                         'block_subtitle'=>  'Add / Less Partner',
                         'digits'        =>  'MOD2', 
                         'rows'          =>  4,
@@ -79,6 +85,7 @@ if (!function_exists('getLevelDetails')) {
                     array(
                         'block_name'    =>  'B',
                         'block_title'   =>  'Addition',
+                        'instruction'   =>  'Addition & Subtraction',
                         'block_subtitle'=>  'Add / Less Partner',
                         'digits'        =>  'MOD3-SD',
                         'rows'          =>  4,
@@ -92,10 +99,12 @@ if (!function_exists('getLevelDetails')) {
                 'programme'     =>  'LITTLE BOB',
                 'level'         =>  'Module 4',
                 'duration'      =>  '10', // in minutes
+                'instruction'   =>  'Direct Addition & Subtraction, Partners, Friends',
                 'row_blocks'    =>  array(
                     array(
                         'block_name'    =>  'A',
                         'block_title'   =>  'Addition',
+                        'instruction'   =>  'Addition & Subtraction',
                         'block_subtitle'=>  'Add / Less Partner',
                         'digits'        =>  'SD', 
                         'rows'          =>  5,
@@ -105,6 +114,7 @@ if (!function_exists('getLevelDetails')) {
                     array(
                         'block_name'    =>  'B',
                         'block_title'   =>  'Addition',
+                        'instruction'   =>  'Addition & Subtraction',
                         'block_subtitle'=>  'Add / Less Partner',
                         'digits'        =>  'DD',
                         'rows'          =>  3,
@@ -119,11 +129,13 @@ if (!function_exists('getLevelDetails')) {
                 'programme'     =>  'BRAINOBRAIN',
                 'level'         =>  'Level 1',
                 'duration'      =>  '10', // in minutes
+                'instruction'   =>  'Direct Addition & Subtraction, Partners, Friends',
                 'row_blocks'    =>  array(
                     array(
                         'block_name'    =>  'A',
                         'block_title'   =>  'Addition',
                         'block_subtitle'=>  'Add / Less Partner',
+                        'instruction'   =>  'Addition & Subtraction',
                         'digits'        =>  'Level1-SD',
                         'rows'          =>  3,
                         'sums'          =>  10,
@@ -133,6 +145,7 @@ if (!function_exists('getLevelDetails')) {
                         'block_name'    =>  'B',
                         'block_title'   =>  'Addition',
                         'block_subtitle'=>  'Add / Less Partner',
+                        'instruction'   =>  'Addition & Subtraction',
                         'digits'        =>  'Level1-SD',
                         'rows'          =>  5,
                         'sums'          =>  10,
@@ -146,10 +159,12 @@ if (!function_exists('getLevelDetails')) {
                 'programme'     =>  'BRAINOBRAIN',
                 'level'         =>  'Level 2',
                 'duration'      =>  '10', // in minutes
+                'instruction'   =>  'Direct Addition & Subtraction, Partners, Friends',
                 'row_blocks'    =>  array(
                     array(
                         'block_name'    =>  'A',
                         'block_title'   =>  'Addition',
+                        'instruction'   =>  'Addition & Subtraction',
                         'block_subtitle'=>  'Add / Less Partner',
                         'digits'        =>  'SD',
                         'rows'          =>  4,
@@ -159,6 +174,7 @@ if (!function_exists('getLevelDetails')) {
                     array(
                         'block_name'    =>  'B',
                         'block_title'   =>  'Addition',
+                        'instruction'   =>  'Addition & Subtraction',
                         'block_subtitle'=>  'Add / Less Partner',
                         'digits'        =>  'MOD3-SD', 
                         'rows'          =>  5,
@@ -168,6 +184,7 @@ if (!function_exists('getLevelDetails')) {
                     array(
                         'block_name'    =>  'C',
                         'block_title'   =>  'Addition',
+                        'instruction'   =>  'Addition & Subtraction',
                         'block_subtitle'=>  'Add / Less Partner',
                         'digits'        =>  'Level2-SD-2DD-Top',
                         'rows'          =>  5,
@@ -182,10 +199,12 @@ if (!function_exists('getLevelDetails')) {
                 'programme'     =>  'BRAINOBRAIN',
                 'level'         =>  'Level 3',
                 'duration'      =>  '10', // in minutes
+                'instruction'   =>  'Direct Addition & Subtraction, Partners, Friends',
                 'row_blocks'    =>  array(
                     array(
                         'block_name'    =>  'A',
                         'block_title'   =>  'Addition',
+                        'instruction'   =>  'Addition & Subtraction',
                         'block_subtitle'=>  'Add / Less Partner',
                         'digits'        =>  'SD',
                         'rows'          =>  4,
@@ -195,6 +214,7 @@ if (!function_exists('getLevelDetails')) {
                     array(
                         'block_name'    =>  'B',
                         'block_title'   =>  'Addition',
+                        'instruction'   =>  'Addition & Subtraction',
                         'block_subtitle'=>  'Add / Less Partner',
                         'digits'        =>  'SD', 
                         'rows'          =>  6,
@@ -204,6 +224,7 @@ if (!function_exists('getLevelDetails')) {
                     array(
                         'block_name'    =>  'C',
                         'block_title'   =>  'Addition',
+                        'instruction'   =>  'Addition & Subtraction',
                         'block_subtitle'=>  'Add / Less Partner',
                         'digits'        =>  'MOD3-SD',
                         'rows'          =>  3,
@@ -218,10 +239,12 @@ if (!function_exists('getLevelDetails')) {
                 'programme'     =>  'BRAINOBRAIN',
                 'level'         =>  'Level 4',
                 'duration'      =>  '10', // in minutes
+                'instruction'   =>  'Direct Addition & Subtraction, Partners, Friends, Multiplication',
                 'row_blocks'    =>  array(
                     array(
                         'block_name'    =>  'A',
                         'block_title'   =>  'Addition',
+                        'instruction'   =>  'Addition & Subtraction',
                         'block_subtitle'=>  'Add / Less Partner',
                         'digits'        =>  'SD',
                         'rows'          =>  10,
@@ -231,6 +254,7 @@ if (!function_exists('getLevelDetails')) {
                     array(
                         'block_name'    =>  'B',
                         'block_title'   =>  'Addition',
+                        'instruction'   =>  'Addition & Subtraction',
                         'block_subtitle'=>  'Add / Less Partner',
                         'digits'        =>  'DD', 
                         'rows'          =>  4,
@@ -240,6 +264,7 @@ if (!function_exists('getLevelDetails')) {
                     array(
                         'block_name'    =>  'C',
                         'block_title'   =>  'Multiplication',
+                        'instruction'   =>  'Multiplication',
                         'block_subtitle'=>  'Add / Less Partner',
                         'digits'        =>  'DD/SD',
                         'rows'          =>  1,
@@ -254,10 +279,12 @@ if (!function_exists('getLevelDetails')) {
                 'programme'     =>  'BRAINOBRAIN',
                 'level'         =>  'Level 5',
                 'duration'      =>  '10', // in minutes
+                'instruction'   =>  'Direct Addition & Subtraction, Partners, Friends, Multiplication, Division',
                 'row_blocks'    =>  array(
                     // array(
                     //     'block_name'    =>  'A',
                     //     'block_title'   =>  'Addition',
+                    // 'instruction'   =>  'Addition & Subtraction',
                     //     'block_subtitle'=>  'Add / Less Partner',
                     //     'digits'        =>  'DD',
                     //     'rows'          =>  4,
@@ -267,6 +294,7 @@ if (!function_exists('getLevelDetails')) {
                     // array(
                     //     'block_name'    =>  'B',
                     //     'block_title'   =>  'Addition',
+                    // 'instruction'   =>  'Addition & Subtraction',
                     //     'block_subtitle'=>  'Add / Less Partner',
                     //     'digits'        =>  'DD', 
                     //     'rows'          =>  8,
@@ -277,6 +305,7 @@ if (!function_exists('getLevelDetails')) {
                     //     'block_name'    =>  'C',
                     //     'block_title'   =>  'Multiplication',
                     //     'block_subtitle'=>  'Add / Less Partner',
+                    // 'instruction'   =>  'Multiplication',
                     //     'digits'        =>  'DD/SD',
                     //     'rows'          =>  1,
                     //     'sums'          =>  10,
@@ -286,6 +315,7 @@ if (!function_exists('getLevelDetails')) {
                         'block_name'    =>  'D',
                         'block_title'   =>  'Division',
                         'block_subtitle'=>  'Add / Less Partner',
+                        'instruction'   =>  'Division',
                         'digits'        =>  'TD/SD',
                         'rows'          =>  1,
                         'sums'          =>  10,
@@ -299,10 +329,12 @@ if (!function_exists('getLevelDetails')) {
                 'programme'     =>  'BRAINOBRAIN',
                 'level'         =>  'Level 6',
                 'duration'      =>  '10', // in minutes
+                'instruction'   =>  'Direct Addition & Subtraction, Partners, Friends, Multiplication, Division',
                 'row_blocks'    =>  array(
                     // array(
                     //     'block_name'    =>  'A',
                     //     'block_title'   =>  'Addition',
+                    // 'instruction'   =>  'Addition & Subtraction',
                     //     'block_subtitle'=>  'Add / Less Partner',
                     //     'digits'        =>  'DD',
                     //     'rows'          =>  10,
@@ -312,6 +344,7 @@ if (!function_exists('getLevelDetails')) {
                     // array(
                     //     'block_name'    =>  'B',
                     //     'block_title'   =>  'Addition',
+                    // 'instruction'   =>  'Addition & Subtraction',
                     //     'block_subtitle'=>  'Add / Less Partner',
                     //     'digits'        =>  'TD', 
                     //     'rows'          =>  2,
@@ -321,6 +354,7 @@ if (!function_exists('getLevelDetails')) {
                     // array(
                     //     'block_name'    =>  'C',
                     //     'block_title'   =>  'Multiplication',
+                    // 'instruction'   =>  'Multiplication',
                     //     'block_subtitle'=>  'Add / Less Partner',
                     //     'digits'        =>  'DD/SD',
                     //     'rows'          =>  1,
@@ -340,6 +374,7 @@ if (!function_exists('getLevelDetails')) {
                         'block_name'    =>  'D',
                         'block_title'   =>  'Division',
                         'block_subtitle'=>  'Add / Less Partner',
+                        'instruction'   =>  'Division',
                         'digits'        =>  'TD/SD',
                         'rows'          =>  1,
                         'sums'          =>  5,
@@ -349,6 +384,7 @@ if (!function_exists('getLevelDetails')) {
                         'block_name'    =>  'D',
                         'block_title'   =>  'Division',
                         'block_subtitle'=>  'Add / Less Partner',
+                        'instruction'   =>  'Division',
                         'digits'        =>  'FD/SD',
                         'rows'          =>  1,
                         'sums'          =>  10,
@@ -361,10 +397,12 @@ if (!function_exists('getLevelDetails')) {
                 'programme'     =>  'BRAINOBRAIN',
                 'level'         =>  'Level 7',
                 'duration'      =>  '10', // in minutes
+                'instruction'   =>  'Direct Addition & Subtraction, Partners, Friends, Multiplication, Division',
                 'row_blocks'    =>  array(
                     array(
                         'block_name'    =>  'A',
                         'block_title'   =>  'Addition',
+                        'instruction'   =>  'Addition & Subtraction',
                         'block_subtitle'=>  'Add / Less Partner',
                         'digits'        =>  'DD',
                         'rows'          =>  5,
@@ -374,6 +412,7 @@ if (!function_exists('getLevelDetails')) {
                     array(
                         'block_name'    =>  'B',
                         'block_title'   =>  'Addition',
+                        'instruction'   =>  'Addition & Subtraction',
                         'block_subtitle'=>  'Add / Less Partner',
                         'digits'        =>  'TD',
                         'rows'          =>  5,
@@ -384,6 +423,7 @@ if (!function_exists('getLevelDetails')) {
                         'block_name'    =>  'c',
                         'block_title'   =>  'Addition',
                         'block_subtitle'=>  'Add / Less Partner',
+                        'instruction'   =>  'Addition & Subtraction',
                         'digits'        =>  'singleDigitDecimal',
                         'rows'          =>  5,
                         'sums'          =>  10,
@@ -393,6 +433,7 @@ if (!function_exists('getLevelDetails')) {
                         'block_name'    =>  'D',
                         'block_title'   =>  'Multiplication',
                         'block_subtitle'=>  'Add / Less Partner',
+                        'instruction'   =>  'Multiplication',
                         'digits'        =>  'DD/SD',
                         'rows'          =>  1,
                         'sums'          =>  5,
@@ -402,6 +443,7 @@ if (!function_exists('getLevelDetails')) {
                         'block_name'    =>  'E',
                         'block_title'   =>  'Multiplication',
                         'block_subtitle'=>  'Add / Less Partner',
+                        'instruction'   =>  'Multiplication',
                         'digits'        =>  'TD/SD',
                         'rows'          =>  1,
                         'sums'          =>  5,
@@ -411,6 +453,7 @@ if (!function_exists('getLevelDetails')) {
                         'block_name'    =>  'D',
                         'block_title'   =>  'Division',
                         'block_subtitle'=>  'Add / Less Partner',
+                        'instruction'   =>  'Division',
                         'digits'        =>  'FD/SD',
                         'rows'          =>  1,
                         'sums'          =>  10,
@@ -425,10 +468,12 @@ if (!function_exists('getLevelDetails')) {
                 'programme'     =>  'BRAINOBRAIN',
                 'level'         =>  'Level 8',
                 'duration'      =>  '10', // in minutes
+                'instruction'   =>  'Direct Addition & Subtraction, Partners, Friends, Decimals, Multiplication, Division',
                 'row_blocks'    =>  array(
                     // array(
                     //     'block_name'    =>  'A',
                     //     'block_title'   =>  'Addition',
+                    // 'instruction'   =>  'Addition & Subtraction',
                     //     'block_subtitle'=>  'Add / Less Partner',
                     //     'digits'        =>  'TD',
                     //     'rows'          =>  3,
@@ -438,6 +483,7 @@ if (!function_exists('getLevelDetails')) {
                     // array(
                     //     'block_name'    =>  'B',
                     //     'block_title'   =>  'Addition',
+                    // 'instruction'   =>  'Addition & Subtraction',
                     //     'block_subtitle'=>  'Add / Less Partner',
                     //     'digits'        =>  'DD',
                     //     'rows'          =>  6,
@@ -447,6 +493,7 @@ if (!function_exists('getLevelDetails')) {
                     // array(
                     //     'block_name'    =>  'c',
                     //     'block_title'   =>  'Addition',
+                    // 'instruction'   =>  'Addition & Subtraction',
                     //     'block_subtitle'=>  'Add / Less Partner',
                     //     'digits'        =>  'singleDigitDecimalWithoutLessThanOne',
                     //     'rows'          =>  5,
@@ -457,6 +504,7 @@ if (!function_exists('getLevelDetails')) {
                     //     'block_name'    =>  'D',
                     //     'block_title'   =>  'Multiplication',
                     //     'block_subtitle'=>  'Add / Less Partner',
+                    // 'instruction'   =>  'Multiplication',
                     //     'digits'        =>  'DD/DD',
                     //     'rows'          =>  1,
                     //     'sums'          =>  10,
@@ -466,6 +514,7 @@ if (!function_exists('getLevelDetails')) {
                     //     'block_name'    =>  'E',
                     //     'block_title'   =>  'Multiplication',
                     //     'block_subtitle'=>  'Add / Less Partner',
+                    // 'instruction'   =>  'Multiplication',
                     //     'digits'        =>  'TD/SD',
                     //     'rows'          =>  1,
                     //     'sums'          =>  5,
@@ -475,6 +524,7 @@ if (!function_exists('getLevelDetails')) {
                         'block_name'    =>  'D',
                         'block_title'   =>  'Division',
                         'block_subtitle'=>  'Add / Less Partner',
+                        'instruction'   =>  'Division',
                         'digits'        =>  'DD/DD',
                         'rows'          =>  1,
                         'sums'          =>  5,
