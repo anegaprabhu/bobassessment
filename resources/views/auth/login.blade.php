@@ -7,7 +7,7 @@
             <div class="text-center mb-4">
                     <img src="{{ asset('images/brainobrain-logo.png') }}" alt="logo" />
             </div> <!-- /.text-center bg image container -->
-            <div class="card">
+            <div class="card col-md-18">
                 
                 <div class="card-header">{{ isset($url) ? ucwords($url) : ""}} {{ __('Login') }}
                 
@@ -19,7 +19,21 @@
                 
                 </div> <!-- /.card-header -->
 
+                <div class="header card-title" style="background: aliceblue;padding:20px;width: 400px;" >
+                @isset($url) 
+                      <div class="float-left">Parent Login</div>
+                      <div class="float-right"><a href="{{ route('login') }}">Switch to Franchisee Login</a>   </div>
+                @else
+                      <div class="float-left">Franchisee Login</div>
+                      <div class="float-right"><a href="{{ route('login.parents') }}">Switch to Parent Login</a>   </div>
+                   
+                @endisset
+                 </div>
+
+
                 <div class="card-body">
+
+
                     @isset($url)
                     <form method="POST" action='{{ url("login/$url") }}' aria-label="{{ __('Login') }}">
                     @else
