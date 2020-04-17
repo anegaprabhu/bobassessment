@@ -88,6 +88,11 @@
                                     <a href="{{ route('password.request') }}">
                                         {{ __('Forgot Password?') }}
                                     </a>
+                                    <br>
+                                    <a href="{{ url('/') }}">
+                                        {{ __('Sign Up?') }}
+                                    </a>
+
                                     </small>
                                 </div> <!-- /div -->
                             </div> <!-- /.text-center -->

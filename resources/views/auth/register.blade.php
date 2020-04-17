@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-
+<script type="text/javascript">
+    function disableButton(){
+        //alert("here");
+    }
+</script>
 <div class="authwrapper">
     <div class="regbox">
         <div >
@@ -117,9 +121,14 @@
                         </div>
                         <div class="form-group mb-0 mt-3">
                             <div class="text-center">
-                                <button type="submit" class="ctabtn btn btn-primary">
+                                <button type="submit" class="ctabtn btn btn-primary" onclick="disableButton();">
                                     {{ __('Register') }}
                                 </button>
+                                <br><br>
+                                    <a href="{{ url('/') }}">
+                                        {{ __('Login ?') }}
+                                    </a>
+
                             </div>
                         </div>
                     </form>

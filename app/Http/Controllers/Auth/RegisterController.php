@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\FranchiseeRegistration;
+use App\Mail\ParentRegistration;
 
 use App\User;
 use App\Parents;
@@ -125,12 +128,30 @@ class RegisterController extends Controller
        $enc_base_64 = base64_encode($data['email']);
        $verification_code= strtoupper($enc_base_64);  
        $verification_code= substr($verification_code, 0,10);    
-        return User::create([
+        $userCreate =  User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'verification_code'=>$verification_code,
         ]);
+
+        /*Mail Send Starts*/
+            $objDemo = new \stdClass();
+            $objDemo->sub1 = "You are created Franchisee Account Successfully";
+            $objDemo->sub2 = 'Please use below credentials to login';
+            $objDemo->APP_ROUTE_URL = config('constants.APP_FRANCHISEE_URL');             
+            $objDemo->Email =  "Email : ".$data['email'];
+            $objDemo->Password =  "Password : ".$data['password'];
+
+            $objDemo->FranchiseeCode =  "Franchisee Code : ".$verification_code." ( This code can be used to create Parent )";
+
+
+            $objDemo->sender = "Brainobrain Assessment";
+            $objDemo->receiver = $data['name'];
+            Mail::to($data['email'])->send(new FranchiseeRegistration($objDemo));
+
+        /*Mail Send Ends*/    
+        return $userCreate;
     }
 
 
@@ -145,13 +166,30 @@ class RegisterController extends Controller
         $this->validator($request->all())->validate();
         $key = $request['verification_code'];
         $query = DB::table('users')->where('verification_code',$key)->select('id','verification_code')->get();        
-        Parents::create([
+        $parentCreate = Parents::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'franchisee_id_fk'=>$query[0]->id,
         ]);
-        return redirect()->intended('login/parents');
+
+        /*Mail Send Starts*/
+            $objDemo = new \stdClass();
+            $objDemo->sub1 = "You are created Parent Account Successfully";
+            $objDemo->sub2 = 'Please use below credentials to login';
+            $objDemo->APP_ROUTE_URL = config('constants.APP_PARENT_URL');
+            $objDemo->Email =  "Email : ".$request['email'];
+            $objDemo->Password =  "Password : ".$request['password'];
+
+           
+            $objDemo->sender = "Brainobrain Assessment";
+            $objDemo->receiver = $request['name'];
+            Mail::to($request['email'])->send(new ParentRegistration($objDemo));
+
+        /*Mail Send Ends*/ 
+
+        return $parentCreate;
+        //return redirect()->intended('login/parents');
     }
 
 
