@@ -166,7 +166,7 @@ class RegisterController extends Controller
         $this->validator($request->all())->validate();
         $key = $request['verification_code'];
         $query = DB::table('users')->where('verification_code',$key)->select('id','verification_code')->get();        
-        $parentCreate = Parents::create([
+        Parents::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
@@ -188,8 +188,8 @@ class RegisterController extends Controller
 
         /*Mail Send Ends*/ 
 
-        return $parentCreate;
-        //return redirect()->intended('login/parents');
+        //return $parentCreate;
+        return redirect()->intended('login/parents');
     }
 
 
