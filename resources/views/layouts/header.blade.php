@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom">
+<nav class="navbar navbar-expand-sm fixed-top navbar-light bg-white border-bottom">
         <a href="" class="navbar-brand"> <img height="55" src="{{ asset('images/brainobrain-logo.png') }}" alt="logo" /></a>
         
         <div class="navbar-collapse" id="navbarToggler">
@@ -17,3 +17,5 @@
             </ul>
         </div>
 </nav>
+
+<!-- bg-white border-bottom -->
