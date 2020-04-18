@@ -9754,6 +9754,16 @@ input[type=number]:focus,
   
   }
 
+  .sum_item {
+    font-size: 25px;
+    letter-spacing: 0.1em;
+}
+
   #answer_input{
-      padding-right: 15px !important;
+/*      padding-right: 15px !important;*/
+      font-size: 25px;
+      letter-spacing: 0.1em;
+      min-width: 140px;
+      padding: 3px 15px 3px 0px !important;
   }
+  
