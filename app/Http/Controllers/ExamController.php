@@ -800,6 +800,8 @@ class ExamController extends Controller
             $result->student_id = Hashids::decode( $student_details[0] )[0];
             $result->competition_id = Hashids::decode( $student_details[2] )[0];
             $result->exam_id = 1;
+            $result->marks = 0;
+            $result->points = 0;
             $result->exam_date  = (string)$dt;   
             $result->exam_data = $request->hdn_test_data_store;
             $result->save();
