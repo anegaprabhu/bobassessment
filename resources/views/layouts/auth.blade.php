@@ -10,7 +10,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
    <title>Brainobrain Assessment</title>
-
+   <link rel="shortcut icon" href="{{ asset('/img/favicon') }}">
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <link href="{{ asset('css/breakpoint.css') }}" rel="stylesheet">
