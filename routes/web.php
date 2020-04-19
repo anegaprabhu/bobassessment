@@ -45,6 +45,7 @@ Route::group(['middleware' => 'auth:parents'], function () {
     Route::get('exam/show','ExamController@show');
 
 });
+Route::get('certificate/{enc_student_id}','CertificateController@index')->name('download-certificate');
 
 Route::group(['middleware' => 'auth:admin'], function () {
     Route::view('/admin', 'admin');

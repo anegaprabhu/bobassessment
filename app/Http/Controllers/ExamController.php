@@ -766,6 +766,7 @@ class ExamController extends Controller
         // dd($request->hdn_test_data_store);
 
         $student_details = explode("_",$request->hdn_test_st_store);
+        // dd( Hashids::decode( $student_details[2] )[0] );
         $test_data = json_decode($request->hdn_test_data_store,true);
         $comp_id = $student_details[2];
 
@@ -778,11 +779,14 @@ class ExamController extends Controller
 // dd($student);
         $time_zone_now = Carbon::now($student[0]->local_timezone);
 
-
+        $competition = \DB::table('competitions')
+        ->where('competition_id', Hashids::decode( $student_details[2] )[0])
+        ->get();
 
         $dt = $time_zone_now;
         $dt = new DateTime((string)$dt);
         $dt = $dt->format('Y-m-d');
+        // dd($competition[0]->result_date);
 
 
         $check_result = \DB::table('results')
@@ -815,11 +819,13 @@ class ExamController extends Controller
             }
         }
         $total_sums = count($test_data);
-
-
-
-        // dd($result);
-        return view('exam.test-review',compact('test_data','correct_sums','total_sums','student'));
+        $certificate_required = 'no';
+        if($competition[0]->result_date == $dt){
+            $certificate_required = 'yes';
+        }else{
+            $certificate_required = 'no';
+        }
+        return view('exam.test-review',compact('test_data','correct_sums','total_sums','student','certificate_required'));
     }
 
     /**
@@ -850,7 +856,9 @@ class ExamController extends Controller
         // dd($test_data['correct_answer']);
         $correct_sums = $test_data['correct_answer'];
         $total_sums = $test_data['total_sums'];
-        return view('exam.test-review',compact('test_data','correct_sums','total_sums','student'));
+        $certificate_required = 'no';
+
+        return view('exam.test-review',compact('test_data','correct_sums','total_sums','student','certificate_required'));
         // return view('exam.test-review',compact('test_data'));
     }
 
