@@ -140,7 +140,7 @@
                             <tr>
                                 <td><div onClick="backspace()" class="text-center keyPadBtn" style=" width: 40px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;"><</div></td>
                                 <td colspan="3">
-                                <button onClick="next()" data-ord="1" id="nextBtn" class="text-center" style=" width: 132px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; cursor: pointer; display: none;">NEXT</button>
+                                <button onClick="next()" data-ord="1" id="nextBtn" class="text-center" style=" width: 132px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; cursor: pointer;">NEXT</button>
                                     @if(count($student_detail) > 0 && Hashids::decode($student_detail[1])[0] > 60)
                                         <button id="submitResult" onClick="submitResult('{{ $student_detail[0] . '_' . $student_detail[1] . '_' . $student_detail[2] }}')" type="button" class="btn btn-success btn-md btn-block " style="display: none;">Submit</button>
                                     @elseif(count($student_detail) > 0 && Hashids::decode($student_detail[1])[0] < 50)
@@ -191,6 +191,8 @@
   <script type="application/javascript" src="http://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
 
     <script type="application/javascript">
+                $("#nextBtn").css('display','none');
+
     // $(document).load(function(){
         console.log($("#nextBtn"));
 // $('#answer_input').attr('readonly','readonly');
