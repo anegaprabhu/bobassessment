@@ -121,26 +121,26 @@
                                 <td></td>    
                             </tr> -->
                             <tr>
-                                <td><div class="text-center keyPadBtn" onClick="keyPadBtn(1,this)" style=" width: 40px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">1</div></td>
-                                <td><div class="text-center keyPadBtn" onClick="keyPadBtn(2)" style=" width: 40px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">2</div></td>
-                                <td><div class="text-center keyPadBtn" onClick="keyPadBtn(3)" style=" width: 40px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">3</div></td>
-                                <td><div class="text-center keyPadBtn" onClick="keyPadBtn(4)" style=" width: 40px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">4</div></td>
-                                <td><div class="text-center keyPadBtn" onClick="keyPadBtn(5)" style=" width: 40px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">5</div></td>
+                                <td><button class="text-center btn btn-sm btn-warning" onClick="keyPadBtn(1,this)" style=" width: 40px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">1</button></td>
+                                <td><button class="text-center btn btn-sm btn-warning" onClick="keyPadBtn(2)" style=" width: 40px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">2</button></td>
+                                <td><button class="text-center btn btn-sm btn-warning" onClick="keyPadBtn(3)" style=" width: 40px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">3</button></td>
+                                <td><button class="text-center btn btn-sm btn-warning" onClick="keyPadBtn(4)" style=" width: 40px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">4</button></td>
+                                <td><button class="text-center btn btn-sm btn-warning" onClick="keyPadBtn(5)" style=" width: 40px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">5</button></td>
                             </tr>
                             <tr>
-                                <td><div class="text-center keyPadBtn" onClick="keyPadBtn(6)" style=" width: 40px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">6</div></td>
-                                <td><div class="text-center keyPadBtn" onClick="keyPadBtn(7)" style=" width: 40px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">7</div></td>
-                                <td><div class="text-center keyPadBtn" onClick="keyPadBtn(8)" style=" width: 40px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">8</div></td>
-                                <td><div class="text-center keyPadBtn" onClick="keyPadBtn(9)" style=" width: 40px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">9</div></td>
-                                <td><div class="text-center keyPadBtn" onClick="keyPadBtn(0)" style=" width: 40px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">0</div></td>
+                                <td><button class="text-center btn btn-sm btn-warning" onClick="keyPadBtn(6)" style=" width: 40px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">6</button></td>
+                                <td><button class="text-center btn btn-sm btn-warning" onClick="keyPadBtn(7)" style=" width: 40px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">7</button></td>
+                                <td><button class="text-center btn btn-sm btn-warning" onClick="keyPadBtn(8)" style=" width: 40px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">8</button></td>
+                                <td><button class="text-center btn btn-sm btn-warning" onClick="keyPadBtn(9)" style=" width: 40px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">9</button></td>
+                                <td><button class="text-center btn btn-sm btn-warning" onClick="keyPadBtn(0)" style=" width: 40px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">0</button></td>
                             </tr>
                             <!-- <tr>
                                 <td><div class="text-center" style=" width: 40px; height: 40px; border: 1px solid black; margin: 2px; padding: 12px 18px; font-weight: bold">=</div></td>
                             </tr> -->
                             <tr>
-                                <td><div onClick="backspace()" class="text-center keyPadBtn" style=" width: 40px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;"><</div></td>
+                                <td><button onClick="backspace()" class="text-center btn btn-sm btn-warning" style=" width: 40px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;"><</button></td>
                                 <td colspan="3">
-                                <button onClick="next()" data-ord="1" id="nextBtn" class="text-center" style=" width: 132px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; cursor: pointer;">NEXT</button>
+                                <button onClick="next()" data-ord="1" id="nextBtn" class="text-center btn btn-sm btn-primary" style=" width: 132px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; cursor: pointer;">NEXT</button>
                                     @if(count($student_detail) > 0 && Hashids::decode($student_detail[1])[0] > 60)
                                         <button id="submitResult" onClick="submitResult('{{ $student_detail[0] . '_' . $student_detail[1] . '_' . $student_detail[2] }}')" type="button" class="btn btn-success btn-md btn-block " style="display: none;">Submit</button>
                                     @elseif(count($student_detail) > 0 && Hashids::decode($student_detail[1])[0] < 50)
@@ -152,7 +152,7 @@
 
 
                                 @if($student[0]->level == 'Level 8' || $student[0]->level == 'Level 9' || $student[0]->level == 'Level 10')
-                                <td><div class="text-center keyPadBtn" onClick="keyPadBtn('.')" style=" width: 40px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">.</div></td>
+                                <td><button class="text-center btn btn-sm btn-warning" onClick="keyPadBtn('.')" style=" width: 40px; height: 40px; border: 0px solid black; margin: 2px; padding: 6px 14px; font-weight: bold; font-size: 18px; cursor: pointer;">.</button></td>
                                @endif
                             </tr>
                         </table>
@@ -191,6 +191,7 @@
   <script type="application/javascript" src="http://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
 
     <script type="application/javascript">
+    // window.onload = function() {
                 $("#nextBtn").css('display','none');
 
     // $(document).load(function(){
@@ -861,6 +862,7 @@ for(a=0;a<100;a++){
     console.log(generate())
 
 }
+    // }
     </script>
 
 @endsection

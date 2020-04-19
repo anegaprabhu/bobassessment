@@ -9665,7 +9665,7 @@ input[type=number]:focus,
     -o-background-size: 100% 100%;
     background-size: 100% 100%;
 }
-.keyPadBtn{
+.keyPadBtn1{
   border: 0;
   background: url("../images/btn.png");
   -webkit-background-size: 100% 100%;
@@ -9675,7 +9675,7 @@ input[type=number]:focus,
   color: white;
 }
 
-.keyPadBtn:hover{
+.keyPadBtn1:hover{
     border: 0;
     background: url("../images/btn-hover.png");
     -webkit-background-size: 100% 100%;
@@ -9685,7 +9685,7 @@ input[type=number]:focus,
     color: white;
   }
 
-#nextBtn {
+#nextBtn1 {
     border: 0;
     background: url("../images/nextBtn.png");
     -webkit-background-size: 100% 100%;
