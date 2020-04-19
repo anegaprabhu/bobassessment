@@ -2,22 +2,13 @@
 
 @section('content')
 <div class="authwrapper">
-    <div class="row loginbox">
-        <div class=""> <!-- empty class div -->
+    <div class="row loginbox pl-2 pr-2">
+        <div class="pl-2 pr-2"> <!-- empty class div -->
             <div class="text-center mb-4">
                     <img src="{{ asset('images/brainobrain-logo.png') }}" alt="logo" />
             </div> <!-- /.text-center bg image container -->
-            <div class="card col-md-18">
+            <div class="card bg-white">
                 
-                <div class="card-header">{{ isset($url) ? ucwords($url) : ""}} {{ __('Login') }}
-                
-                @isset($url) 
-                    <span class="float-right">Parent</span>
-                @else
-                    <span class="float-right">Franchisee</span>
-                @endisset
-                
-                </div> <!-- /.card-header -->
 
                 <div class="header card-title" style="background: aliceblue;padding:20px;width: 400px;" >
                 @isset($url) 
