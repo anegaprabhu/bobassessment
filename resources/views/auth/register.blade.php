@@ -12,7 +12,7 @@
         <div class="text-center mb-4">
                     <img src="{{ asset('images/brainobrain-logo.png') }}" alt="logo" />
             </div>
-            <div class="card">
+            <div class="card bg-white">
                 <div class="card-header"> {{ isset($url) ? ucwords($url) : ""}} {{ __('Register') }}
                 
                 @isset($url) 
