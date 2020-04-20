@@ -588,7 +588,7 @@
                   }
 
 
-            },1500);
+            },500);
 
 
                     // var getSum = BOBASSESSMENT.general.generateSum(sumsArray[curOrd],virtual_keyboard);  
@@ -704,7 +704,7 @@
                         $("#nextBtn").css('display','block');
                         clearInterval(timer);
                   }
-            },1500);
+            },500);
 
                     $(".progress-bar").css('width', (1 / total_sums) * 100 + '%');
                     // $(".progress-bar").text( 1 + ' of ' + total_sums);

@@ -28,7 +28,7 @@
             <div class="headline">
                 
                 <h4>Students</h4>
-                @if(count($students) < 3)
+                @if(count($students) < 18)
                 <div class="float-right">
                 <a href="{{route('student.create')}}" title="Maximum 3 children can be registered" type="button" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add Child</a>
                 </div>
