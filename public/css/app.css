@@ -9774,3 +9774,7 @@ input[type=number]:focus,
   #generatedSumBlock {
     font-family: "Lucida Console", Courier, monospace;
   }
+
+  .wrapper{
+      height: auto;
+  }
