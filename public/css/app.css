@@ -9767,3 +9767,10 @@ input[type=number]:focus,
       padding: 3px 15px 3px 0px !important;
   }
   
+  p {
+      font-size: 20px;
+  }
+
+  #generatedSumBlock {
+    font-family: "Lucida Console", Courier, monospace;
+  }

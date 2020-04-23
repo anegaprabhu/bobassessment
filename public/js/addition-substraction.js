@@ -665,7 +665,7 @@
         doubleDigitSingleDigit: function()
         {
             var multiplicand = BOBASSESSMENT.general.randomIntFromInterval(11, 99);
-            var multiplier   = BOBASSESSMENT.general.randomIntFromInterval(1, 9);
+            var multiplier   = BOBASSESSMENT.general.randomIntFromInterval(2, 9);
             var multiplicand_arr = [];
             var multiplier_arr   = [];
             var sumup_loop = 0;
@@ -679,7 +679,7 @@
         tripleDigitSingleDigit: function()
         {
             var multiplicand = BOBASSESSMENT.general.randomIntFromInterval(100, 999);
-            var multiplier   = BOBASSESSMENT.general.randomIntFromInterval(1, 9);
+            var multiplier   = BOBASSESSMENT.general.randomIntFromInterval(2, 9);
             var multiplicand_arr = [];
             var multiplier_arr   = [];
             var sumup_loop = 0;
