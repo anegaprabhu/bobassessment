@@ -68,7 +68,7 @@ class StudentController extends Controller
         if(count($student_exist) > 0)
         {
             // dd(count($student_exist));
-            return redirect('parents')->with('danger','Student already exist!');;
+            return redirect('parents')->with('danger','Child '. $request->txt_student_name .' is already exist!');;
         }else{
             $student = new Student;
 
@@ -89,7 +89,7 @@ class StudentController extends Controller
     
             $student->save();
     
-            return redirect('parents')->with('success','Student added successfully.');
+            return redirect('parents')->with('success','Child added successfully.');
         }
 
         // dd($request->txt_student_name);

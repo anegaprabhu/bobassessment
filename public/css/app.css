@@ -9778,3 +9778,7 @@ input[type=number]:focus,
   .wrapper{
       height: auto;
   }
+
+  .sucessmsg_bob {
+      font-size: 22px;
+  }
