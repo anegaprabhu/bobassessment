@@ -60,26 +60,39 @@ class StudentController extends Controller
             ->select('verification_code')
             ->where('id',$franchisee_id)
             ->get()[0]->verification_code;
-        $student = new Student;
 
-        $student->franchisee_id         =   $franchisee_id;
-        $student->franchisee_code       =   $franchisee_code;
-        $student->parent_id             =   $parent_id;
-        $student->student_name          =   $request->txt_student_name;
-        $student->dob                   =   $request->txt_dob;
-        $student->school_name           =   $request->txt_school_name;
-        $student->grade                 =   $request->txt_std_grade;
-        $student->programme             =   $request->slt_program;
-        $student->level                 =   $request->slt_level;
-        // $student->utc_created_on->timezone($local_time_zone)->toDateTimeString();
-        $student->local_timezone        =   $local_time_zone;
-        $student->local_created_on      =  Carbon::parse($request->local_time); // Carbon::now($request->local_time);
-        $student->created_by            =   $parent_id;
-        $student->created_at            =   $current_time_stamp;
+        $student_exist = \DB::table('students')
+            ->where('parent_id',$parent_id)
+            ->where('student_name',$request->txt_student_name)
+            ->get();
+        if(count($student_exist) > 0)
+        {
+            // dd(count($student_exist));
+            return redirect('parents')->with('danger','Student already exist!');;
+        }else{
+            $student = new Student;
 
-        $student->save();
+            $student->franchisee_id         =   $franchisee_id;
+            $student->franchisee_code       =   $franchisee_code;
+            $student->parent_id             =   $parent_id;
+            $student->student_name          =   $request->txt_student_name;
+            $student->dob                   =   $request->txt_dob;
+            $student->school_name           =   $request->txt_school_name;
+            $student->grade                 =   $request->txt_std_grade;
+            $student->programme             =   $request->slt_program;
+            $student->level                 =   $request->slt_level;
+            // $student->utc_created_on->timezone($local_time_zone)->toDateTimeString();
+            $student->local_timezone        =   $local_time_zone;
+            $student->local_created_on      =  Carbon::parse($request->local_time); // Carbon::now($request->local_time);
+            $student->created_by            =   $parent_id;
+            $student->created_at            =   $current_time_stamp;
+    
+            $student->save();
+    
+            return redirect('parents')->with('success','Student added successfully.');
+        }
+
         // dd($request->txt_student_name);
-        return redirect('parents');
     }
 
     /**
