@@ -367,6 +367,7 @@ if (!function_exists('getLevelDetails')) {
                         'block_name'    =>  'D',
                         'block_title'   =>  'Multiplication',
                         'block_subtitle'=>  'Add / Less Partner',
+                        'instruction'   =>  'Multiplication',
                         'digits'        =>  'TD/SD',
                         'rows'          =>  1,
                         'sums'          =>  5,

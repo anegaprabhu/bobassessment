@@ -24,11 +24,25 @@
     @if(count($students) > 0)
     <div class="container">
     <div class="row justify-content-center mt-5">
-        <div class="col-md-12">
+ 
+        @if(Session::has('success'))
+            <div class="alert alert-lg alert-success sucessmsg_bob" id="success-alert">
+              <button type="button" class="close" data-dismiss="alert" id="closesmg">&times;</button>
+              <strong>Success! </strong> {{ Session::get('success') }} 
+            </div>
+            @endif
+            @if(Session::has('danger'))
+            <div class="alert alert-lg alert-danger sucessmsg_bob" id="success-alert">
+              <button type="button" class="close" data-dismiss="alert" id="closesmg">&times;</button>
+              <strong>Failed! </strong> {{ Session::get('danger') }} 
+            </div>
+        @endif
+
+       <div class="col-md-12">
             <div class="headline">
                 
                 <h4>Students</h4>
-                @if(count($students) < 3)
+                @if(count($students) < 18)
                 <div class="float-right">
                 <a href="{{route('student.create')}}" title="Maximum 3 children can be registered" type="button" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add Child</a>
                 </div>

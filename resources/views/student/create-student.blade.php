@@ -10,7 +10,23 @@
 
 <div class="wrapper">
 
+
 <div class="container">
+
+        @if(Session::has('success'))
+            <div class="alert alert-success sucessmsg_bob" id="success-alert">
+              <button type="button" class="close" data-dismiss="alert" id="closesmg">&times;</button>
+              <strong>Success! </strong> {{ Session::get('success') }} 
+            </div>
+            @endif
+            @if(Session::has('danger'))
+            <div class="alert alert-danger sucessmsg_bob" id="success-alert">
+              <button type="button" class="close" data-dismiss="alert" id="closesmg">&times;</button>
+              <strong>Success! </strong> {{ Session::get('danger') }} 
+            </div>
+        @endif
+
+
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card mt-5">
